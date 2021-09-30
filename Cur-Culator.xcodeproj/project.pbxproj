@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519342027062B42007D516A /* Cur_CulatorApp.swift */; };
+		9519342327062B42007D516A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519342227062B42007D516A /* ContentView.swift */; };
+		9519342527062B44007D516A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9519342427062B44007D516A /* Assets.xcassets */; };
+		9519342827062B44007D516A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9519342727062B44007D516A /* Preview Assets.xcassets */; };
+		9519343327062B45007D516A /* Cur_CulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519343227062B45007D516A /* Cur_CulatorTests.swift */; };
+		9519343E27062B45007D516A /* Cur_CulatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519343D27062B45007D516A /* Cur_CulatorUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9519342F27062B45007D516A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9519341527062B42007D516A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9519341C27062B42007D516A;
+			remoteInfo = "Cur-Culator";
+		};
+		9519343A27062B45007D516A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9519341527062B42007D516A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9519341C27062B42007D516A;
+			remoteInfo = "Cur-Culator";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9519341D27062B42007D516A /* Cur-Culator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cur-Culator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9519342027062B42007D516A /* Cur_CulatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cur_CulatorApp.swift; sourceTree = "<group>"; };
+		9519342227062B42007D516A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9519342427062B44007D516A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9519342727062B44007D516A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9519342927062B44007D516A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9519342E27062B45007D516A /* Cur-CulatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cur-CulatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9519343227062B45007D516A /* Cur_CulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cur_CulatorTests.swift; sourceTree = "<group>"; };
+		9519343427062B45007D516A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9519343927062B45007D516A /* Cur-CulatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cur-CulatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9519343D27062B45007D516A /* Cur_CulatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cur_CulatorUITests.swift; sourceTree = "<group>"; };
+		9519343F27062B45007D516A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9519341A27062B42007D516A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9519342B27062B45007D516A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9519343627062B45007D516A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9519341427062B42007D516A = {
+			isa = PBXGroup;
+			children = (
+				9519341F27062B42007D516A /* Cur-Culator */,
+				9519343127062B45007D516A /* Cur-CulatorTests */,
+				9519343C27062B45007D516A /* Cur-CulatorUITests */,
+				9519341E27062B42007D516A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9519341E27062B42007D516A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9519341D27062B42007D516A /* Cur-Culator.app */,
+				9519342E27062B45007D516A /* Cur-CulatorTests.xctest */,
+				9519343927062B45007D516A /* Cur-CulatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9519341F27062B42007D516A /* Cur-Culator */ = {
+			isa = PBXGroup;
+			children = (
+				9519342027062B42007D516A /* Cur_CulatorApp.swift */,
+				9519342227062B42007D516A /* ContentView.swift */,
+				9519342427062B44007D516A /* Assets.xcassets */,
+				9519342927062B44007D516A /* Info.plist */,
+				9519342627062B44007D516A /* Preview Content */,
+			);
+			path = "Cur-Culator";
+			sourceTree = "<group>";
+		};
+		9519342627062B44007D516A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9519342727062B44007D516A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9519343127062B45007D516A /* Cur-CulatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				9519343227062B45007D516A /* Cur_CulatorTests.swift */,
+				9519343427062B45007D516A /* Info.plist */,
+			);
+			path = "Cur-CulatorTests";
+			sourceTree = "<group>";
+		};
+		9519343C27062B45007D516A /* Cur-CulatorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9519343D27062B45007D516A /* Cur_CulatorUITests.swift */,
+				9519343F27062B45007D516A /* Info.plist */,
+			);
+			path = "Cur-CulatorUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9519341C27062B42007D516A /* Cur-Culator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9519344227062B45007D516A /* Build configuration list for PBXNativeTarget "Cur-Culator" */;
+			buildPhases = (
+				9519341927062B42007D516A /* Sources */,
+				9519341A27062B42007D516A /* Frameworks */,
+				9519341B27062B42007D516A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Cur-Culator";
+			productName = "Cur-Culator";
+			productReference = 9519341D27062B42007D516A /* Cur-Culator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9519342D27062B45007D516A /* Cur-CulatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9519344527062B45007D516A /* Build configuration list for PBXNativeTarget "Cur-CulatorTests" */;
+			buildPhases = (
+				9519342A27062B45007D516A /* Sources */,
+				9519342B27062B45007D516A /* Frameworks */,
+				9519342C27062B45007D516A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9519343027062B45007D516A /* PBXTargetDependency */,
+			);
+			name = "Cur-CulatorTests";
+			productName = "Cur-CulatorTests";
+			productReference = 9519342E27062B45007D516A /* Cur-CulatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9519343827062B45007D516A /* Cur-CulatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9519344827062B45007D516A /* Build configuration list for PBXNativeTarget "Cur-CulatorUITests" */;
+			buildPhases = (
+				9519343527062B45007D516A /* Sources */,
+				9519343627062B45007D516A /* Frameworks */,
+				9519343727062B45007D516A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9519343B27062B45007D516A /* PBXTargetDependency */,
+			);
+			name = "Cur-CulatorUITests";
+			productName = "Cur-CulatorUITests";
+			productReference = 9519343927062B45007D516A /* Cur-CulatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9519341527062B42007D516A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					9519341C27062B42007D516A = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					9519342D27062B45007D516A = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 9519341C27062B42007D516A;
+					};
+					9519343827062B45007D516A = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 9519341C27062B42007D516A;
+					};
+				};
+			};
+			buildConfigurationList = 9519341827062B42007D516A /* Build configuration list for PBXProject "Cur-Culator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9519341427062B42007D516A;
+			productRefGroup = 9519341E27062B42007D516A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9519341C27062B42007D516A /* Cur-Culator */,
+				9519342D27062B45007D516A /* Cur-CulatorTests */,
+				9519343827062B45007D516A /* Cur-CulatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9519341B27062B42007D516A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9519342827062B44007D516A /* Preview Assets.xcassets in Resources */,
+				9519342527062B44007D516A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9519342C27062B45007D516A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9519343727062B45007D516A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9519341927062B42007D516A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9519342327062B42007D516A /* ContentView.swift in Sources */,
+				9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9519342A27062B45007D516A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9519343327062B45007D516A /* Cur_CulatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9519343527062B45007D516A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9519343E27062B45007D516A /* Cur_CulatorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9519343027062B45007D516A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9519341C27062B42007D516A /* Cur-Culator */;
+			targetProxy = 9519342F27062B45007D516A /* PBXContainerItemProxy */;
+		};
+		9519343B27062B45007D516A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9519341C27062B42007D516A /* Cur-Culator */;
+			targetProxy = 9519343A27062B45007D516A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		9519344027062B45007D516A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9519344127062B45007D516A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9519344327062B45007D516A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Cur-Culator/Preview Content\"";
+				DEVELOPMENT_TEAM = F4UL9JQ6S5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Cur-Culator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Dennis-Nikas.Cur-Culator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9519344427062B45007D516A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Cur-Culator/Preview Content\"";
+				DEVELOPMENT_TEAM = F4UL9JQ6S5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Cur-Culator/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Dennis-Nikas.Cur-Culator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9519344627062B45007D516A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F4UL9JQ6S5;
+				INFOPLIST_FILE = "Cur-CulatorTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Dennis-Nikas.Cur-CulatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cur-Culator.app/Cur-Culator";
+			};
+			name = Debug;
+		};
+		9519344727062B45007D516A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F4UL9JQ6S5;
+				INFOPLIST_FILE = "Cur-CulatorTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Dennis-Nikas.Cur-CulatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cur-Culator.app/Cur-Culator";
+			};
+			name = Release;
+		};
+		9519344927062B45007D516A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F4UL9JQ6S5;
+				INFOPLIST_FILE = "Cur-CulatorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Dennis-Nikas.Cur-CulatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Cur-Culator";
+			};
+			name = Debug;
+		};
+		9519344A27062B45007D516A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F4UL9JQ6S5;
+				INFOPLIST_FILE = "Cur-CulatorUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Dennis-Nikas.Cur-CulatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Cur-Culator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9519341827062B42007D516A /* Build configuration list for PBXProject "Cur-Culator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9519344027062B45007D516A /* Debug */,
+				9519344127062B45007D516A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9519344227062B45007D516A /* Build configuration list for PBXNativeTarget "Cur-Culator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9519344327062B45007D516A /* Debug */,
+				9519344427062B45007D516A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9519344527062B45007D516A /* Build configuration list for PBXNativeTarget "Cur-CulatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9519344627062B45007D516A /* Debug */,
+				9519344727062B45007D516A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9519344827062B45007D516A /* Build configuration list for PBXNativeTarget "Cur-CulatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9519344927062B45007D516A /* Debug */,
+				9519344A27062B45007D516A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9519341527062B42007D516A /* Project object */;
+}
