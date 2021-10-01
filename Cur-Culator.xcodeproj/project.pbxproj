@@ -13,6 +13,9 @@
 		9519342827062B44007D516A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9519342727062B44007D516A /* Preview Assets.xcassets */; };
 		9519343327062B45007D516A /* Cur_CulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519343227062B45007D516A /* Cur_CulatorTests.swift */; };
 		9519343E27062B45007D516A /* Cur_CulatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519343D27062B45007D516A /* Cur_CulatorUITests.swift */; };
+		9537FF1627074A7800FDC2EB /* NumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537FF1527074A7800FDC2EB /* NumberView.swift */; };
+		9537FF1827074A9C00FDC2EB /* FunctionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537FF1727074A9C00FDC2EB /* FunctionView.swift */; };
+		9537FF1A27074AC300FDC2EB /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537FF1927074AC300FDC2EB /* ActionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		9519343927062B45007D516A /* Cur-CulatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cur-CulatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9519343D27062B45007D516A /* Cur_CulatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cur_CulatorUITests.swift; sourceTree = "<group>"; };
 		9519343F27062B45007D516A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9537FF1527074A7800FDC2EB /* NumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberView.swift; sourceTree = "<group>"; };
+		9537FF1727074A9C00FDC2EB /* FunctionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionView.swift; sourceTree = "<group>"; };
+		9537FF1927074AC300FDC2EB /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 			children = (
 				9519342027062B42007D516A /* Cur_CulatorApp.swift */,
 				9519342227062B42007D516A /* ContentView.swift */,
+				9537FF1527074A7800FDC2EB /* NumberView.swift */,
+				9537FF1727074A9C00FDC2EB /* FunctionView.swift */,
+				9537FF1927074AC300FDC2EB /* ActionView.swift */,
 				9519342427062B44007D516A /* Assets.xcassets */,
 				9519342927062B44007D516A /* Info.plist */,
 				9519342627062B44007D516A /* Preview Content */,
@@ -259,8 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9537FF1A27074AC300FDC2EB /* ActionView.swift in Sources */,
 				9519342327062B42007D516A /* ContentView.swift in Sources */,
 				9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */,
+				9537FF1827074A9C00FDC2EB /* FunctionView.swift in Sources */,
+				9537FF1627074A7800FDC2EB /* NumberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

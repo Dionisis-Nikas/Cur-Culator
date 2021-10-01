@@ -11,9 +11,9 @@ struct CalculationState {
 	var currentNumber: Double = 0
 	
 	mutating func appendNumber(_ number: Double) {
+		
 		if number.truncatingRemainder(dividingBy: 1) == 0
-		&&
-			currentNumber.truncatingRemainder(dividingBy: 1) == 0 {
+		&& currentNumber.truncatingRemainder(dividingBy: 1) == 0 {
 			currentNumber = 10 * currentNumber + number
 		}
 		else {
@@ -27,7 +27,8 @@ struct ContentView: View {
 	@State var state = CalculationState()
 	
 	var displayedString: String {
-		return String(format: "%.2f", [state.currentNumber])
+		print(state.currentNumber)
+		return String(format: "%.2f", arguments: [state.currentNumber])
 	}
 	
     var body: some View {
@@ -43,43 +44,43 @@ struct ContentView: View {
 				
 			
 			HStack{
-				NumberView(number: 1)
+				NumberView(number: 1, state: $state)
 				Spacer()
-				NumberView(number: 2)
+				NumberView(number: 2, state: $state)
 				Spacer()
-				NumberView(number: 3)
+				NumberView(number: 3, state: $state)
 				Spacer()
-				NumberView(number: 4)
+				NumberView(number: 4, state: $state)
 				
 			}
 			HStack{
-				NumberView(number: 5)
+				NumberView(number: 5, state: $state)
 				Spacer()
-				NumberView(number: 6)
+				NumberView(number: 6, state: $state)
 				Spacer()
-				NumberView(number: 7)
+				NumberView(number: 7, state: $state)
 				Spacer()
-				NumberView(number: 8)
+				NumberView(number: 8, state: $state)
 				
 			}
 			HStack{
-				NumberView(number: 9)
+				NumberView(number: 9, state: $state)
 				Spacer()
-				NumberView(number: 2)
+				NumberView(number: 2, state: $state)
 				Spacer()
-				NumberView(number: 3)
+				NumberView(number: 3, state: $state)
 				Spacer()
-				NumberView(number: 4)
+				NumberView(number: 4, state: $state)
 				
 			}
 			HStack{
-				NumberView(number: 1)
+				NumberView(number: 1, state: $state)
 				Spacer()
-				NumberView(number: 2)
+				ActionView(action: .clear, state: $state)
 				Spacer()
-				NumberView(number: 3)
+				FunctionView(state: $state, function: .sinus)
 				Spacer()
-				NumberView(number: 4)
+				FunctionView(state: $state, function: .cosinus)
 				
 			}
 		}.padding(32)
@@ -87,30 +88,9 @@ struct ContentView: View {
 }
 
 
-struct NumberView: View {
-	let number: Double
-	//@Binding var state: CalculationState
-	
-	var numberString: String {
-		if number == .pi {
-			return "π"
-		}
-		return String(Int(number))
-	}
-	
-	var body: some View {
-		Text(numberString)
-			.font(.title)
-			.fontWeight(.bold)
-			.foregroundColor(.white)
-			.frame(width: 64, height: 64)
-			.background(Color.blue)
-			.cornerRadius(20)
-			.shadow(color: Color.blue.opacity(0.3), radius: 10, x: 0, y: 10)
-			//.onTapGesture {
-				//self.state.appendNumber(number)
-			//}
-	}
-}
+
+
+
+
 
 
