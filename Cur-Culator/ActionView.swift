@@ -16,13 +16,13 @@ struct ActionView:View {
 				case .equal:
 					return Image(systemName: "equal")
 				case .clear:
-					return Image(systemName: "xmark.cirlce")
+					return Image(systemName: "trash")
 				case .plus:
 					return Image(systemName: "plus")
 				case .minus:
 					return Image(systemName: "minus")
 				case .mutliply:
-					return Image(systemName: "mutliply")
+					return Image(systemName: "multiply")
 				case .divide:
 					return Image(systemName: "divide")
 			}
@@ -48,13 +48,49 @@ struct ActionView:View {
 	@Binding var state: CalculationState
 	
 	var body: some View {
-		action.image()
-			.font(Font.title.weight(.bold))
-			.foregroundColor(.white)
-			.frame(width: 64, height: 64)
-			.background(Color.green)
-			.cornerRadius(20)
-			.shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
+		Button(action: tapped, label: {
+			action.image()
+				.font(Font.title.weight(.bold))
+				.foregroundColor(.white)
+				.frame(width: 64, height: 64)
+				.background(state.storedAction == action ? Color.red : Color.green)
+				.cornerRadius(20)
+				.shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
+		})
 		
+	}
+	
+	private func tapped() {
+		switch action {
+			case .clear:
+				state.currentNumber = 0
+				state.storedNumber = nil
+				state.storedAction = nil
+				break
+			case .equal:
+				guard let storedAction =
+						state.storedAction else{
+							return
+						}
+				guard let storedNumber =
+						state.storedNumber else {
+							return
+						}
+				
+				guard let result = storedAction.calculate(storedNumber, state.currentNumber) else {
+					return
+				}
+				
+				state.currentNumber = result
+				state.storedNumber = nil
+				state.storedAction = nil
+				
+				break
+			default:
+				state.storedNumber = state.currentNumber
+				state.currentNumber = 0
+				state.storedAction = action
+				break
+		}
 	}
 }

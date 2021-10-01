@@ -40,16 +40,22 @@ struct FunctionView: View {
 	var function: MathFunction
 	
 	var body: some View {
-		return Text(function.string())
-			.font(.title)
-			.fontWeight(.bold)
-			.foregroundColor(.black)
-			.frame(width: 64, height: 64)
-			.background(Color.gray.opacity(0.2))
-			.cornerRadius(20)
-			.shadow(color: Color.gray.opacity(0.9), radius: 10, x: 0, y: 10)
-			.onTapGesture {
+		return
+			Button(action: {
 				state.currentNumber = function.operation(self.state.currentNumber)
-			}
+				let impactMed = UIImpactFeedbackGenerator(style: .medium)
+				impactMed.impactOccurred()
+			}, label: {
+				Text(function.string())
+					.font(.title)
+					.fontWeight(.bold)
+					.foregroundColor(.black)
+					.frame(width: 64, height: 64)
+					.background(Color.gray.opacity(0.2))
+					.cornerRadius(20)
+					.shadow(color: Color.gray.opacity(0.9), radius: 10, x: 0, y: 10)
+					
+			})
+			
 	}
 }
