@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActionView:View {
 	enum Action {
-		case equal, clear, plus, minus, mutliply, divide
+		case equal, clear, plus, minus, mutliply, divide, sign, percent
 		
 		func image() -> Image {
 			switch self {
@@ -25,6 +25,10 @@ struct ActionView:View {
 					return Image(systemName: "multiply")
 				case .divide:
 					return Image(systemName: "divide")
+				case .sign:
+					return Image(systemName: "plus.slash.minus")
+				case .percent:
+					return Image(systemName: "percent")
 			}
 		}
 		
@@ -67,6 +71,10 @@ struct ActionView:View {
 				state.storedNumber = nil
 				state.storedAction = nil
 				break
+			case .sign:
+				state.currentNumber = state.currentNumber * (-1)
+			case .percent:
+				state.currentNumber = state.currentNumber / 100
 			case .equal:
 				guard let storedAction =
 						state.storedAction else{
@@ -82,8 +90,9 @@ struct ActionView:View {
 				}
 				
 				state.currentNumber = result
-				state.storedNumber = nil
-				state.storedAction = nil
+				
+				//state.storedNumber = nil
+				//state.storedAction = nil
 				
 				break
 			default:

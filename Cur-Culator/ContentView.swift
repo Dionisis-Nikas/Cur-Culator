@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CalculationState {
 	var currentNumber: Double = 0
+	var decimal: Bool = false
 	
 	var storedNumber: Double?
 	var storedAction: ActionView.Action?
@@ -18,10 +19,18 @@ struct CalculationState {
 		
 		if number.truncatingRemainder(dividingBy: 1) == 0
 		&& currentNumber.truncatingRemainder(dividingBy: 1) == 0 {
-			currentNumber = 10 * currentNumber + number
+			if decimal {
+				let level = String(Int(currentNumber)).count
+				currentNumber = currentNumber  + number / (Double((10 * level)))
+				decimal = false
+			}
+			else {
+				currentNumber = 10 * currentNumber + number
+			}
 		}
 		else {
 			currentNumber = number
+			if (decimal) {decimal = false}
 		}
 	}
 	
@@ -54,9 +63,9 @@ struct ContentView: View {
 			HStack{
 				ActionView(action: .clear, state: $state)
 				Spacer()
-				FunctionView(state: $state, function: .sinus)
+				ActionView(action: .sign, state: $state)
 				Spacer()
-				FunctionView(state: $state, function: .tangens)
+				ActionView(action: .percent, state: $state)
 				Spacer()
 				ActionView(action: .mutliply, state: $state)
 			}
@@ -96,9 +105,8 @@ struct ContentView: View {
 				
 				NumberView(number: 0, state: $state)
 				Spacer()
-				Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-					Text(",")
-				})
+				CommaButtonView(state: $state)
+				Spacer()
 				ActionView(action: .equal, state: $state)
 			}
 		}.padding(32)
