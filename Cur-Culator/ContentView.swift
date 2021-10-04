@@ -7,43 +7,15 @@
 
 import SwiftUI
 
-struct CalculationState {
-	var currentNumber: Double = 0
-	var decimal: Bool = false
-	
-	var storedNumber: Double?
-	var storedAction: ActionView.Action?
-	
-	
-	mutating func appendNumber(_ number: Double) {
-		
-		if number.truncatingRemainder(dividingBy: 1) == 0
-		&& currentNumber.truncatingRemainder(dividingBy: 1) == 0 {
-			if decimal {
-				let level = String(Int(currentNumber)).count
-				currentNumber = currentNumber  + number / (Double((10 * level)))
-				decimal = false
-			}
-			else {
-				currentNumber = 10 * currentNumber + number
-			}
-		}
-		else {
-			currentNumber = number
-			if (decimal) {decimal = false}
-		}
-	}
-	
-	mutating func appendComma() {
-		
-		
-	}
-}
+
 
 struct ContentView: View {
 	
 	@State var state = CalculationState()
-	
+	@State var converter = false
+
+	@State private var selection = "Red"
+	let colors = ["Red", "Green", "Blue", "Black", "Tartan"]
 	var displayedString: String {
 		return String(format: (state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 ?
 								"%.0f" : "%g"), arguments: [state.currentNumber])
@@ -51,14 +23,30 @@ struct ContentView: View {
 	
     var body: some View {
 		VStack(alignment: .trailing, spacing: 20){
-			
+			HStack{
+				CurrencySelector()
+				
+				
+				VStack(alignment: .trailing, spacing: 5, content: {
+					Text("Converter")
+						
+					Toggle(isOn: $converter) {
+					}
+				})
+				Settings()
+			}
 			Spacer()
 			
 			Text(displayedString)
-				.font(.largeTitle)
+				
 				.fontWeight(.bold)
 				.lineLimit(3)
-				.padding(.bottom, 64)
+				.padding(.bottom, 5)
+				.font(.system(size: 60))
+				.onAppear {
+					//FetchData()
+				}
+				
 				
 			HStack{
 				ActionView(action: .clear, state: $state)
@@ -102,7 +90,6 @@ struct ContentView: View {
 			}
 			HStack{
 				
-				
 				NumberView(number: 0, state: $state)
 				Spacer()
 				CommaButtonView(state: $state)
@@ -120,3 +107,30 @@ struct ContentView: View {
 
 
 
+struct CalculationState {
+	var currentNumber: Double = 0
+	var decimal: Bool = false
+	
+	var storedNumber: Double?
+	var storedAction: ActionView.Action?
+	
+	
+	mutating func appendNumber(_ number: Double) {
+		
+		if number.truncatingRemainder(dividingBy: 1) == 0
+			&& currentNumber.truncatingRemainder(dividingBy: 1) == 0 {
+			if decimal {
+				let level = String(Int(currentNumber)).count
+				currentNumber = currentNumber  + number / (Double((10 * level)))
+				decimal = false
+			}
+			else {
+				currentNumber = 10 * currentNumber + number
+			}
+		}
+		else {
+			currentNumber = number
+			if (decimal) {decimal = false}
+		}
+	}
+}
