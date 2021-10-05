@@ -15,6 +15,7 @@ struct ContentView: View {
 	@State var converter = false
 	@ObservedObject var fetchData = FetchData()
 	@ObservedObject var readData = ReadData()
+	@AppStorage("code") private var code = "USD"
 
 	
 	@State var currencySelection = ""
@@ -24,29 +25,62 @@ struct ContentView: View {
 								"%.0f" : "%g"), arguments: [state.currentNumber])
 	}
 	
-	var exchangeNumber: Double {
+	var exchangeNumber: String {
 		
 		guard self.fetchData.values.count > 0 else {
-			return 0
+			return ""
 		}
 		let search = self.fetchData.currencyCode.firstIndex(of: currencySelection)
 		let rate = self.fetchData.values[search ?? 0]
-		print("Rate of " + String(self.fetchData.currencyCode[search ?? 0]) + " is " + String(rate) + "with base " + fetchData.code)
 		let doubleAmount = Double(state.currentNumber)
 		let total = rate * doubleAmount
-		return total
+		return String(format: (total.truncatingRemainder(dividingBy: 1) == 0 ?
+								"%.0f" : "%g"), arguments: [total])
 		
 	}
+	
+	var exchangeCurrency: String {
+		
+		guard self.fetchData.values.count > 0 else {
+			return ""
+		}
+		let search = self.fetchData.currencyCode.firstIndex(of: currencySelection)
+		let rate = self.fetchData.currencyCode[search ?? 0]
+		
+		return rate
+		
+	}
+	
 	
     var body: some View {
 		
 		
 		VStack(alignment: .trailing, spacing: 20){
+			HStack{
+				HStack(alignment: .center, spacing: 10){
+					Text(exchangeNumber)
+						.padding(.bottom, 5)
+						.font(.system(size: 50))
+					Text(exchangeCurrency)
+						.foregroundColor(.gray)
+					
+				}
+				
+				
+				HStack(alignment: .center, spacing: 10){
+					Text(displayedString)
+						.padding(.bottom, 5)
+						.font(.system(size: 50))
+					Text(code)
+						.foregroundColor(.gray)
+					
+				}
+			}
 			HStack(alignment: .center, spacing: 50){
 				Picker(selection: $currencySelection, label: Text("Select currency")) {
 					ForEach(readData.file, id: \.code){ user in
 						
-						HStack(alignment: .firstTextBaseline, spacing: 1){
+						HStack(alignment: .center){
 							
 							Text(user.code)
 								.font(.title3)
@@ -58,10 +92,7 @@ struct ContentView: View {
 								.font(.title3)
 								.fontWeight(.ultraLight)
 								.foregroundColor(Color.green)
-							
-							
-							
-							
+
 						}.padding()
 					}
 				}.pickerStyle(MenuPickerStyle())
@@ -69,15 +100,16 @@ struct ContentView: View {
 				.labelsHidden()
 					
 				Settings(datas: readData, fetch: fetchData)
-				
+				VStack(alignment: .center){
+					Text("Converter Mode")
+						.font(.system(size: 10))
+						.foregroundColor(.gray)
+					Toggle("",isOn: $converter)
+						.offset(x: -20, y: 0)
+				}
 			}
 			
-			Text("\(exchangeNumber, specifier: "%g")")
-			
-			
-			Text(displayedString)
-				.padding(.bottom, 5)
-				.font(.system(size: 50))
+				
 			
 			HStack{
 				ActionView(action: .clear, state: $state)
@@ -88,7 +120,6 @@ struct ContentView: View {
 				Spacer()
 				ActionView(action: .mutliply, state: $state)
 			}
-			
 			HStack{
 				NumberView(number: 7, state: $state)
 				Spacer()
@@ -128,51 +159,5 @@ struct ContentView: View {
 				ActionView(action: .equal, state: $state)
 			}
 		}.padding(25)
-	}
-}
-
-
-
-
-
-
-
-
-struct CalculationState {
-	var currentNumber: Double = 0
-	var decimal: Bool = false
-	
-	var storedNumber: Double?
-	var storedAction: ActionView.Action?
-	var after: Bool = false
-	
-	
-	mutating func appendNumber(_ number: Double) {
-		
-		if number.truncatingRemainder(dividingBy: 1) == 0
-			&& currentNumber.truncatingRemainder(dividingBy: 1) == 0 {
-			if decimal {
-				let level = String(Int(currentNumber)).count
-				currentNumber = currentNumber  + number / ((pow(10, Double(level))))
-				
-			}
-			else {
-				if after {
-					currentNumber = 0 + number
-					after = false
-				}
-				else {
-					currentNumber = 10 * currentNumber + number
-				}
-			}
-		}
-		else {
-			if (decimal) {
-				let level = String(Double(currentNumber)).count - 1
-				currentNumber = currentNumber  + number / ((pow(10, Double(level))))
-			}
-			
-			
-		}
 	}
 }
