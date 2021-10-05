@@ -10,6 +10,7 @@ import SwiftUI
 struct Settings: View {
 	@State private var showingPopover = false
 	@AppStorage("code") private var code = "USD"
+	@AppStorage("convert") private var convert = "USD"
 	@State var submit = false
 	@State var datas: ReadData
 	@State var fetch: FetchData
@@ -21,15 +22,24 @@ struct Settings: View {
 		}, label: {
 			Image(systemName: "gear")
 				.font(Font.title.weight(.bold))
-				.foregroundColor(.gray)
-				.frame(width: 64, height: 64)
-				.offset(x: 20, y: 0)
+				.foregroundColor(.black)
+				.frame(width: 44, height: 44)
+				
 				.shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
+				.background(Color.gray)
+				.cornerRadius(20)
+				.offset(x: 10, y: 0)
 		})
+		
 		.popover(isPresented: $showingPopover) {
 			NavigationView{
 				Form {
 					Picker(selection: $code, label: Text("Base currency")) {
+						
+						
+						Filter(codes: datas.codes, names: datas.names )
+					}
+					Picker(selection: $convert, label: Text("Target currency")) {
 						
 						
 						Filter(codes: datas.codes, names: datas.names )
@@ -41,7 +51,7 @@ struct Settings: View {
 					}
 					.buttonStyle(BlueButtonStyle())
 					.alert(isPresented: $submit, content: {
-						Alert(title: Text("Saved"), message: Text("Updated base currency to " + code))
+						Alert(title: Text("Saved"), message: Text("Updated base currency to " + code + "and target currency to " + convert))
 					})
 				}
 				.navigationBarTitle("Settings")

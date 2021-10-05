@@ -16,9 +16,10 @@ struct ContentView: View {
 	@ObservedObject var fetchData = FetchData()
 	@ObservedObject var readData = ReadData()
 	@AppStorage("code") private var code = "USD"
+	@AppStorage("convert") private var currencySelection = "USD"
 
 	
-	@State var currencySelection = ""
+	
 	
 	var displayedString: String {
 		return String(format: (state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 ?
@@ -35,7 +36,7 @@ struct ContentView: View {
 		let doubleAmount = Double(state.currentNumber)
 		let total = rate * doubleAmount
 		return String(format: (total.truncatingRemainder(dividingBy: 1) == 0 ?
-								"%.0f" : "%g"), arguments: [total])
+								"%.0f" : "%.3f"), arguments: [total])
 		
 	}
 	
@@ -56,7 +57,11 @@ struct ContentView: View {
 		
 		
 		VStack(alignment: .trailing, spacing: 20){
+			Settings(datas: readData, fetch: fetchData)
+				
+			
 			HStack{
+				
 				HStack(alignment: .center, spacing: 10){
 					Text(exchangeNumber)
 						.padding(.bottom, 5)
@@ -77,35 +82,17 @@ struct ContentView: View {
 				}
 			}
 			HStack(alignment: .center, spacing: 50){
-				Picker(selection: $currencySelection, label: Text("Select currency")) {
-					ForEach(readData.file, id: \.code){ user in
-						
-						HStack(alignment: .center){
-							
-							Text(user.code)
-								.font(.title3)
-								.fontWeight(.light)
-								.foregroundColor(Color.gray)
-							
-							
-							Text(user.name)
-								.font(.title3)
-								.fontWeight(.ultraLight)
-								.foregroundColor(Color.green)
-
-						}.padding()
-					}
-				}.pickerStyle(MenuPickerStyle())
-				.id(UUID())
-				.labelsHidden()
+				
 					
-				Settings(datas: readData, fetch: fetchData)
-				VStack(alignment: .center){
+				
+				VStack(alignment: .trailing){
 					Text("Converter Mode")
 						.font(.system(size: 10))
 						.foregroundColor(.gray)
+						.offset(x: 10, y: 0)
 					Toggle("",isOn: $converter)
-						.offset(x: -20, y: 0)
+						
+						
 				}
 			}
 			

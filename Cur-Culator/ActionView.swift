@@ -78,21 +78,24 @@ struct ActionView:View {
 				state.currentNumber = state.currentNumber / 100
 				state.decimal = false
 			case .equal:
-				guard let storedAction =
-						state.storedAction else{
-							return
-						}
-				guard let storedNumber =
-						state.storedNumber else {
-							return
-						}
-				
-				guard let result = storedAction.calculate(storedNumber, state.currentNumber) else {
-					return
+				if state.after == false {
+					guard let storedAction =
+							state.storedAction else{
+								return
+							}
+					guard let storedNumber =
+							state.storedNumber else {
+								return
+							}
+					
+					guard let result = storedAction.calculate(storedNumber, state.currentNumber) else {
+						return
+					}
+					state.currentNumber = result
 				}
 				state.decimal = false
 				
-				state.currentNumber = result
+				
 				
 				state.storedNumber = nil
 				state.storedAction = nil
