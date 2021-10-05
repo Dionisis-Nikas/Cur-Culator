@@ -14,8 +14,10 @@ struct ContentView: View {
 	@State var state = CalculationState()
 	@State var converter = false
 	@ObservedObject var fetchData = FetchData()
+	@ObservedObject var readData = ReadData()
+
 	
-	@State var currencySelection = 0
+	@State var currencySelection = ""
 	
 	var displayedString: String {
 		return String(format: (state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 ?
@@ -27,8 +29,9 @@ struct ContentView: View {
 		guard self.fetchData.values.count > 0 else {
 			return 0
 		}
-		let rate = self.fetchData.values[currencySelection]
-		print(rate)
+		let search = self.fetchData.currencyCode.firstIndex(of: currencySelection)
+		let rate = self.fetchData.values[search ?? 0]
+		print("Rate of " + String(self.fetchData.currencyCode[search ?? 0]) + " is " + String(rate) + "with base " + fetchData.code)
 		let doubleAmount = Double(state.currentNumber)
 		let total = rate * doubleAmount
 		return total
@@ -40,16 +43,33 @@ struct ContentView: View {
 		
 		VStack(alignment: .trailing, spacing: 20){
 			HStack(alignment: .center, spacing: 50){
-				Picker("Currency",selection: $currencySelection) {
-					ForEach(0..<fetchData.currencyCode.count) {
-						let currency = fetchData.currencyCode[$0]
-						Text(currency)
+				Picker(selection: $currencySelection, label: Text("Select currency")) {
+					ForEach(readData.file, id: \.code){ user in
+						
+						HStack(alignment: .firstTextBaseline, spacing: 1){
+							
+							Text(user.code)
+								.font(.title3)
+								.fontWeight(.light)
+								.foregroundColor(Color.gray)
+							
+							
+							Text(user.name)
+								.font(.title3)
+								.fontWeight(.ultraLight)
+								.foregroundColor(Color.green)
+							
+							
+							
+							
+						}.padding()
 					}
 				}.pickerStyle(MenuPickerStyle())
 				.id(UUID())
 				.labelsHidden()
 					
-				Settings()
+				Settings(datas: readData, fetch: fetchData)
+				
 			}
 			
 			Text("\(exchangeNumber, specifier: "%g")")

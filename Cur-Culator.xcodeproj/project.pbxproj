@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9508A083270CC65300A5E8ED /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A082270CC65300A5E8ED /* ButtonStyle.swift */; };
+		9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A084270CC8D700A5E8ED /* SearchBar.swift */; };
+		9508A087270CCC6D00A5E8ED /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A086270CCC6D00A5E8ED /* Filter.swift */; };
 		9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519342027062B42007D516A /* Cur_CulatorApp.swift */; };
 		9519342327062B42007D516A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519342227062B42007D516A /* ContentView.swift */; };
 		9519342527062B44007D516A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9519342427062B44007D516A /* Assets.xcassets */; };
@@ -21,7 +24,6 @@
 		95ADF7CB270B5FA900C6F769 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADF7CA270B5FA900C6F769 /* Settings.swift */; };
 		95ADF7CF270B7A8E00C6F769 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 95ADF7CE270B7A8E00C6F769 /* data.json */; };
 		95ADF7D1270B7B1700C6F769 /* CurrencyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADF7D0270B7B1700C6F769 /* CurrencyJSON.swift */; };
-		95ADF7D3270BA4A300C6F769 /* CurrencySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADF7D2270BA4A300C6F769 /* CurrencySelector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9508A082270CC65300A5E8ED /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		9508A084270CC8D700A5E8ED /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		9508A086270CCC6D00A5E8ED /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		9519341D27062B42007D516A /* Cur-Culator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cur-Culator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9519342027062B42007D516A /* Cur_CulatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cur_CulatorApp.swift; sourceTree = "<group>"; };
 		9519342227062B42007D516A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,7 +67,6 @@
 		95ADF7CA270B5FA900C6F769 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		95ADF7CE270B7A8E00C6F769 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		95ADF7D0270B7B1700C6F769 /* CurrencyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyJSON.swift; sourceTree = "<group>"; };
-		95ADF7D2270BA4A300C6F769 /* CurrencySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySelector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +123,14 @@
 				9537FF1527074A7800FDC2EB /* NumberView.swift */,
 				9537FF1927074AC300FDC2EB /* ActionView.swift */,
 				9537FF1D27076D8F00FDC2EB /* CommaButtonView.swift */,
-				95ADF7D2270BA4A300C6F769 /* CurrencySelector.swift */,
 				95ADF7CA270B5FA900C6F769 /* Settings.swift */,
+				9508A082270CC65300A5E8ED /* ButtonStyle.swift */,
 				95ADF7CE270B7A8E00C6F769 /* data.json */,
 				9519342427062B44007D516A /* Assets.xcassets */,
 				9519342927062B44007D516A /* Info.plist */,
 				9519342627062B44007D516A /* Preview Content */,
+				9508A084270CC8D700A5E8ED /* SearchBar.swift */,
+				9508A086270CCC6D00A5E8ED /* Filter.swift */,
 			);
 			path = "Cur-Culator";
 			sourceTree = "<group>";
@@ -296,15 +302,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9537FF1A27074AC300FDC2EB /* ActionView.swift in Sources */,
+				9508A087270CCC6D00A5E8ED /* Filter.swift in Sources */,
 				95ADF7D1270B7B1700C6F769 /* CurrencyJSON.swift in Sources */,
 				9519342327062B42007D516A /* ContentView.swift in Sources */,
+				9508A083270CC65300A5E8ED /* ButtonStyle.swift in Sources */,
 				9537FF1E27076D8F00FDC2EB /* CommaButtonView.swift in Sources */,
 				9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */,
 				9537FF222708A36400FDC2EB /* Currency.swift in Sources */,
 				95ADF7CB270B5FA900C6F769 /* Settings.swift in Sources */,
 				9537FF272708A44D00FDC2EB /* FetchData.swift in Sources */,
+				9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */,
 				9537FF1627074A7800FDC2EB /* NumberView.swift in Sources */,
-				95ADF7D3270BA4A300C6F769 /* CurrencySelector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

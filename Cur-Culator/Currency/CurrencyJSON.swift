@@ -22,7 +22,8 @@ struct CurrencyFile: Codable, Identifiable, Hashable {
 
 class ReadData: ObservableObject  {
 	@Published var file = [CurrencyFile]()
-	
+	@Published var codes = [String]()
+	@Published var names = [String]()
 	
 	init(){
 		loadData()
@@ -38,6 +39,10 @@ class ReadData: ObservableObject  {
 		let data = try? Data(contentsOf: url)
 		let currencies = try? JSONDecoder().decode([CurrencyFile].self, from: data!)
 		self.file = currencies!
+		for currency in currencies! {
+			self.codes.append(currency.code)
+			self.names.append(currency.name)
+		}
 		
 	}
 	

@@ -9,16 +9,10 @@ import SwiftUI
 
 struct Settings: View {
 	@State private var showingPopover = false
-	@State var receive = false
-	@State var number = 1
 	@AppStorage("code") private var code = "USD"
-	@State var date = Date()
-	@State var email = ""
 	@State var submit = false
-	@State var isSelected = false
-	@ObservedObject var datas = ReadData()
-	@ObservedObject var fetchData = FetchData()
-
+	@State var datas: ReadData
+	@State var fetch: FetchData
 	
 	var body: some View {
 		
@@ -36,31 +30,25 @@ struct Settings: View {
 			NavigationView{
 				Form {
 					Picker(selection: $code, label: Text("Base currency")) {
-						ForEach(datas.file, id: \.code){ user in
-							
-							HStack(alignment: .firstTextBaseline, spacing: 10){
-								
-								Text(user.code)
-									.font(.title3)
-									.fontWeight(.heavy)
-									.foregroundColor(Color.gray)
-								
-								
-									Text(user.name)
-										.font(.title3)
-										.fontWeight(.bold)
-										.foregroundColor(Color.green)
-									
-									
-								
-								
-							}.padding()
-						}
+						
+						
+						Filter(codes: datas.codes, names: datas.names )
 					}
 					
+					Button("Save") {
+						self.submit.toggle()
+						fetch.update()
+					}
+					.buttonStyle(BlueButtonStyle())
+					.alert(isPresented: $submit, content: {
+						Alert(title: Text("Saved"), message: Text("Updated base currency to " + code))
+					})
 				}
 				.navigationBarTitle("Settings")
+				.padding(.top, 20)
+				
 			}
+			
 		}
 		
 	}
