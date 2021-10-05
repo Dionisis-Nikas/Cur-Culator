@@ -16,10 +16,8 @@ struct Settings: View {
 	@State var email = ""
 	@State var submit = false
 	@State var isSelected = false
-	@AppStorage("numColor") private var numColor = "primary"
-	@AppStorage("opColor") private var opColor = "green"
-
 	@ObservedObject var datas = ReadData()
+	@ObservedObject var fetchData = FetchData()
 
 	
 	var body: some View {
@@ -64,6 +62,7 @@ struct Settings: View {
 				.navigationBarTitle("Settings")
 			}
 		}
+		
 	}
 }
 

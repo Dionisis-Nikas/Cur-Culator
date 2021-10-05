@@ -8,33 +8,62 @@
 import SwiftUI
 
 class FetchData: ObservableObject {
-    
-	@Published var conversionData : [Currency] = []
+	
+	@Published var currencyCode: [String] = []
+	@Published var values : [Double] = []
+	@AppStorage("code") private var code = "USD"
 	
 	init() {
-		fetch()
+		
+		fetch { (currency) in
+			switch currency {
+				case .success(let prices):
+					DispatchQueue.main.async {
+	
+						self.currencyCode.append(contentsOf: prices.conversion_rates.keys)
+						self.values.append(contentsOf: prices.conversion_rates.values)
+						
+					}
+				case .failure(let errror):
+					print("Failed to fetch currency data", errror)
+			}
+		}
 	}
 	
-	func fetch() {
+	
+	
+	
+	
+	
+	
+	func fetch(completion: @escaping (Result<Currency, Error>) -> ()) {
 		
-		let url = "https://free.currconv.com/api/v7/currencies?apiKey=91b848944cdf57506ec9"
-		
-		let session = URLSession(configuration: .default)
-		
-		session.dataTask(with: URL(string: url)!) { (data, _, _) in
-		guard let JSONData = data else {
+		guard let url = URL(string: "https://v6.exchangerate-api.com/v6/afe6e887229062c4a05600d4/latest/" + code ) else {
 			return
 		}
-		
-		do{
-			let conversion = try JSONDecoder().decode((Conversion.self), from: JSONData)
-			
-			print(conversion)
+		print(url)
+		URLSession.shared.dataTask(with: url) { (data, response, error) in
+			if let error = error {
+				completion(.failure(error))
+				return
 			}
-		catch{
-			print(error.localizedDescription)
-		}
+			guard let JSONData = data else {
+				return
+			}
+		
+			do{
+				let conversion = try JSONDecoder().decode((Currency.self), from: JSONData)
+				
+				completion(.success(conversion))
+				
+			}
+			catch{
+				completion(.failure(error))
+			}
 		}.resume()
 	}
+	
+	
 }
+
 

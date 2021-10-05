@@ -5,12 +5,14 @@
 //  Created by Dennis Nikas on 2/10/21.
 //
 
-import SwiftUI
+import Foundation
 
-//for displaying data
-struct Currency : Identifiable {
+
+struct Currency : Codable {
 	
-	var id = UUID().uuidString
-	var currencyName : String
-	var currencyValue : Double
+	let conversion_rates: [String: Double]
+	
+	init(values: [String: Double]){
+		self.conversion_rates = values
+	}
 }

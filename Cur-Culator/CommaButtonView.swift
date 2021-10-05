@@ -23,7 +23,7 @@ struct CommaButtonView: View {
 				.fontWeight(.bold)
 				.foregroundColor(.white)
 				.frame(width: 64, height: 64)
-				.background(self.state.decimal ? Color.red : Color.blue)
+				.background(self.state.decimal ? Color.gray : Color.blue)
 				.cornerRadius(20)
 				//.shadow(color: Color.blue, radius: 10, x: 5, y: 5)
 				.animation(.easeIn(duration: 0.1))

@@ -9,23 +9,22 @@ import SwiftUI
 
 struct CurrencySelector: View {
 	
-	@ObservedObject var datas = ReadData()
-	@State private var selection = "EUR"
+	@ObservedObject var fetchData = FetchData()
+	@State var currencySelection = 0
+	@State private var selection = 0
 		
 	var body: some View {
 		VStack {
-			Text("Currency")
+			
 			HStack{
-				Picker("\(selection)", selection: $selection) {
-					ForEach(datas.file, id: \.code){ user in
-						
-						HStack(alignment: .firstTextBaseline, spacing: 10){
-							
-							Text(user.code)
-								.font(.title3)
-								.fontWeight(.heavy)
-								.foregroundColor(Color.gray)
-						}
+				Picker("Currency", selection: $selection) {
+					ForEach(0..<fetchData.currencyCode.count){
+						let currency = fetchData.currencyCode[$0]
+						Text(currency)
+							.font(.title3)
+							.fontWeight(.heavy)
+							.foregroundColor(Color.gray)
+	
 					}
 					Image(systemName: "arrowtriangle.down")
 				}

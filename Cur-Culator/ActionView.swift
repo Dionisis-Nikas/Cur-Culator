@@ -70,11 +70,13 @@ struct ActionView:View {
 				state.currentNumber = 0
 				state.storedNumber = nil
 				state.storedAction = nil
+				state.decimal = false
 				break
 			case .sign:
 				state.currentNumber = state.currentNumber * (-1)
 			case .percent:
 				state.currentNumber = state.currentNumber / 100
+				state.decimal = false
 			case .equal:
 				guard let storedAction =
 						state.storedAction else{
@@ -88,18 +90,46 @@ struct ActionView:View {
 				guard let result = storedAction.calculate(storedNumber, state.currentNumber) else {
 					return
 				}
+				state.decimal = false
 				
 				state.currentNumber = result
 				
-				//state.storedNumber = nil
-				//state.storedAction = nil
+				state.storedNumber = nil
+				state.storedAction = nil
+				state.after = true
 				
 				break
 			default:
-				state.storedNumber = state.currentNumber
-				state.currentNumber = 0
-				state.storedAction = action
+				state.decimal = false
+				
+				if state.storedAction != nil {
+					guard let storedAction =
+							state.storedAction else{
+						return
+					}
+					guard let storedNumber =
+							state.storedNumber else {
+						return
+					}
+					guard let result = storedAction.calculate(storedNumber, state.currentNumber) else {
+						return
+					}
+					state.currentNumber = result
+					if storedAction != action {
+						state.storedAction = action
+					}
+					
+					
+					state.after = true
+					state.storedNumber = state.currentNumber
+				}
+				else{
+					state.storedAction = action
+					state.storedNumber = state.currentNumber
+					state.currentNumber = 0
+				}
 				break
+		
 		}
 	}
 }
