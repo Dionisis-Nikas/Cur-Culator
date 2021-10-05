@@ -13,6 +13,7 @@ struct ContentView: View {
 
 	@State var state = CalculationState()
 	@State var converter = false
+	@State var rate = 0.0
 	@ObservedObject var fetchData = FetchData()
 	@ObservedObject var readData = ReadData()
 	@AppStorage("code") private var code = "USD"
@@ -36,7 +37,7 @@ struct ContentView: View {
 		let doubleAmount = Double(state.currentNumber)
 		let total = rate * doubleAmount
 		return String(format: (total.truncatingRemainder(dividingBy: 1) == 0 ?
-								"%.0f" : "%.3f"), arguments: [total])
+								"%g" : "%.3f"), arguments: [total])
 		
 	}
 	
@@ -52,12 +53,28 @@ struct ContentView: View {
 		
 	}
 	
+	var rates: String {
+		guard self.fetchData.values.count > 0 else {
+			return ""
+		}
+		let search = self.fetchData.currencyCode.firstIndex(of: currencySelection)
+		let rate = self.fetchData.values[search ?? 0]
+		let str = "1 " + code + " = " + String(format: (rate.truncatingRemainder(dividingBy: 1) == 0 ?
+															"%g" : "%.3f"), arguments: [rate]) + " " + currencySelection
+		return str
+	}
+	
 	
     var body: some View {
 		
 		
 		VStack(alignment: .trailing, spacing: 20){
-			Settings(datas: readData, fetch: fetchData)
+			HStack{
+				Image(systemName: "chart.bar.xaxis")
+				Text(rates)
+				Spacer()
+				Settings(datas: readData, fetch: fetchData)
+			}
 				
 			
 			HStack{
