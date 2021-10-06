@@ -71,50 +71,67 @@ struct ContentView: View {
 		VStack(alignment: .trailing, spacing: 20){
 			HStack{
 				Image(systemName: "chart.bar.xaxis")
+					.opacity(converter ? 1 : 0)
+					.offset(x: converter ? 0 : -200, y: 0)
+					.animation(.easeIn)
 				Text(rates)
-				Spacer()
-				Settings(datas: readData, fetch: fetchData)
-			}
-				
-			
-			HStack{
-				
-				HStack(alignment: .center, spacing: 10){
-					Text(exchangeNumber)
-						.padding(.bottom, 5)
-						.font(.system(size: 50))
-					Text(exchangeCurrency)
-						.foregroundColor(.gray)
+					.opacity(converter ? 1 : 0)
+					.offset(x: converter ? 0 : -200, y: 0)
+					.animation(.easeIn)
+					.font(.system(size: 12))
 					
-				}
-				
-				
-				HStack(alignment: .center, spacing: 10){
-					Text(displayedString)
-						.padding(.bottom, 5)
-						.font(.system(size: 50))
-					Text(code)
-						.foregroundColor(.gray)
-					
-				}
-			}
-			HStack(alignment: .center, spacing: 50){
-				
-					
-				
-				VStack(alignment: .trailing){
+				VStack(alignment: .center){
 					Text("Converter Mode")
 						.font(.system(size: 10))
 						.foregroundColor(.gray)
-						.offset(x: 10, y: 0)
+						
 					Toggle("",isOn: $converter)
-						
-						
+						.offset(x: -UIScreen.main.bounds.width * (1 / 10), y: 0)
 				}
+				Settings(datas: readData, fetch: fetchData)
 			}
-			
+			Spacer()
 				
 			
+			HStack(alignment: .firstTextBaseline, spacing: 10){
+				
+				VStack(alignment: .center, spacing: 5){
+					Text(displayedString)
+						.padding(.bottom, 5)
+						.font(.system(size: converter ? 35 : 60))
+						.animation(.easeIn)
+						
+					Text(code)
+						.foregroundColor(.gray)
+						.opacity(converter ? 1 : 0)
+						.offset(x: converter ? 0 : -200, y: 0)
+						.animation(.easeIn)
+				}
+				.animation(.easeIn)
+				.minimumScaleFactor(0.1)
+				
+				Text("=")
+					.foregroundColor(.green.opacity(0.5))
+					.opacity(converter ? 1 : 0)
+					.offset(x: converter ? 0 : -200, y: 0)
+					.animation(.easeIn)
+					.font(.system(size: 25))
+					.frame(width: converter ? nil : 0, height: converter ? nil : 0)
+				
+				VStack(alignment: .center, spacing: 5){
+					Text(exchangeNumber)
+						.padding(.bottom, 5)
+						.font(.system(size: 35))
+					Text(exchangeCurrency)
+						.foregroundColor(.gray)
+				}.opacity(converter ? 1 : 0)
+				.offset(x: converter ? 0 : -200, y: 0)
+				.minimumScaleFactor(0.1)
+				.animation(.easeIn)
+				.frame(width: converter ? nil : 0, height: converter ? nil : 0)
+				
+			}
+
 			HStack{
 				ActionView(action: .clear, state: $state)
 				Spacer()
