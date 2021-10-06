@@ -18,9 +18,6 @@ struct ContentView: View {
 	@ObservedObject var readData = ReadData()
 	@AppStorage("code") private var code = "USD"
 	@AppStorage("convert") private var currencySelection = "USD"
-
-	
-	
 	
 	var displayedString: String {
 		return String(format: (state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 ?
@@ -64,6 +61,24 @@ struct ContentView: View {
 		return str
 	}
 	
+	var baseFlag: UrlImageView {
+		guard self.fetchData.baseFlagURL.count>0 else {
+			return UrlImageView(urlString: "none")
+		}
+		
+		return UrlImageView(urlString: fetchData.baseFlagURL)
+			
+	}
+	
+	var targetFlag: UrlImageView {
+		guard self.fetchData.targetFlagURL.count>0 else {
+			return UrlImageView(urlString: "none")
+		}
+		
+		return UrlImageView(urlString: fetchData.targetFlagURL)
+			
+	}
+	
 	
     var body: some View {
 		
@@ -99,13 +114,20 @@ struct ContentView: View {
 					Text(displayedString)
 						.padding(.bottom, 5)
 						.font(.system(size: converter ? 35 : 60))
-						.animation(.easeIn)
+						.animation(.easeInOut)
 						
+					baseFlag
+						.opacity(converter ? 1 : 0)
+						.offset(x: converter ? 0 : -200, y: 0)
+						.animation(.easeInOut)
+						.frame(width: converter ? nil : 0, height: converter ? nil : 0)
+					
 					Text(code)
 						.foregroundColor(.gray)
 						.opacity(converter ? 1 : 0)
 						.offset(x: converter ? 0 : -200, y: 0)
-						.animation(.easeIn)
+						.animation(.easeInOut)
+						.frame(width: converter ? nil : 0, height: converter ? nil : 0)
 				}
 				.animation(.easeIn)
 				.minimumScaleFactor(0.1)
@@ -114,7 +136,7 @@ struct ContentView: View {
 					.foregroundColor(.green.opacity(0.5))
 					.opacity(converter ? 1 : 0)
 					.offset(x: converter ? 0 : -200, y: 0)
-					.animation(.easeIn)
+					.animation(.easeInOut)
 					.font(.system(size: 25))
 					.frame(width: converter ? nil : 0, height: converter ? nil : 0)
 				
@@ -122,12 +144,16 @@ struct ContentView: View {
 					Text(exchangeNumber)
 						.padding(.bottom, 5)
 						.font(.system(size: 35))
+					
+					targetFlag
+						
+					
 					Text(exchangeCurrency)
 						.foregroundColor(.gray)
 				}.opacity(converter ? 1 : 0)
 				.offset(x: converter ? 0 : -200, y: 0)
 				.minimumScaleFactor(0.1)
-				.animation(.easeIn)
+				.animation(.easeInOut)
 				.frame(width: converter ? nil : 0, height: converter ? nil : 0)
 				
 			}

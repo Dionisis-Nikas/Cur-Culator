@@ -11,6 +11,9 @@
 		9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A084270CC8D700A5E8ED /* SearchBar.swift */; };
 		9508A087270CCC6D00A5E8ED /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A086270CCC6D00A5E8ED /* Filter.swift */; };
 		9508A089270CDDB000A5E8ED /* CalculationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A088270CDDB000A5E8ED /* CalculationState.swift */; };
+		9508A08B270D790000A5E8ED /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A08A270D790000A5E8ED /* Flag.swift */; };
+		9508A090270D889700A5E8ED /* UrlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A08E270D889700A5E8ED /* UrlImageView.swift */; };
+		9508A091270D889700A5E8ED /* UrlImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A08F270D889700A5E8ED /* UrlImageModel.swift */; };
 		9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519342027062B42007D516A /* Cur_CulatorApp.swift */; };
 		9519342327062B42007D516A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519342227062B42007D516A /* ContentView.swift */; };
 		9519342527062B44007D516A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9519342427062B44007D516A /* Assets.xcassets */; };
@@ -49,6 +52,9 @@
 		9508A084270CC8D700A5E8ED /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		9508A086270CCC6D00A5E8ED /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		9508A088270CDDB000A5E8ED /* CalculationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationState.swift; sourceTree = "<group>"; };
+		9508A08A270D790000A5E8ED /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		9508A08E270D889700A5E8ED /* UrlImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlImageView.swift; sourceTree = "<group>"; };
+		9508A08F270D889700A5E8ED /* UrlImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlImageModel.swift; sourceTree = "<group>"; };
 		9519341D27062B42007D516A /* Cur-Culator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cur-Culator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9519342027062B42007D516A /* Cur_CulatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cur_CulatorApp.swift; sourceTree = "<group>"; };
 		9519342227062B42007D516A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -121,6 +127,8 @@
 			children = (
 				9537FF232708A3A800FDC2EB /* Currency */,
 				9519342027062B42007D516A /* Cur_CulatorApp.swift */,
+				9508A08F270D889700A5E8ED /* UrlImageModel.swift */,
+				9508A08E270D889700A5E8ED /* UrlImageView.swift */,
 				9508A088270CDDB000A5E8ED /* CalculationState.swift */,
 				9519342227062B42007D516A /* ContentView.swift */,
 				9537FF1527074A7800FDC2EB /* NumberView.swift */,
@@ -168,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				9537FF212708A36400FDC2EB /* Currency.swift */,
+				9508A08A270D790000A5E8ED /* Flag.swift */,
 				9537FF262708A44D00FDC2EB /* FetchData.swift */,
 				95ADF7D0270B7B1700C6F769 /* CurrencyJSON.swift */,
 			);
@@ -305,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9537FF1A27074AC300FDC2EB /* ActionView.swift in Sources */,
+				9508A08B270D790000A5E8ED /* Flag.swift in Sources */,
 				9508A087270CCC6D00A5E8ED /* Filter.swift in Sources */,
 				95ADF7D1270B7B1700C6F769 /* CurrencyJSON.swift in Sources */,
 				9519342327062B42007D516A /* ContentView.swift in Sources */,
@@ -316,6 +326,8 @@
 				95ADF7CB270B5FA900C6F769 /* Settings.swift in Sources */,
 				9537FF272708A44D00FDC2EB /* FetchData.swift in Sources */,
 				9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */,
+				9508A090270D889700A5E8ED /* UrlImageView.swift in Sources */,
+				9508A091270D889700A5E8ED /* UrlImageModel.swift in Sources */,
 				9537FF1627074A7800FDC2EB /* NumberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

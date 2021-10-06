@@ -48,10 +48,11 @@ struct Settings: View {
 					Button("Save") {
 						self.submit.toggle()
 						fetch.update()
+						fetch.updateFlags(baseCode: code, targetCode: convert)
 					}
 					.buttonStyle(BlueButtonStyle())
 					.alert(isPresented: $submit, content: {
-						Alert(title: Text("Saved"), message: Text("Updated base currency to " + code + "and target currency to " + convert))
+						Alert(title: Text("Saved"), message: Text("Updated base currency to " + code + " and target currency to " + convert))
 					})
 				}
 				.navigationBarTitle("Settings")
