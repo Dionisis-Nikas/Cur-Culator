@@ -14,10 +14,14 @@ struct Settings: View {
 	@State var submit = false
 	@State var datas: ReadData
 	@State var fetch: FetchData
+	@State var base = ""
+	@State var target = ""
 	
 	var body: some View {
 		
 		Button(action: {
+			self.base = code
+			self.target = convert
 			showingPopover = true
 		}, label: {
 			Image(systemName: "gear")
@@ -34,12 +38,12 @@ struct Settings: View {
 		.popover(isPresented: $showingPopover) {
 			NavigationView{
 				Form {
-					Picker(selection: $code, label: Text("Base currency")) {
+					Picker(selection: $base, label: Text("Base currency")) {
 						
 						
 						Filter(codes: datas.codes, names: datas.names )
 					}
-					Picker(selection: $convert, label: Text("Target currency")) {
+					Picker(selection: $target, label: Text("Target currency")) {
 						
 						
 						Filter(codes: datas.codes, names: datas.names )
@@ -47,12 +51,14 @@ struct Settings: View {
 					
 					Button("Save") {
 						self.submit.toggle()
+						code = self.base
+						convert = self.target
 						fetch.update()
 						fetch.updateFlags(baseCode: code, targetCode: convert)
 					}
 					.buttonStyle(BlueButtonStyle())
 					.alert(isPresented: $submit, content: {
-						Alert(title: Text("Saved"), message: Text("Updated base currency to " + code + " and target currency to " + convert))
+						Alert(title: Text("Saved"), message: Text("Updated base currency to  " + code + "  and target currency to " + convert))
 					})
 				}
 				.navigationBarTitle("Settings")

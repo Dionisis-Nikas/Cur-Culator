@@ -19,9 +19,10 @@ struct ContentView: View {
 	@AppStorage("code") private var code = "USD"
 	@AppStorage("convert") private var currencySelection = "USD"
 	
+	
 	var displayedString: String {
 		return String(format: (state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 ?
-								"%.0f" : "%g"), arguments: [state.currentNumber])
+								(state.decimal && !state.after ? "%." + String(state.pre) + "f" : "%.0f") : "%g"), arguments: [state.currentNumber])
 	}
 	
 	var exchangeNumber: String {

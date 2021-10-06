@@ -74,9 +74,12 @@ struct ActionView:View {
 				break
 			case .sign:
 				state.currentNumber = state.currentNumber * (-1)
+				break
 			case .percent:
 				state.currentNumber = state.currentNumber / 100
 				state.decimal = false
+				state.after = true
+				break
 			case .equal:
 				if state.after == false {
 					guard let storedAction =
