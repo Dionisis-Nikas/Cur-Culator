@@ -23,20 +23,18 @@ struct Filter: View {
 	
 	var body: some View {
 
-					SearchBar(text: $searchTerm)
-					ForEach(filteredCurrencies, id: \.self) { user in
+		SearchBar(text: $searchTerm)
+		ForEach(filteredCurrencies, id: \.self) { user in
+			
+				HStack(alignment: .center, spacing: 10){
+					
+					Text(user)
+						.font(.title)
+						.fontWeight(.heavy)
+						.foregroundColor(Color.white)
 						
-							
-							HStack(alignment: .center, spacing: 10){
-								
-								Text(user)
-									.font(.title)
-									.fontWeight(.heavy)
-									.foregroundColor(Color.white)
-									
-							}
-							.padding(10)
-						}
-					}
-	
+				}
+				.padding(10)
+			}
+		}
 }

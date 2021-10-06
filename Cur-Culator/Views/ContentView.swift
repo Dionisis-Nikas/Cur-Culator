@@ -105,9 +105,9 @@ struct ContentView: View {
 				}
 				Settings(datas: readData, fetch: fetchData)
 			}
+			
 			Spacer()
 				
-			
 			HStack(alignment: .firstTextBaseline, spacing: 10){
 				
 				VStack(alignment: .center, spacing: 5){
@@ -147,7 +147,6 @@ struct ContentView: View {
 					
 					targetFlag
 						
-					
 					Text(exchangeCurrency)
 						.foregroundColor(.gray)
 				}.opacity(converter ? 1 : 0)
@@ -175,8 +174,8 @@ struct ContentView: View {
 				NumberView(number: 9, state: $state)
 				Spacer()
 				ActionView(action: .divide, state: $state)
-				
 			}
+			
 			HStack{
 				NumberView(number: 4, state: $state)
 				Spacer()
@@ -185,8 +184,8 @@ struct ContentView: View {
 				NumberView(number: 6, state: $state)
 				Spacer()
 				ActionView(action: .minus, state: $state)
-				
 			}
+			
 			HStack{
 				NumberView(number: 1, state: $state)
 				Spacer()
@@ -195,8 +194,8 @@ struct ContentView: View {
 				NumberView(number: 3, state: $state)
 				Spacer()
 				ActionView(action: .plus, state: $state)
-				
 			}
+			
 			HStack{
 				
 				NumberView(number: 0, state: $state)

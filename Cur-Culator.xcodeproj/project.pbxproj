@@ -102,6 +102,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		950842C2270D8EA5008EC27B /* URLImage */ = {
+			isa = PBXGroup;
+			children = (
+				9508A08F270D889700A5E8ED /* UrlImageModel.swift */,
+				9508A08E270D889700A5E8ED /* UrlImageView.swift */,
+			);
+			path = URLImage;
+			sourceTree = "<group>";
+		};
+		950842C3270D8ED0008EC27B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9519342227062B42007D516A /* ContentView.swift */,
+				9537FF1527074A7800FDC2EB /* NumberView.swift */,
+				9537FF1927074AC300FDC2EB /* ActionView.swift */,
+				9537FF1D27076D8F00FDC2EB /* CommaButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		9519341427062B42007D516A = {
 			isa = PBXGroup;
 			children = (
@@ -125,16 +145,12 @@
 		9519341F27062B42007D516A /* Cur-Culator */ = {
 			isa = PBXGroup;
 			children = (
+				950842C3270D8ED0008EC27B /* Views */,
+				950842C2270D8EA5008EC27B /* URLImage */,
 				9537FF232708A3A800FDC2EB /* Currency */,
 				9519342027062B42007D516A /* Cur_CulatorApp.swift */,
-				9508A08F270D889700A5E8ED /* UrlImageModel.swift */,
-				9508A08E270D889700A5E8ED /* UrlImageView.swift */,
 				9508A088270CDDB000A5E8ED /* CalculationState.swift */,
-				9519342227062B42007D516A /* ContentView.swift */,
-				9537FF1527074A7800FDC2EB /* NumberView.swift */,
-				9537FF1927074AC300FDC2EB /* ActionView.swift */,
 				9508A086270CCC6D00A5E8ED /* Filter.swift */,
-				9537FF1D27076D8F00FDC2EB /* CommaButtonView.swift */,
 				95ADF7CA270B5FA900C6F769 /* Settings.swift */,
 				9508A084270CC8D700A5E8ED /* SearchBar.swift */,
 				9508A082270CC65300A5E8ED /* ButtonStyle.swift */,
