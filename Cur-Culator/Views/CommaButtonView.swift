@@ -15,7 +15,7 @@ struct CommaButtonView: View {
 		
 		Button(action: {
 			self.state.decimal = true
-			self.state.after = true
+			
 			let impactMed = UIImpactFeedbackGenerator(style: .medium)
 			impactMed.impactOccurred()
 		}, label: {

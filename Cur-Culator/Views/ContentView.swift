@@ -22,7 +22,7 @@ struct ContentView: View {
 	
 	var displayedString: String {
 		return String(format: (state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 ?
-								(state.decimal && !state.after ? "%." + String(state.pre) + "f" : "%.0f") : "%g"), arguments: [state.currentNumber])
+								(state.decimal && state.edit ? "%." + String(state.level) + "f" : "%.0f") : "%g"), arguments: [state.currentNumber])
 	}
 	
 	var exchangeNumber: String {
