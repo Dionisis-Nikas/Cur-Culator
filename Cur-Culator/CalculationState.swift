@@ -32,6 +32,7 @@ struct CalculationState {
 			}
 			else {
 				currentNumber = number
+				edit = true
 			}
 		}
 		
