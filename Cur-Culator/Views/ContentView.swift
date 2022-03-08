@@ -85,17 +85,40 @@ struct ContentView: View {
 		
 		
 		VStack(alignment: .trailing, spacing: 20){
-			HStack{
-                HStack{
-				Image(systemName: "chart.bar.xaxis")
-					.opacity(converter ? 1 : 0)
-					.offset(x: converter ? 0 : -200, y: 0)
-					.animation(.easeIn)
-				Text(rates)
-					.opacity(converter ? 1 : 0)
-					.offset(x: converter ? 0 : -200, y: 0)
-					.animation(.easeIn)
-					.font(.system(size: 12))
+            HStack(alignment: .top){
+
+                VStack(alignment: .center) {
+                    HStack{
+                        Image(systemName: "chart.bar.xaxis")
+                            .opacity(converter ? 1 : 0)
+                            .offset(x: converter ? 0 : -200, y: 0)
+                            .animation(.easeIn)
+                        Text(rates)
+                            .opacity(converter ? 1 : 0)
+                            .offset(x: converter ? 0 : -200, y: 0)
+                            .animation(.easeIn)
+                            .font(.system(size: 12))
+                    }
+
+                    Button(action: {
+                        let tempCode = code
+                        code = currencySelection
+                        currencySelection = tempCode
+                        fetchData.update()
+                        fetchData.updateFlags(baseCode: code, targetCode: currencySelection)
+
+                    }, label: {
+                        Image(systemName: "repeat.circle.fill")
+                                .opacity(converter ? 1 : 0)
+                                .foregroundColor(Color.green)
+                                .offset(x: converter ? 0 : -200, y: 0)
+                                .animation(.easeIn)
+                                .imageScale(.large)
+                                .padding([.top], 1)
+                    })
+
+
+
                 }.offset(x: -60, y: 0)
 					
 				VStack(alignment: .center){
