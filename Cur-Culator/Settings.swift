@@ -34,7 +34,6 @@ struct Settings: View {
 				.cornerRadius(20)
 				.offset(x: 10, y: 0)
 		})
-		
 		.popover(isPresented: $showingPopover) {
 			NavigationView{
 				Form {
@@ -57,6 +56,7 @@ struct Settings: View {
 						fetch.updateFlags(baseCode: code, targetCode: convert)
 					}
 					.buttonStyle(BlueButtonStyle())
+                    
 					.alert(isPresented: $submit, content: {
 						Alert(title: Text("Saved"), message: Text("Updated base currency to  " + code + "  and target currency to " + convert))
 					})

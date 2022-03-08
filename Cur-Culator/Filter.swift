@@ -31,7 +31,7 @@ struct Filter: View {
 					Text(user)
 						.font(.title)
 						.fontWeight(.heavy)
-						.foregroundColor(Color.white)
+                        
 						
 				}
 				.padding(10)

@@ -199,7 +199,7 @@ struct ContentView: View {
 			
 			HStack{
 				
-				NumberView(number: 0, state: $state)
+                NumberView(number: 0, state: $state)
 				Spacer()
 				CommaButtonView(state: $state)
 				Spacer()
