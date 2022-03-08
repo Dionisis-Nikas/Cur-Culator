@@ -14,7 +14,7 @@ struct BlueButtonStyle: ButtonStyle {
             
 			.font(.headline)
 			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-			.contentShape(Rectangle())
+            
             .opacity(configuration.isPressed ? 0.5 : 1)
 
         

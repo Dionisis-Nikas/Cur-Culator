@@ -35,6 +35,7 @@ struct Settings: View {
 				.offset(x: 10, y: 0)
 		})
 		.popover(isPresented: $showingPopover) {
+
 			NavigationView{
 				Form {
 					Picker(selection: $base, label: Text("Base currency")) {
@@ -56,12 +57,23 @@ struct Settings: View {
 						fetch.updateFlags(baseCode: code, targetCode: convert)
 					}
 					.buttonStyle(BlueButtonStyle())
+                    .listRowBackground(Color.blue)
+                    .foregroundColor(Color.white)
                     
 					.alert(isPresented: $submit, content: {
 						Alert(title: Text("Saved"), message: Text("Updated base currency to  " + code + "  and target currency to " + convert))
 					})
 				}
 				.navigationBarTitle("Settings")
+                .navigationBarItems(leading:
+                        Button(action: {
+                            self.showingPopover.toggle()
+                        }) {
+                        Image(systemName: "chevron.backward.circle").imageScale(.large)
+                        Text("Back")
+                    }
+                    .imageScale(.large)
+                )
 				.padding(.top, 20)
 				
 			}

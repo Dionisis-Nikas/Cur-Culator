@@ -86,6 +86,7 @@ struct ContentView: View {
 		
 		VStack(alignment: .trailing, spacing: 20){
 			HStack{
+                HStack{
 				Image(systemName: "chart.bar.xaxis")
 					.opacity(converter ? 1 : 0)
 					.offset(x: converter ? 0 : -200, y: 0)
@@ -95,15 +96,17 @@ struct ContentView: View {
 					.offset(x: converter ? 0 : -200, y: 0)
 					.animation(.easeIn)
 					.font(.system(size: 12))
+                }.offset(x: -60, y: 0)
 					
 				VStack(alignment: .center){
 					Text("Converter Mode")
 						.font(.system(size: 10))
-						.foregroundColor(.gray)
-						
+
+
 					Toggle("",isOn: $converter)
-						.offset(x: -UIScreen.main.bounds.width * (1 / 10), y: 0)
-				}
+                        .labelsHidden()
+                }
+                .padding([.trailing], 20)
 				Settings(datas: readData, fetch: fetchData)
 			}
 			
