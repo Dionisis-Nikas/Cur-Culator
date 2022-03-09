@@ -33,7 +33,7 @@ struct NumberView: View {
 				.font(.title)
 				.fontWeight(.bold)
 				.foregroundColor(.white)
-                .frame(width: self.number == 0 ? (128 + (UIScreen.main.currentMode?.size.width ?? 0.0) / 26) : 64, height: 64)
+                .frame(width: self.number == 0 ? 158 : 64, height: 64)
 				.background(Color.blue)
 				.cornerRadius(20)
 				//.shadow(color: Color.blue, radius: 10, x: 5, y: 5)

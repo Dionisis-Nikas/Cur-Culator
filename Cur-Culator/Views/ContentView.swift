@@ -119,7 +119,7 @@ struct ContentView: View {
 
 
 
-                }.offset(x: -60, y: 0)
+                }.offset(x: -(UIScreen.main.currentMode?.size.width)! / 24, y: 0)
 					
 				VStack(alignment: .center){
 					Text("Converter Mode")
@@ -184,53 +184,39 @@ struct ContentView: View {
 				
 			}
 
-			HStack{
+			HStack(spacing: 30){
 				ActionView(action: .clear, state: $state)
-				Spacer()
 				ActionView(action: .sign, state: $state)
-				Spacer()
 				ActionView(action: .percent, state: $state)
-				Spacer()
 				ActionView(action: .mutliply, state: $state)
 			}
-			HStack{
+            HStack(spacing: 30){
 				NumberView(number: 7, state: $state)
-				Spacer()
 				NumberView(number: 8, state: $state)
-				Spacer()
 				NumberView(number: 9, state: $state)
-				Spacer()
 				ActionView(action: .divide, state: $state)
 			}
 			
-			HStack{
+			HStack(spacing: 30){
 				NumberView(number: 4, state: $state)
-				Spacer()
-				NumberView(number: 5, state: $state)
-				Spacer()
+                NumberView(number: 5, state: $state)
 				NumberView(number: 6, state: $state)
-				Spacer()
 				ActionView(action: .minus, state: $state)
 			}
 			
-			HStack{
+			HStack(spacing: 30){
 				NumberView(number: 1, state: $state)
-				Spacer()
 				NumberView(number: 2, state: $state)
-				Spacer()
 				NumberView(number: 3, state: $state)
-				Spacer()
 				ActionView(action: .plus, state: $state)
 			}
 			
-			HStack{
+			HStack(spacing: 30){
 				
                 NumberView(number: 0, state: $state)
-				Spacer()
 				CommaButtonView(state: $state)
-				Spacer()
 				ActionView(action: .equal, state: $state)
 			}
-		}.padding(25)
+        }.padding([.top,.bottom], 25)
 	}
 }

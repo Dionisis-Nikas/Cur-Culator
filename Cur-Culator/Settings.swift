@@ -49,17 +49,24 @@ struct Settings: View {
 						Filter(codes: datas.codes, names: datas.names )
 					}
 					
-					Button("Save") {
+                    Button(action: {
 						self.submit.toggle()
 						code = self.base
 						convert = self.target
 						fetch.update()
 						fetch.updateFlags(baseCode: code, targetCode: convert)
-					}
-					.buttonStyle(BlueButtonStyle())
-                    .listRowBackground(Color.blue)
-                    .foregroundColor(Color.white)
+                    }, label: {
+                        Text("Save")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+
+
+                            .foregroundColor(Color.white)
+                    })
+                        .listRowBackground(Color.blue.opacity(self.submit ? 0.5 : 1.0))
                     
+
+
 					.alert(isPresented: $submit, content: {
 						Alert(title: Text("Saved"), message: Text("Updated base currency to  " + code + "  and target currency to " + convert))
 					})
