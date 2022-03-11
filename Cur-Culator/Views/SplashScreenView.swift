@@ -17,10 +17,20 @@ struct SplashScreenView: View {
         ZStack {
             if !animationFinished {
                 Color(colorScheme == .dark ? UIColor.black : UIColor.white)
-
+                VStack(alignment: .center, spacing: 15) {
                 SwiftUIGIFPlayerView(gifName: "splashGIF")
                         .aspectRatio(contentMode: .fit)
                         .background(colorScheme == .dark ? Color.black : Color.white)
+                Text("Cur-Culator")
+                    .padding()
+                    .font(Font.system(size: 60, weight: .bold))
+                Text("© 2022 Cur-Culator. All Rights Reserved.")
+                    .padding()
+                    .font(Font.system(size: 17, weight: .ultraLight))
+                }
+
+
+
             }
 
         }.background(colorScheme == .dark ? Color.black : Color.white)
