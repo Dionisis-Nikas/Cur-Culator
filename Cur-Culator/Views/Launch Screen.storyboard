@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="0.0" y="876" width="414" height="0.0"/>
+                                <rect key="frame" x="20" y="876" width="374" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbo-hM-Kwk">
-                                <rect key="frame" x="0.0" y="193" width="414" height="460"/>
+                                <rect key="frame" x="0.0" y="188" width="414" height="460"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashPng.png" translatesAutoresizingMaskIntoConstraints="NO" id="GZB-sh-qz1">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="460"/>
@@ -40,34 +39,33 @@
                                     <constraint firstAttribute="trailing" secondItem="GZB-sh-qz1" secondAttribute="trailing" id="rVX-AC-HIe"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cur-Culator" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                <rect key="frame" x="0.0" y="683" width="414" height="43"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cur-Culator" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
+                                <rect key="frame" x="20" y="678" width="374" height="43"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2022 Cur-Culator. All Rights Reserved." textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="uSk-Cc-dfY" userLabel="Copyright">
-                                <rect key="frame" x="16" y="741" width="382" height="20.5"/>
+                                <rect key="frame" x="16" y="736" width="382" height="20.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="uSk-Cc-dfY" secondAttribute="trailing" constant="16" id="0hY-Gb-B9h"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
-                            <constraint firstItem="Rbo-hM-Kwk" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="DHY-cg-Qmy"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" symbolic="YES" id="SfN-ll-jLj"/>
+                            <constraint firstAttribute="trailing" secondItem="uSk-Cc-dfY" secondAttribute="trailing" constant="16" id="0hY-Gb-B9h"/>
+                            <constraint firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
+                            <constraint firstItem="Rbo-hM-Kwk" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="DHY-cg-Qmy"/>
+                            <constraint firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="Q3B-4B-g5h"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
                             <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
-                            <constraint firstItem="Rbo-hM-Kwk" firstAttribute="centerX" secondItem="Bcu-3y-fUS" secondAttribute="centerX" id="Yfy-o7-DIx"/>
-                            <constraint firstItem="uSk-Cc-dfY" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="16" id="e7P-qI-Byl"/>
+                            <constraint firstItem="Rbo-hM-Kwk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Yfy-o7-DIx"/>
+                            <constraint firstItem="uSk-Cc-dfY" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="16" id="e7P-qI-Byl"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="bottom" secondItem="uSk-Cc-dfY" secondAttribute="top" constant="-15" id="hEP-dZ-vc2"/>
-                            <constraint firstItem="Rbo-hM-Kwk" firstAttribute="centerY" secondItem="Bcu-3y-fUS" secondAttribute="centerY" constant="-30" id="j5b-EE-CGL"/>
+                            <constraint firstItem="Rbo-hM-Kwk" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-30" id="j5b-EE-CGL"/>
                             <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="Rbo-hM-Kwk" secondAttribute="bottom" constant="30" id="qpW-IY-teJ"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="Rbo-hM-Kwk" secondAttribute="trailing" id="tQE-Qi-ucO"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" symbolic="YES" id="x7j-FC-K8j"/>
+                            <constraint firstAttribute="trailing" secondItem="Rbo-hM-Kwk" secondAttribute="trailing" id="tQE-Qi-ucO"/>
+                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" symbolic="YES" id="x7j-FC-K8j"/>
                         </constraints>
                     </view>
                 </viewController>

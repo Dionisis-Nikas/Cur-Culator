@@ -21,6 +21,14 @@ struct NumberView: View {
 		
 		return String(Int(number))
 	}
+
+    var width: CGFloat {
+        return UIScreen.main.currentMode!.size.width / 10
+    }
+
+    var height: CGFloat {
+        return UIScreen.main.currentMode!.size.width / 10
+    }
 	
 	var body: some View {
 		
@@ -30,12 +38,12 @@ struct NumberView: View {
 			impactMed.impactOccurred()
 		}, label: {
 			Text(numberString)
-				.font(.title)
+                .font(.largeTitle)
 				.fontWeight(.bold)
 				.foregroundColor(.white)
-                .frame(width: self.number == 0 ? 158 : 64, height: 64)
+                .frame(width: self.number == 0 ? width + height + 15 : width, height: height)
 				.background(Color.blue)
-				.cornerRadius(20)
+				.cornerRadius(30)
 				//.shadow(color: Color.blue, radius: 10, x: 5, y: 5)
 				.animation(.easeIn(duration: 0.1))
 		})

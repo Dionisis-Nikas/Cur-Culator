@@ -34,6 +34,7 @@ struct Settings: View {
 				.cornerRadius(20)
 				.offset(x: 10, y: 0)
 		})
+            .padding()
 		.popover(isPresented: $showingPopover) {
 
 			NavigationView{

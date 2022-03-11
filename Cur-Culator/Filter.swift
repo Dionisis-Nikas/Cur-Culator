@@ -28,7 +28,7 @@ struct Filter: View {
 			
 				HStack(alignment: .center, spacing: 10){
 					
-					Text(user)
+					Text(getFlag(currency:user) + " " + user)
 						.font(.title)
 						.fontWeight(.heavy)
                         

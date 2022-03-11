@@ -184,6 +184,7 @@
 				9537FF1927074AC300FDC2EB /* ActionView.swift */,
 				9537FF1D27076D8F00FDC2EB /* CommaButtonView.swift */,
 				8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */,
+				95ADF7CA270B5FA900C6F769 /* Settings.swift */,
 				8FFEE63027DB45BD0035D253 /* Launch Screen.storyboard */,
 			);
 			path = Views;
@@ -221,7 +222,6 @@
 				9519342027062B42007D516A /* Cur_CulatorApp.swift */,
 				9508A088270CDDB000A5E8ED /* CalculationState.swift */,
 				9508A086270CCC6D00A5E8ED /* Filter.swift */,
-				95ADF7CA270B5FA900C6F769 /* Settings.swift */,
 				9508A084270CC8D700A5E8ED /* SearchBar.swift */,
 				9508A082270CC65300A5E8ED /* ButtonStyle.swift */,
 				95ADF7CE270B7A8E00C6F769 /* data.json */,

@@ -13,7 +13,7 @@ class FetchData: ObservableObject {
 	@Published var baseFlagURL: String = ""
 	@Published var targetFlagURL: String = ""
 	@Published var values : [Double] = []
-	@AppStorage("code") var code = "USD"
+	@AppStorage("code") var code = "EUR"
 	@AppStorage("convert") var currencySelection = "USD"
 	
 	init() {

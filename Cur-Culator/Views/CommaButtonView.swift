@@ -11,6 +11,14 @@ struct CommaButtonView: View {
 
 	@Binding var state: CalculationState
 
+    var width: CGFloat {
+        return UIScreen.main.currentMode!.size.width / 10
+    }
+
+    var height: CGFloat {
+        return UIScreen.main.currentMode!.size.width / 10
+    }
+
 	var body: some View {
 		
 		Button(action: {
@@ -20,12 +28,12 @@ struct CommaButtonView: View {
 			impactMed.impactOccurred()
 		}, label: {
 			Text(",")
-				.font(.title)
+				.font(.largeTitle)
 				.fontWeight(.bold)
 				.foregroundColor(.white)
-				.frame(width: 64, height: 64)
+				.frame(width: width, height: height)
 				.background(self.state.decimal ? Color.gray : Color.blue)
-				.cornerRadius(20)
+				.cornerRadius(30)
 				//.shadow(color: Color.blue, radius: 10, x: 5, y: 5)
 				.animation(.easeIn(duration: 0.1))
 		})

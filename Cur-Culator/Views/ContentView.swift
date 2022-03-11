@@ -14,13 +14,26 @@ struct ContentView: View {
     @State var rate = 0.0
     @ObservedObject var fetchData = FetchData()
     @ObservedObject var readData = ReadData()
+    @AppStorage("adFree") private var adFree = true
     @AppStorage("code") private var code = "USD"
     @AppStorage("convert") private var currencySelection = "USD"
 
 
     var displayedString: String {
-        return String(format: (state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 ?
-                                (state.decimal && state.edit ? "%." + String(state.level) + "f" : "%.0f") : "%g"), arguments: [state.currentNumber])
+        let formatter = NumberFormatter()
+            formatter.minimumFractionDigits = 0
+            formatter.maximumFractionDigits = 5
+        let currentNumber = state.currentNumber
+        let intNumber = Int(currentNumber)
+        let result = currentNumber / Double(intNumber)
+        let currentCount = String(result - 1.0).count
+        return state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 || state.decimal && state.level != (currentCount - 2) ?
+
+        String(format: (state.decimal && state.edit ? "%." + String(state.level - 1) + "f" : "%.0f"), arguments: [state.currentNumber])
+
+        :
+
+        formatter.string(from: NSNumber(value: state.currentNumber)) ?? "NaN"
     }
 
     var exchangeNumber: String {
@@ -60,30 +73,51 @@ struct ContentView: View {
         return str
     }
 
-    var baseFlag: UrlImageView {
-        guard self.fetchData.baseFlagURL.count>0 else {
-            return UrlImageView(urlString: "none")
-        }
+//    var baseFlag: UrlImageView {
+//        guard self.fetchData.baseFlagURL.count>0 else {
+//            return UrlImageView(urlString: "none")
+//        }
+//
+//        return UrlImageView(urlString: fetchData.baseFlagURL)
+//
+//    }
+//
+//    var targetFlag: UrlImageView {
+//        guard self.fetchData.targetFlagURL.count>0 else {
+//            return UrlImageView(urlString: "none")
+//        }
+//
+//        return UrlImageView(urlString: fetchData.targetFlagURL)
+//
+//    }
 
-        return UrlImageView(urlString: fetchData.baseFlagURL)
-
+    var baseFlag: String {
+        return getFlag(currency: code)
     }
 
-    var targetFlag: UrlImageView {
-        guard self.fetchData.targetFlagURL.count>0 else {
-            return UrlImageView(urlString: "none")
-        }
-
-        return UrlImageView(urlString: fetchData.targetFlagURL)
-
+    var targetFlag: String {
+        return getFlag(currency: currencySelection)
     }
 
+    var maxWidth: CGFloat {
+        return (UIScreen.main.currentMode!.size.width / 10 * 4) + 40 + 20
+    }
+
+    var defaultNumberfontSize: CGFloat {
+        return UIScreen.main.currentMode!.size.width / 8
+    }
+
+    var comparingNumberfontSize: CGFloat {
+        return UIScreen.main.currentMode!.size.width / 16
+    }
 
     var body: some View {
         ZStack(alignment: .center) {
             VStack(alignment: .center, spacing: 5){
-                BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
+                if !adFree {
+                    BannerAd(unitID: "ca-app-pub-2653148471151264/7651558454")
                     .frame(maxHeight: 64, alignment: .center)
+                }
                 VStack(alignment: .trailing){
                 HStack(alignment: .top){
 
@@ -91,13 +125,13 @@ struct ContentView: View {
                         HStack{
                             Image(systemName: "chart.bar.xaxis")
                                 .opacity(converter ? 1 : 0)
-                                .offset(x: converter ? 0 : -200, y: 0)
+                                .offset(x: converter ? 0 : -240, y: 0)
                                 .animation(.easeIn)
                             Text(rates)
                                 .opacity(converter ? 1 : 0)
-                                .offset(x: converter ? 0 : -200, y: 0)
+                                .offset(x: converter ? 0 : -240, y: 0)
                                 .animation(.easeIn)
-                                .font(.system(size: 12))
+                                .font(.caption)
                         }
 
                         Button(action: {
@@ -111,7 +145,7 @@ struct ContentView: View {
                             Image(systemName: "repeat.circle.fill")
                                     .opacity(converter ? 1 : 0)
                                     .foregroundColor(Color.green)
-                                    .offset(x: converter ? 0 : -200, y: 0)
+                                    .offset(x: converter ? 0 : -240, y: 0)
                                     .animation(.easeIn)
                                     .imageScale(.large)
                                     .padding([.top], 1)
@@ -119,11 +153,11 @@ struct ContentView: View {
 
 
 
-                    }.offset(x: -(UIScreen.main.currentMode?.size.width)! / 24, y: 0)
+                    }.offset(x: -(UIScreen.main.currentMode?.size.width)! / 32, y: 0)
 
                     VStack(alignment: .center){
                         Text("Converter Mode")
-                            .font(.system(size: 10))
+                            .font(.caption)
 
 
                         Toggle("",isOn: $converter)
@@ -140,19 +174,19 @@ struct ContentView: View {
                     VStack(alignment: .center, spacing: 5){
                         Text(displayedString)
                             .padding(.bottom, 5)
-                            .font(.system(size: converter ? 35 : 60))
+                            .font(.system(size: converter ? comparingNumberfontSize : defaultNumberfontSize))
                             .animation(.easeInOut)
 
-                        baseFlag
-                            .opacity(converter ? 1 : 0)
-                            .offset(x: converter ? 0 : -200, y: 0)
+                        Text(baseFlag)
+                            .font(.system(size: 25))
+                            .offset(x: converter ? 0 : -300, y: 0)
                             .animation(.easeInOut)
                             .frame(width: converter ? nil : 0, height: converter ? nil : 0)
 
                         Text(code)
                             .foregroundColor(.gray)
                             .opacity(converter ? 1 : 0)
-                            .offset(x: converter ? 0 : -200, y: 0)
+                            .offset(x: converter ? 0 : -300, y: 0)
                             .animation(.easeInOut)
                             .frame(width: converter ? nil : 0, height: converter ? nil : 0)
                     }
@@ -162,56 +196,61 @@ struct ContentView: View {
                     Text("=")
                         .foregroundColor(.green.opacity(0.5))
                         .opacity(converter ? 1 : 0)
-                        .offset(x: converter ? 0 : -200, y: 0)
+                        .offset(x: converter ? 0 : -300, y: 0)
                         .animation(.easeInOut)
-                        .font(.system(size: 25))
+                        .font(.system(size: comparingNumberfontSize - 5))
                         .frame(width: converter ? nil : 0, height: converter ? nil : 0)
 
                     VStack(alignment: .center, spacing: 5){
                         Text(exchangeNumber)
                             .padding(.bottom, 5)
-                            .font(.system(size: 35))
+                            .font(.system(size: comparingNumberfontSize))
 
-                        targetFlag
+                        Text(targetFlag)
+                            .font(.system(size: 25))
+                            .offset(x: converter ? 0 : -300, y: 0)
+                            .animation(.easeInOut)
+                            .frame(width: converter ? nil : 0, height: converter ? nil : 0)
 
                         Text(exchangeCurrency)
                             .foregroundColor(.gray)
                     }.opacity(converter ? 1 : 0)
-                    .offset(x: converter ? 0 : -200, y: 0)
+                    .offset(x: converter ? 0 : -300, y: 0)
                     .minimumScaleFactor(0.1)
                     .animation(.easeInOut)
                     .frame(width: converter ? nil : 0, height: converter ? nil : 0)
 
                 }
-                VStack(alignment: .center, spacing: 5) {
-                    HStack(spacing: 30){
+                .frame(maxWidth: maxWidth, alignment: .trailing)
+                VStack(alignment: .center, spacing: 10) {
+                    HStack(spacing: 10){
                         ActionView(action: .clear, state: $state)
                         ActionView(action: .sign, state: $state)
                         ActionView(action: .percent, state: $state)
                         ActionView(action: .mutliply, state: $state)
                     }
-                    HStack(spacing: 30){
+                    HStack(spacing: 10){
                         NumberView(number: 7, state: $state)
                         NumberView(number: 8, state: $state)
                         NumberView(number: 9, state: $state)
                         ActionView(action: .divide, state: $state)
                     }
 
-                    HStack(spacing: 30){
+                    HStack(spacing: 10){
                         NumberView(number: 4, state: $state)
                         NumberView(number: 5, state: $state)
                         NumberView(number: 6, state: $state)
                         ActionView(action: .minus, state: $state)
                     }
 
-                    HStack(spacing: 30){
+                    HStack(spacing: 10){
                         NumberView(number: 1, state: $state)
                         NumberView(number: 2, state: $state)
                         NumberView(number: 3, state: $state)
                         ActionView(action: .plus, state: $state)
                     }
 
-                    HStack(spacing: 30){
+                    HStack(spacing: 10){
 
                         NumberView(number: 0, state: $state)
                         CommaButtonView(state: $state)
@@ -219,10 +258,12 @@ struct ContentView: View {
                     }
                 }
                 }
-            BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
-                    .frame(maxHeight: 64, alignment: .center)
+                if !adFree {
+                    BannerAd(unitID: "ca-app-pub-2653148471151264/9195277241")
+                            .frame(maxHeight: 64, alignment: .center)
+                }
 
-        }
+            }.padding(10)
             SplashScreenView()
         }
 
