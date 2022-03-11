@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct ContentView: View {
 
     @State var state = CalculationState()
@@ -82,150 +80,151 @@ struct ContentView: View {
 
 
     var body: some View {
+        ZStack(alignment: .center) {
+            VStack(alignment: .center, spacing: 5){
+                BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
+                    .frame(maxHeight: 64, alignment: .center)
+                VStack(alignment: .trailing){
+                HStack(alignment: .top){
 
-        VStack(alignment: .center, spacing: 5){
-            BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
-                .frame(maxHeight: 64, alignment: .center)
-            VStack(alignment: .trailing){
-            HStack(alignment: .top){
-
-                VStack(alignment: .center) {
-                    HStack{
-                        Image(systemName: "chart.bar.xaxis")
-                            .opacity(converter ? 1 : 0)
-                            .offset(x: converter ? 0 : -200, y: 0)
-                            .animation(.easeIn)
-                        Text(rates)
-                            .opacity(converter ? 1 : 0)
-                            .offset(x: converter ? 0 : -200, y: 0)
-                            .animation(.easeIn)
-                            .font(.system(size: 12))
-                    }
-
-                    Button(action: {
-                        let tempCode = code
-                        code = currencySelection
-                        currencySelection = tempCode
-                        fetchData.update()
-                        fetchData.updateFlags(baseCode: code, targetCode: currencySelection)
-
-                    }, label: {
-                        Image(systemName: "repeat.circle.fill")
+                    VStack(alignment: .center) {
+                        HStack{
+                            Image(systemName: "chart.bar.xaxis")
                                 .opacity(converter ? 1 : 0)
-                                .foregroundColor(Color.green)
                                 .offset(x: converter ? 0 : -200, y: 0)
                                 .animation(.easeIn)
-                                .imageScale(.large)
-                                .padding([.top], 1)
-                    })
+                            Text(rates)
+                                .opacity(converter ? 1 : 0)
+                                .offset(x: converter ? 0 : -200, y: 0)
+                                .animation(.easeIn)
+                                .font(.system(size: 12))
+                        }
+
+                        Button(action: {
+                            let tempCode = code
+                            code = currencySelection
+                            currencySelection = tempCode
+                            fetchData.update()
+                            fetchData.updateFlags(baseCode: code, targetCode: currencySelection)
+
+                        }, label: {
+                            Image(systemName: "repeat.circle.fill")
+                                    .opacity(converter ? 1 : 0)
+                                    .foregroundColor(Color.green)
+                                    .offset(x: converter ? 0 : -200, y: 0)
+                                    .animation(.easeIn)
+                                    .imageScale(.large)
+                                    .padding([.top], 1)
+                        })
 
 
 
-                }.offset(x: -(UIScreen.main.currentMode?.size.width)! / 24, y: 0)
+                    }.offset(x: -(UIScreen.main.currentMode?.size.width)! / 24, y: 0)
 
-                VStack(alignment: .center){
-                    Text("Converter Mode")
-                        .font(.system(size: 10))
+                    VStack(alignment: .center){
+                        Text("Converter Mode")
+                            .font(.system(size: 10))
 
 
-                    Toggle("",isOn: $converter)
-                        .labelsHidden()
+                        Toggle("",isOn: $converter)
+                            .labelsHidden()
+                    }
+                    .padding([.trailing], 20)
+                    Settings(datas: readData, fetch: fetchData)
                 }
-                .padding([.trailing], 20)
-                Settings(datas: readData, fetch: fetchData)
-            }
 
-            Spacer()
+                Spacer()
 
-            HStack(alignment: .firstTextBaseline, spacing: 10){
+                HStack(alignment: .firstTextBaseline, spacing: 10){
 
-                VStack(alignment: .center, spacing: 5){
-                    Text(displayedString)
-                        .padding(.bottom, 5)
-                        .font(.system(size: converter ? 35 : 60))
-                        .animation(.easeInOut)
+                    VStack(alignment: .center, spacing: 5){
+                        Text(displayedString)
+                            .padding(.bottom, 5)
+                            .font(.system(size: converter ? 35 : 60))
+                            .animation(.easeInOut)
 
-                    baseFlag
+                        baseFlag
+                            .opacity(converter ? 1 : 0)
+                            .offset(x: converter ? 0 : -200, y: 0)
+                            .animation(.easeInOut)
+                            .frame(width: converter ? nil : 0, height: converter ? nil : 0)
+
+                        Text(code)
+                            .foregroundColor(.gray)
+                            .opacity(converter ? 1 : 0)
+                            .offset(x: converter ? 0 : -200, y: 0)
+                            .animation(.easeInOut)
+                            .frame(width: converter ? nil : 0, height: converter ? nil : 0)
+                    }
+                    .animation(.easeIn)
+                    .minimumScaleFactor(0.1)
+
+                    Text("=")
+                        .foregroundColor(.green.opacity(0.5))
                         .opacity(converter ? 1 : 0)
                         .offset(x: converter ? 0 : -200, y: 0)
                         .animation(.easeInOut)
+                        .font(.system(size: 25))
                         .frame(width: converter ? nil : 0, height: converter ? nil : 0)
 
-                    Text(code)
-                        .foregroundColor(.gray)
-                        .opacity(converter ? 1 : 0)
-                        .offset(x: converter ? 0 : -200, y: 0)
-                        .animation(.easeInOut)
-                        .frame(width: converter ? nil : 0, height: converter ? nil : 0)
-                }
-                .animation(.easeIn)
-                .minimumScaleFactor(0.1)
+                    VStack(alignment: .center, spacing: 5){
+                        Text(exchangeNumber)
+                            .padding(.bottom, 5)
+                            .font(.system(size: 35))
 
-                Text("=")
-                    .foregroundColor(.green.opacity(0.5))
-                    .opacity(converter ? 1 : 0)
+                        targetFlag
+
+                        Text(exchangeCurrency)
+                            .foregroundColor(.gray)
+                    }.opacity(converter ? 1 : 0)
                     .offset(x: converter ? 0 : -200, y: 0)
+                    .minimumScaleFactor(0.1)
                     .animation(.easeInOut)
-                    .font(.system(size: 25))
                     .frame(width: converter ? nil : 0, height: converter ? nil : 0)
 
-                VStack(alignment: .center, spacing: 5){
-                    Text(exchangeNumber)
-                        .padding(.bottom, 5)
-                        .font(.system(size: 35))
-
-                    targetFlag
-
-                    Text(exchangeCurrency)
-                        .foregroundColor(.gray)
-                }.opacity(converter ? 1 : 0)
-                .offset(x: converter ? 0 : -200, y: 0)
-                .minimumScaleFactor(0.1)
-                .animation(.easeInOut)
-                .frame(width: converter ? nil : 0, height: converter ? nil : 0)
-
-            }
-            VStack(alignment: .center, spacing: 5) {
-                HStack(spacing: 30){
-                    ActionView(action: .clear, state: $state)
-                    ActionView(action: .sign, state: $state)
-                    ActionView(action: .percent, state: $state)
-                    ActionView(action: .mutliply, state: $state)
                 }
-                HStack(spacing: 30){
-                    NumberView(number: 7, state: $state)
-                    NumberView(number: 8, state: $state)
-                    NumberView(number: 9, state: $state)
-                    ActionView(action: .divide, state: $state)
+                VStack(alignment: .center, spacing: 5) {
+                    HStack(spacing: 30){
+                        ActionView(action: .clear, state: $state)
+                        ActionView(action: .sign, state: $state)
+                        ActionView(action: .percent, state: $state)
+                        ActionView(action: .mutliply, state: $state)
+                    }
+                    HStack(spacing: 30){
+                        NumberView(number: 7, state: $state)
+                        NumberView(number: 8, state: $state)
+                        NumberView(number: 9, state: $state)
+                        ActionView(action: .divide, state: $state)
+                    }
+
+                    HStack(spacing: 30){
+                        NumberView(number: 4, state: $state)
+                        NumberView(number: 5, state: $state)
+                        NumberView(number: 6, state: $state)
+                        ActionView(action: .minus, state: $state)
+                    }
+
+                    HStack(spacing: 30){
+                        NumberView(number: 1, state: $state)
+                        NumberView(number: 2, state: $state)
+                        NumberView(number: 3, state: $state)
+                        ActionView(action: .plus, state: $state)
+                    }
+
+                    HStack(spacing: 30){
+
+                        NumberView(number: 0, state: $state)
+                        CommaButtonView(state: $state)
+                        ActionView(action: .equal, state: $state)
+                    }
                 }
-
-                HStack(spacing: 30){
-                    NumberView(number: 4, state: $state)
-                    NumberView(number: 5, state: $state)
-                    NumberView(number: 6, state: $state)
-                    ActionView(action: .minus, state: $state)
                 }
+            BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
+                    .frame(maxHeight: 64, alignment: .center)
 
-                HStack(spacing: 30){
-                    NumberView(number: 1, state: $state)
-                    NumberView(number: 2, state: $state)
-                    NumberView(number: 3, state: $state)
-                    ActionView(action: .plus, state: $state)
-                }
-
-                HStack(spacing: 30){
-
-                    NumberView(number: 0, state: $state)
-                    CommaButtonView(state: $state)
-                    ActionView(action: .equal, state: $state)
-                }
-            }
-            }
-        BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
-                .frame(maxHeight: 64, alignment: .center)
-
-    }
-
+        }
+            SplashScreenView()
+        }
 
     }
 }

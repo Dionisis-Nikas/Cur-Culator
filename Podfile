@@ -7,6 +7,7 @@ target 'Cur-Culator' do
 
   # Pods for Cur-Culator
   pod 'Google-Mobile-Ads-SDK'
+  pod 'SSSwiftUIGIFView'
 
   target 'Cur-CulatorTests' do
     inherit! :search_paths

@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		36F988578AA39B72130CFEFA /* Pods_Cur_Culator_Cur_CulatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22A76FC93155AC9B3AF707 /* Pods_Cur_Culator_Cur_CulatorUITests.framework */; };
 		60F85FFCF554E2D5D582607E /* Pods_Cur_CulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D287C551EB962888503A172 /* Pods_Cur_CulatorTests.framework */; };
 		8FFEE61A27D96EA20035D253 /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE61927D96EA20035D253 /* BannerAd.swift */; };
+		8FFEE61E27DA650A0035D253 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */; };
+		8FFEE62327DAD6D20035D253 /* splashGIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FFEE62227DAD6D20035D253 /* splashGIF.gif */; };
 		9508A083270CC65300A5E8ED /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A082270CC65300A5E8ED /* ButtonStyle.swift */; };
 		9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A084270CC8D700A5E8ED /* SearchBar.swift */; };
 		9508A087270CCC6D00A5E8ED /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A086270CCC6D00A5E8ED /* Filter.swift */; };
@@ -58,6 +60,8 @@
 		3872D1D5EEE60AD664E60AE0 /* Pods-Cur-Culator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-Culator.debug.xcconfig"; path = "Target Support Files/Pods-Cur-Culator/Pods-Cur-Culator.debug.xcconfig"; sourceTree = "<group>"; };
 		8BDC87DBC96FB91C73923C28 /* Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig"; path = "Target Support Files/Pods-Cur-Culator-Cur-CulatorUITests/Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8FFEE61927D96EA20035D253 /* BannerAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
+		8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		8FFEE62227DAD6D20035D253 /* splashGIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splashGIF.gif; sourceTree = "<group>"; };
 		90714DF98961DEB8D8115706 /* Pods-Cur-CulatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-CulatorTests.release.xcconfig"; path = "Target Support Files/Pods-Cur-CulatorTests/Pods-Cur-CulatorTests.release.xcconfig"; sourceTree = "<group>"; };
 		9508A082270CC65300A5E8ED /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		9508A084270CC8D700A5E8ED /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -129,7 +133,6 @@
 				E53C03C3B9F5049DB5D93751 /* Pods-Cur-CulatorTests.debug.xcconfig */,
 				90714DF98961DEB8D8115706 /* Pods-Cur-CulatorTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -139,6 +142,14 @@
 				8FFEE61927D96EA20035D253 /* BannerAd.swift */,
 			);
 			path = Banners;
+			sourceTree = "<group>";
+		};
+		8FFEE62127DAC8220035D253 /* Extra Assets */ = {
+			isa = PBXGroup;
+			children = (
+				8FFEE62227DAD6D20035D253 /* splashGIF.gif */,
+			);
+			path = "Extra Assets";
 			sourceTree = "<group>";
 		};
 		939479BE055ACA75D2D884D7 /* Frameworks */ = {
@@ -167,6 +178,7 @@
 				9537FF1527074A7800FDC2EB /* NumberView.swift */,
 				9537FF1927074AC300FDC2EB /* ActionView.swift */,
 				9537FF1D27076D8F00FDC2EB /* CommaButtonView.swift */,
+				8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +219,7 @@
 				9508A084270CC8D700A5E8ED /* SearchBar.swift */,
 				9508A082270CC65300A5E8ED /* ButtonStyle.swift */,
 				95ADF7CE270B7A8E00C6F769 /* data.json */,
+				8FFEE62127DAC8220035D253 /* Extra Assets */,
 				9519342427062B44007D516A /* Assets.xcassets */,
 				9519342927062B44007D516A /* Info.plist */,
 				9519342627062B44007D516A /* Preview Content */,
@@ -361,6 +374,7 @@
 			files = (
 				9519342827062B44007D516A /* Preview Assets.xcassets in Resources */,
 				95ADF7CF270B7A8E00C6F769 /* data.json in Resources */,
+				8FFEE62327DAD6D20035D253 /* splashGIF.gif in Resources */,
 				9519342527062B44007D516A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,6 +514,7 @@
 				9537FF222708A36400FDC2EB /* Currency.swift in Sources */,
 				9508A089270CDDB000A5E8ED /* CalculationState.swift in Sources */,
 				8FFEE61A27D96EA20035D253 /* BannerAd.swift in Sources */,
+				8FFEE61E27DA650A0035D253 /* SplashScreenView.swift in Sources */,
 				95ADF7CB270B5FA900C6F769 /* Settings.swift in Sources */,
 				9537FF272708A44D00FDC2EB /* FetchData.swift in Sources */,
 				9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */,
