@@ -179,14 +179,14 @@ struct ContentView: View {
 
                         Text(baseFlag)
                             .font(.system(size: 25))
-                            .offset(x: converter ? 0 : -300, y: 0)
+                            .offset(x: converter ? 0 : -1000, y: 0)
                             .animation(.easeInOut)
                             .frame(width: converter ? nil : 0, height: converter ? nil : 0)
 
                         Text(code)
                             .foregroundColor(.gray)
                             .opacity(converter ? 1 : 0)
-                            .offset(x: converter ? 0 : -300, y: 0)
+                            .offset(x: converter ? 0 : -1000, y: 0)
                             .animation(.easeInOut)
                             .frame(width: converter ? nil : 0, height: converter ? nil : 0)
                     }
@@ -196,7 +196,7 @@ struct ContentView: View {
                     Text("=")
                         .foregroundColor(.green.opacity(0.5))
                         .opacity(converter ? 1 : 0)
-                        .offset(x: converter ? 0 : -300, y: 0)
+                        .offset(x: converter ? 0 : -1000, y: 0)
                         .animation(.easeInOut)
                         .font(.system(size: comparingNumberfontSize - 5))
                         .frame(width: converter ? nil : 0, height: converter ? nil : 0)
@@ -208,14 +208,14 @@ struct ContentView: View {
 
                         Text(targetFlag)
                             .font(.system(size: 25))
-                            .offset(x: converter ? 0 : -300, y: 0)
+                            .offset(x: converter ? 0 : -1000, y: 0)
                             .animation(.easeInOut)
                             .frame(width: converter ? nil : 0, height: converter ? nil : 0)
 
                         Text(exchangeCurrency)
                             .foregroundColor(.gray)
                     }.opacity(converter ? 1 : 0)
-                    .offset(x: converter ? 0 : -300, y: 0)
+                    .offset(x: converter ? 0 : -1000, y: 0)
                     .minimumScaleFactor(0.1)
                     .animation(.easeInOut)
                     .frame(width: converter ? nil : 0, height: converter ? nil : 0)
@@ -263,7 +263,7 @@ struct ContentView: View {
                             .frame(maxHeight: 64, alignment: .center)
                 }
 
-            }.padding(10)
+            }.padding(15)
             SplashScreenView()
         }
 
