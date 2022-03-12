@@ -13,9 +13,9 @@ struct SplashScreenView: View {
     @State var animationFinished: Bool = false
 
     var body: some View {
+        if !animationFinished {
+            ZStack {
 
-        ZStack {
-            if !animationFinished {
                 Color(colorScheme == .dark ? UIColor.black : UIColor.white)
                 VStack(alignment: .center) {
                 SwiftUIGIFPlayerView(gifName: "splashGIF")
@@ -36,13 +36,13 @@ struct SplashScreenView: View {
 
 
             }
+            .background(colorScheme == .dark ? Color.black : Color.white)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                    animationFinished = true
+                })
+            }
 
-        }.ignoresSafeArea()
-        .background(colorScheme == .dark ? Color.black : Color.white)
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                animationFinished = true
-            })
         }
     }
 

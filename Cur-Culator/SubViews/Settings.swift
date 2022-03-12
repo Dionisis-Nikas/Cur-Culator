@@ -18,23 +18,23 @@ struct Settings: View {
 	@State var target = ""
 	
 	var body: some View {
-		
-		Button(action: {
-			self.base = code
-			self.target = convert
-			showingPopover = true
-		}, label: {
-			Image(systemName: "gear")
-				.font(Font.title.weight(.bold))
-				.foregroundColor(.black)
-				.frame(width: 44, height: 44)
-				
-				.shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
-				.background(Color.gray)
-				.cornerRadius(20)
-				.offset(x: 10, y: 0)
-		})
-            .padding()
+
+            Button(action: {
+                self.base = code
+                self.target = convert
+                showingPopover = true
+            }, label: {
+                Image(systemName: "gear")
+                    .font(Font.title.weight(.bold))
+                    .foregroundColor(.black)
+
+                    .shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
+                    .background(Color.gray)
+                    .cornerRadius(30)
+                    
+            })
+
+
 		.popover(isPresented: $showingPopover) {
 
 			NavigationView{
@@ -87,6 +87,7 @@ struct Settings: View {
 			}
 			
 		}
+
 		
 	}
 }

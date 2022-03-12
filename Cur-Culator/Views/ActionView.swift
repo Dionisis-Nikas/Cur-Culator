@@ -50,25 +50,21 @@ struct ActionView:View {
 	
 	let action:Action
 	@Binding var state: CalculationState
+    @State var width: CGFloat
+    @State var height: CGFloat
 
-    var width: CGFloat {
-        return UIScreen.main.currentMode!.size.width / 10
-    }
-
-    var height: CGFloat {
-        return UIScreen.main.currentMode!.size.width / 10
-    }
 	
 	var body: some View {
-		Button(action: tapped, label: {
-			action.image()
-				.font(Font.title.weight(.bold))
-				.foregroundColor(.white)
-                .frame(width: width, height: height)
-				.background(state.storedAction == action ? Color.red : Color.green)
-				.cornerRadius(30)
-				.shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
-		})
+            Button(action: tapped, label: {
+                action.image()
+                    .font(Font.title.weight(.bold))
+                    .foregroundColor(.white)
+                    .frame(width: width, height: height)
+                    .background(state.storedAction == action ? Color.red : Color.green)
+                    .cornerRadius(20)
+                    .shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
+            })
+            .padding(1)
 		
 	}
 	

@@ -14,6 +14,10 @@
 		8FFEE62327DAD6D20035D253 /* splashGIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FFEE62227DAD6D20035D253 /* splashGIF.gif */; };
 		8FFEE62F27DB42B20035D253 /* splashPng.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FFEE62E27DB42B20035D253 /* splashPng.png */; };
 		8FFEE63127DB45BD0035D253 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FFEE63027DB45BD0035D253 /* Launch Screen.storyboard */; };
+		8FFEE63C27DCDF810035D253 /* ConverterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE63B27DCDF810035D253 /* ConverterButton.swift */; };
+		8FFEE63E27DCDF940035D253 /* ExchangeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE63D27DCDF940035D253 /* ExchangeChart.swift */; };
+		8FFEE64027DCDFA60035D253 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE63F27DCDFA60035D253 /* NumberField.swift */; };
+		8FFEE64227DCDFBE0035D253 /* ButtonField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE64127DCDFBE0035D253 /* ButtonField.swift */; };
 		9508A083270CC65300A5E8ED /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A082270CC65300A5E8ED /* ButtonStyle.swift */; };
 		9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A084270CC8D700A5E8ED /* SearchBar.swift */; };
 		9508A087270CCC6D00A5E8ED /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A086270CCC6D00A5E8ED /* Filter.swift */; };
@@ -66,6 +70,10 @@
 		8FFEE62227DAD6D20035D253 /* splashGIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splashGIF.gif; sourceTree = "<group>"; };
 		8FFEE62E27DB42B20035D253 /* splashPng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashPng.png; sourceTree = "<group>"; };
 		8FFEE63027DB45BD0035D253 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		8FFEE63B27DCDF810035D253 /* ConverterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterButton.swift; sourceTree = "<group>"; };
+		8FFEE63D27DCDF940035D253 /* ExchangeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeChart.swift; sourceTree = "<group>"; };
+		8FFEE63F27DCDFA60035D253 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
+		8FFEE64127DCDFBE0035D253 /* ButtonField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonField.swift; sourceTree = "<group>"; };
 		90714DF98961DEB8D8115706 /* Pods-Cur-CulatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-CulatorTests.release.xcconfig"; path = "Target Support Files/Pods-Cur-CulatorTests/Pods-Cur-CulatorTests.release.xcconfig"; sourceTree = "<group>"; };
 		9508A082270CC65300A5E8ED /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		9508A084270CC8D700A5E8ED /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
@@ -157,6 +165,18 @@
 			path = "Extra Assets";
 			sourceTree = "<group>";
 		};
+		8FFEE63A27DCDF520035D253 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				8FFEE63D27DCDF940035D253 /* ExchangeChart.swift */,
+				8FFEE63B27DCDF810035D253 /* ConverterButton.swift */,
+				95ADF7CA270B5FA900C6F769 /* Settings.swift */,
+				8FFEE63F27DCDFA60035D253 /* NumberField.swift */,
+				8FFEE64127DCDFBE0035D253 /* ButtonField.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
 		939479BE055ACA75D2D884D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,7 +204,6 @@
 				9537FF1927074AC300FDC2EB /* ActionView.swift */,
 				9537FF1D27076D8F00FDC2EB /* CommaButtonView.swift */,
 				8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */,
-				95ADF7CA270B5FA900C6F769 /* Settings.swift */,
 				8FFEE63027DB45BD0035D253 /* Launch Screen.storyboard */,
 			);
 			path = Views;
@@ -215,6 +234,7 @@
 		9519341F27062B42007D516A /* Cur-Culator */ = {
 			isa = PBXGroup;
 			children = (
+				8FFEE63A27DCDF520035D253 /* SubViews */,
 				8FFEE61827D96EA20035D253 /* Banners */,
 				950842C3270D8ED0008EC27B /* Views */,
 				950842C2270D8EA5008EC27B /* URLImage */,
@@ -517,6 +537,7 @@
 				95ADF7D1270B7B1700C6F769 /* CurrencyJSON.swift in Sources */,
 				9519342327062B42007D516A /* ContentView.swift in Sources */,
 				9508A083270CC65300A5E8ED /* ButtonStyle.swift in Sources */,
+				8FFEE63C27DCDF810035D253 /* ConverterButton.swift in Sources */,
 				9537FF1E27076D8F00FDC2EB /* CommaButtonView.swift in Sources */,
 				9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */,
 				9537FF222708A36400FDC2EB /* Currency.swift in Sources */,
@@ -524,11 +545,14 @@
 				8FFEE61A27D96EA20035D253 /* BannerAd.swift in Sources */,
 				8FFEE61E27DA650A0035D253 /* SplashScreenView.swift in Sources */,
 				95ADF7CB270B5FA900C6F769 /* Settings.swift in Sources */,
+				8FFEE64027DCDFA60035D253 /* NumberField.swift in Sources */,
 				9537FF272708A44D00FDC2EB /* FetchData.swift in Sources */,
 				9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */,
 				9508A090270D889700A5E8ED /* UrlImageView.swift in Sources */,
 				9508A091270D889700A5E8ED /* UrlImageModel.swift in Sources */,
 				9537FF1627074A7800FDC2EB /* NumberView.swift in Sources */,
+				8FFEE64227DCDFBE0035D253 /* ButtonField.swift in Sources */,
+				8FFEE63E27DCDF940035D253 /* ExchangeChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
