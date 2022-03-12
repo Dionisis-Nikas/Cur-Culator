@@ -59,7 +59,7 @@ struct ContentView: View {
 
                             ExchangeChart(converter: $converter, rates: rates, code: $code, currencySelection: $currencySelection, fetchData: fetchData)
                             ConverterButton(converter: $converter)
-                            Settings(datas: readData, fetch: fetchData)
+                            Settings(datas: readData, fetch: fetchData, width: geometry.size.width * 0.1,height: geometry.size.width * 0.1)
 
                         }.frame(width: geometry.size.width, height: geometry.size.height * 0.1)
 
@@ -69,8 +69,10 @@ struct ContentView: View {
                         HStack(alignment: .center, spacing: 10){
 
                             NumberField(state: $state, fetchData: fetchData, currencySelection: $currencySelection, baseFlag: baseFlag, code: $code, targetFlag: targetFlag, converter: $converter, width: geometry.size.width * 0.95, height: geometry.size.height * 0.2)
+                                .offset(x: converter ? 0 : 10)
 
                         }
+
                         .frame(width: geometry.size.width * 0.95, height: geometry.size.height * 0.2)
 
                         // Button row

@@ -69,6 +69,7 @@ struct NumberField: View {
                     .frame(width: converter ? nil : 0, height: converter ? nil : 0)
             }
             .frame(width: converter ? nil : width, alignment: .trailing)
+
             .animation(.easeIn)
             .minimumScaleFactor(0.1)
 

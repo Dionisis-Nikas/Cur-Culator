@@ -16,6 +16,8 @@ struct Settings: View {
 	@State var fetch: FetchData
 	@State var base = ""
 	@State var target = ""
+    @State var width: CGFloat
+    @State var height: CGFloat
 	
 	var body: some View {
 
@@ -27,10 +29,11 @@ struct Settings: View {
                 Image(systemName: "gear")
                     .font(Font.title.weight(.bold))
                     .foregroundColor(.black)
-
+                    .frame(width: width * 1.5, height: height * 1.5)
                     .shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
                     .background(Color.gray)
                     .cornerRadius(30)
+
                     
             })
 
