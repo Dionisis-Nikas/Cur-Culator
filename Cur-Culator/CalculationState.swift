@@ -47,6 +47,7 @@ struct CalculationState {
                 let formatter = NumberFormatter()
                     formatter.minimumFractionDigits = 0
                     formatter.maximumFractionDigits = 5
+                formatter.decimalSeparator = "."
                 if stringNumber.count <= 11 && level <= 5 {
                     if currentNumber >= 0 {
                         currentNumber = currentNumber  + (number / ((pow(10, Double(level)))))

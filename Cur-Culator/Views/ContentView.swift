@@ -14,6 +14,8 @@ struct ContentView: View {
     @State var rate = 0.0
     @ObservedObject var fetchData = FetchData()
     @ObservedObject var readData = ReadData()
+    @State var baseFlag: String? = nil
+    @State var targetFlag: String? = nil
     @AppStorage("adFree") private var adFree = true
     @AppStorage("code") private var code = "USD"
     @AppStorage("convert") private var currencySelection = "USD"
@@ -29,14 +31,6 @@ struct ContentView: View {
         return str
     }
 
-    var baseFlag: String {
-        return getFlag(currency: code)
-    }
-
-    var targetFlag: String {
-        return getFlag(currency: currencySelection)
-    }
-
     var defaultNumberfontSize: CGFloat {
         return UIScreen.main.currentMode!.size.width / 8
     }
@@ -50,25 +44,27 @@ struct ContentView: View {
             ZStack {
                 VStack{
                     if !adFree {
-                        BannerAd(unitID: "ca-app-pub-2653148471151264/7651558454")
+                        BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
                         .frame(maxHeight: 64, alignment: .center)
                     }
                     VStack{
                         // Top row
                         HStack(alignment: .center, spacing: 20){
 
-                            ExchangeChart(converter: $converter, rates: rates, code: $code, currencySelection: $currencySelection, fetchData: fetchData)
+                            ExchangeChart(converter: $converter, rates: rates, code: $code, currencySelection: $currencySelection)
                             ConverterButton(converter: $converter)
                             Settings(datas: readData, fetch: fetchData, width: geometry.size.width * 0.1,height: geometry.size.width * 0.1)
 
-                        }.frame(width: geometry.size.width, height: geometry.size.height * 0.1)
+                        }
+                        .padding([.top], 15)
+                        .frame(width: geometry.size.width, height: geometry.size.height * 0.1)
 
 
 
                         // Number row
-                        HStack(alignment: .center, spacing: 10){
+                        HStack(alignment: .top, spacing: 10){
 
-                            NumberField(state: $state, fetchData: fetchData, currencySelection: $currencySelection, baseFlag: baseFlag, code: $code, targetFlag: targetFlag, converter: $converter, width: geometry.size.width * 0.95, height: geometry.size.height * 0.2)
+                            NumberField(state: $state, fetchData: fetchData, currencySelection: $currencySelection, code: $code, converter: $converter, width: geometry.size.width * 0.95, height: geometry.size.height * 0.2)
                                 .offset(x: converter ? 0 : 10)
 
                         }
@@ -84,7 +80,7 @@ struct ContentView: View {
 
                     }
                     if !adFree {
-                        BannerAd(unitID: "ca-app-pub-2653148471151264/9195277241")
+                        BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
                                 .frame(maxHeight: 64, alignment: .center)
                     }
 

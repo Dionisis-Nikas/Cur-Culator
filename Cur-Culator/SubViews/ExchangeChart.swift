@@ -13,7 +13,6 @@ struct ExchangeChart: View {
     @State var rates: String
     @Binding var code: String
     @Binding var currencySelection: String
-    @State var fetchData: FetchData
     
     var body: some View {
         VStack(alignment: .center) {
@@ -33,7 +32,6 @@ struct ExchangeChart: View {
                 let tempCode = code
                 code = currencySelection
                 currencySelection = tempCode
-                fetchData.update()
 
             }, label: {
                 Image(systemName: "repeat.circle.fill")

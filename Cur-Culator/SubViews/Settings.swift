@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct Settings: View {
+    @AppStorage("code") private var code = "USD"
+    @AppStorage("convert") private var currencySelection = "USD"
 	@State private var showingPopover = false
-	@AppStorage("code") private var code = "USD"
-	@AppStorage("convert") private var convert = "USD"
-	@State var submit = false
+	@State var alert = false
+    @State var submit = false
+    @State var retry = false
+
 	@State var datas: ReadData
 	@State var fetch: FetchData
+
 	@State var base = ""
 	@State var target = ""
     @State var width: CGFloat
@@ -23,7 +27,7 @@ struct Settings: View {
 
             Button(action: {
                 self.base = code
-                self.target = convert
+                self.target = currencySelection
                 showingPopover = true
             }, label: {
                 Image(systemName: "gear")
@@ -54,11 +58,16 @@ struct Settings: View {
 					}
 					
                     Button(action: {
-						self.submit.toggle()
-						code = self.base
-						convert = self.target
-						fetch.update()
-						fetch.updateFlags(baseCode: code, targetCode: convert)
+                        self.alert.toggle()
+                        if self.code != self.base || self.currencySelection != self.target {
+                            self.submit.toggle()
+                            code = self.base
+                            currencySelection = self.target
+                            fetch.getData()
+                        } else {
+                            self.retry.toggle()
+                        }
+						
                     }, label: {
                         Text("Save")
                             .font(.headline)
@@ -71,9 +80,17 @@ struct Settings: View {
                     
 
 
-					.alert(isPresented: $submit, content: {
-						Alert(title: Text("Saved"), message: Text("Updated base currency to  " + code + "  and target currency to " + convert))
+					.alert(isPresented: $alert, content: {
+                        Alert(title: Text(retry ? "No changes" : "Saved"), message: Text(retry ? "Make some changes before you save your selection again." : "Updated base currency to  " + code + "  and target currency to " + currencySelection),dismissButton: Alert.Button.default(
+                            Text("OK"), action: {
+                                if self.retry {
+                                    self.retry.toggle()
+                                } else {
+                                    self.submit.toggle()
+                                }
+                                }))
 					})
+
 				}
 				.navigationBarTitle("Settings")
                 .navigationBarItems(leading:

@@ -11,12 +11,18 @@ struct NumberField: View {
     @Binding var state: CalculationState
     @State var fetchData: FetchData
     @Binding var currencySelection: String
-    @State var baseFlag: String
     @Binding var code: String
-    @State var targetFlag: String
     @Binding var converter: Bool
     @State var width: CGFloat
     @State var height: CGFloat
+    
+    var targetFlag: String {
+        return getFlag(currency: currencySelection)
+    }
+
+    var baseFlag: String {
+        return getFlag(currency: code)
+    }
 
     var displayedString: String {
         let formatter = NumberFormatter()
@@ -38,7 +44,7 @@ struct NumberField: View {
     var exchangeNumber: String {
 
         guard self.fetchData.values.count > 0 else {
-            return "123490.3400"
+            return "123456789"
         }
         let search = self.fetchData.currencyCode.firstIndex(of: currencySelection)
         let rate = self.fetchData.values[search ?? 0]
