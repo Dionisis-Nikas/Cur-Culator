@@ -10,9 +10,11 @@ import Foundation
 
 struct Currency : Codable {
 	
-	let conversion_rates: [String: Double]
+	let conversion_rate: Double
+    let date: String
 	
-	init(values: [String: Double]){
-		self.conversion_rates = values
+    init(conversion_rate: Double, date: String){
+		self.conversion_rate = conversion_rate
+        self.date = date
 	}
 }

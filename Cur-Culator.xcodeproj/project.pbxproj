@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		36F988578AA39B72130CFEFA /* Pods_Cur_Culator_Cur_CulatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22A76FC93155AC9B3AF707 /* Pods_Cur_Culator_Cur_CulatorUITests.framework */; };
 		60F85FFCF554E2D5D582607E /* Pods_Cur_CulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D287C551EB962888503A172 /* Pods_Cur_CulatorTests.framework */; };
+		8FD28A0727DFC42100D73830 /* ColorSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD28A0627DFC42100D73830 /* ColorSaver.swift */; };
 		8FFEE61A27D96EA20035D253 /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE61927D96EA20035D253 /* BannerAd.swift */; };
 		8FFEE61E27DA650A0035D253 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */; };
 		8FFEE62327DAD6D20035D253 /* splashGIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FFEE62227DAD6D20035D253 /* splashGIF.gif */; };
@@ -65,6 +66,7 @@
 		2D22A76FC93155AC9B3AF707 /* Pods_Cur_Culator_Cur_CulatorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cur_Culator_Cur_CulatorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3872D1D5EEE60AD664E60AE0 /* Pods-Cur-Culator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-Culator.debug.xcconfig"; path = "Target Support Files/Pods-Cur-Culator/Pods-Cur-Culator.debug.xcconfig"; sourceTree = "<group>"; };
 		8BDC87DBC96FB91C73923C28 /* Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig"; path = "Target Support Files/Pods-Cur-Culator-Cur-CulatorUITests/Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8FD28A0627DFC42100D73830 /* ColorSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSaver.swift; sourceTree = "<group>"; };
 		8FFEE61927D96EA20035D253 /* BannerAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
 		8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		8FFEE62227DAD6D20035D253 /* splashGIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splashGIF.gif; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				9537FF232708A3A800FDC2EB /* Currency */,
 				9519342027062B42007D516A /* Cur_CulatorApp.swift */,
 				9508A088270CDDB000A5E8ED /* CalculationState.swift */,
+				8FD28A0627DFC42100D73830 /* ColorSaver.swift */,
 				9508A086270CCC6D00A5E8ED /* Filter.swift */,
 				9508A084270CC8D700A5E8ED /* SearchBar.swift */,
 				9508A082270CC65300A5E8ED /* ButtonStyle.swift */,
@@ -538,6 +541,7 @@
 				9519342327062B42007D516A /* ContentView.swift in Sources */,
 				9508A083270CC65300A5E8ED /* ButtonStyle.swift in Sources */,
 				8FFEE63C27DCDF810035D253 /* ConverterButton.swift in Sources */,
+				8FD28A0727DFC42100D73830 /* ColorSaver.swift in Sources */,
 				9537FF1E27076D8F00FDC2EB /* CommaButtonView.swift in Sources */,
 				9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */,
 				9537FF222708A36400FDC2EB /* Currency.swift in Sources */,

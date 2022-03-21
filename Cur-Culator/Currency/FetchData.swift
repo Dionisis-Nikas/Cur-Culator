@@ -7,60 +7,60 @@
 
 import SwiftUI
 
-class FetchData: ObservableObject {
-	
-	@Published var currencyCode: [String] = []
-	@Published var baseFlagURL: String = ""
-	@Published var targetFlagURL: String = ""
-	@Published var values : [Double] = []
+@MainActor class FetchData: ObservableObject {
+
 	@AppStorage("code") var code = "EUR"
 	@AppStorage("convert") var currencySelection = "USD"
+    @AppStorage("rate") var rate = 0.0
+    @AppStorage("updateTime") var time = ""
+
 	
 	init() {
 
     }
 
-    func getData() {
-		fetch { (currency) in
-			switch currency {
-				case .success(let prices):
-					DispatchQueue.main.async {
-                        self.currencyCode = []
-                        self.values = []
-						self.currencyCode.append(contentsOf: prices.conversion_rates.keys)
-						self.values.append(contentsOf: prices.conversion_rates.values)
-						print("done")
-					}
-				case .failure(let errror):
-					print("Failed to fetch currency data", errror)
-			}
-		}
-	}
+    func getDate() -> String {
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        return "\(hour)" + ":" + "\(minutes)"
+        }
 	
-	func fetch(completion: @escaping (Result<Currency, Error>) -> ()) {
+	func fetch() {
 		
-		guard let url = URL(string: "https://v6.exchangerate-api.com/v6/afe6e887229062c4a05600d4/latest/" + code ) else {
-			return
-		}
-		URLSession.shared.dataTask(with: url) { (data, response, error) in
-			if let error = error {
-				completion(.failure(error))
-				return
-			}
-			guard let JSONData = data else {
-				return
-			}
-		
-			do{
-				let conversion = try JSONDecoder().decode((Currency.self), from: JSONData)
-				
-				completion(.success(conversion))
-				
-			}
-			catch{
-				completion(.failure(error))
-			}
-		}.resume()
+        let headers = [
+            "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
+            "x-rapidapi-key": "f010a8ca5emsha322b3b80a02575p146eacjsn14c36ec80bec"
+        ]
+
+        let request = NSMutableURLRequest(url: NSURL(string: "https://currency-exchange.p.rapidapi.com/exchange?from=" + code + "&to=" + currencySelection + "&q=1.0")! as URL,
+                                                cachePolicy: .useProtocolCachePolicy,
+                                            timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+            if (error != nil) {
+                print(error ?? "Error")
+            } else {
+                if let data = data {
+                    let responseData = String(data: data, encoding: String.Encoding.utf8)
+                    if let responseData = responseData {
+                        DispatchQueue.main.async {
+                            self.rate = (responseData as NSString).doubleValue
+                            self.time = self.getDate()
+                        }
+                    }
+
+                } else {
+                    print("Error with response")
+                }
+            }
+        })
+
+        dataTask.resume()
 	}
 }
 

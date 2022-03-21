@@ -8,7 +8,16 @@
 import SwiftUI
 
 struct ActionView:View {
-	enum Action {
+    
+    @AppStorage("colorActionInactive") var colorAction: Color = .green
+    var isDarkColor: Bool {
+        return UIColor(colorAction).isDarkColor
+    }
+    var invertedColor: UIColor {
+        return UIColor(colorAction).inverted
+    }
+
+    enum Action {
 		case equal, clear, plus, minus, mutliply, divide, sign, percent
 		
 		func image() -> Image {
@@ -48,7 +57,7 @@ struct ActionView:View {
 		}
 	}
 	
-	let action:Action
+	let action: Action
 	@Binding var state: CalculationState
     @State var width: CGFloat
     @State var height: CGFloat
@@ -58,9 +67,9 @@ struct ActionView:View {
             Button(action: tapped, label: {
                 action.image()
                     .font(Font.title.weight(.bold))
-                    .foregroundColor(.white)
                     .frame(width: width, height: height)
-                    .background(state.storedAction == action ? Color.red : Color.green)
+                    .foregroundColor(isDarkColor ? .white : .black)
+                    .background(state.storedAction == action ? Color(invertedColor) : colorAction)
                     .cornerRadius(20)
                     .shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
             })
@@ -74,6 +83,7 @@ struct ActionView:View {
 				state.currentNumber = 0
 				state.storedNumber = nil
 				state.storedAction = nil
+                state.start = true
 				state.decimal = false
 				state.level = 1
 				state.edit = true
@@ -112,6 +122,7 @@ struct ActionView:View {
 				state.level = 1
 				state.edit = true
 				state.currentNumber = result
+                state.start = true
 				
 				break
 				
@@ -123,25 +134,30 @@ struct ActionView:View {
 							state.storedAction else{
 						return
 					}
+                    if storedAction != action {
+                        state.storedAction = action
+                    }
 					guard let storedNumber =
 							state.storedNumber else {
 						return
 					}
-					guard let result = storedAction.calculate(storedNumber, state.currentNumber) else {
-						return
-					}
-					state.currentNumber = result
-					if storedAction != action {
-						state.storedAction = action
-					}
-					
-					
-					state.edit = false
-					state.storedNumber = state.currentNumber
+                    if !state.start {
+                        guard let result = storedAction.calculate(storedNumber, state.currentNumber) else {
+                            return
+                        }
+                        state.currentNumber = result
+                        state.edit = false
+                        state.storedNumber = state.currentNumber
+                        state.start = true
+                    }
+
+
+
 				}
 				else{
 					state.storedAction = action
-					state.storedNumber = state.currentNumber
+                    state.storedNumber = state.currentNumber
+                    state.start = true
 					state.currentNumber = 0
 					state.edit = true
 				}

@@ -12,6 +12,10 @@ struct CommaButtonView: View {
 	@Binding var state: CalculationState
     @State var width: CGFloat
     @State var height: CGFloat
+    @AppStorage("colorNumber") var colorNumber: Color = .blue
+    var isDarkColor: Bool {
+        return UIColor(colorNumber).isDarkColor
+    }
 	var body: some View {
 
             Button(action: {
@@ -23,9 +27,9 @@ struct CommaButtonView: View {
                 Text(",")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(isDarkColor ? .white : .black)
                     .frame(width: width, height: height)
-                    .background(self.state.decimal ? Color.gray : Color.blue)
+                    .background(self.state.decimal ? Color(UIColor(colorNumber).inverted) : colorNumber)
                     .cornerRadius(20)
                     //.shadow(color: Color.blue, radius: 10, x: 5, y: 5)
                     .animation(.easeIn(duration: 0.1))

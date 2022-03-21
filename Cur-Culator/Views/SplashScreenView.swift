@@ -10,6 +10,8 @@ import SSSwiftUIGIFView
 
 struct SplashScreenView: View {
     @Environment(\.colorScheme) var colorScheme
+    var fetchData: FetchData
+
     @State var animationFinished: Bool = false
 
     var body: some View {
@@ -38,7 +40,10 @@ struct SplashScreenView: View {
             }
             .background(colorScheme == .dark ? Color.black : Color.white)
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                fetchData.fetch()
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+
                     animationFinished = true
                 })
             }

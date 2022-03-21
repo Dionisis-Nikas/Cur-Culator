@@ -10,10 +10,13 @@ import SwiftUI
 struct ExchangeChart: View {
 
     @Binding var converter: Bool
-    @State var rates: String
     @Binding var code: String
     @Binding var currencySelection: String
-    
+    @Binding var rate: Double
+
+    var rateString: String {
+        return String(format: (self.rate.truncatingRemainder(dividingBy: 1) == 0 ? "%g" : "%.4f"), arguments: [self.rate])
+    }
     var body: some View {
         VStack(alignment: .center) {
             HStack{
@@ -21,17 +24,20 @@ struct ExchangeChart: View {
                     .opacity(converter ? 1 : 0)
                     .offset(x: converter ? 0 : -240, y: 0)
                     .animation(.easeIn)
-                Text("1 USD = 21982 SOM" )//rates)
+                Text("1 " + code + " = \(rateString) " + currencySelection )
                     .opacity(converter ? 1 : 0)
                     .offset(x: converter ? 0 : -240, y: 0)
                     .animation(.easeIn)
-                    .font(.caption)
+                    .font(.caption2)
+                    .minimumScaleFactor(0.1)
+
             }
 
             Button(action: {
                 let tempCode = code
                 code = currencySelection
                 currencySelection = tempCode
+                self.rate = 1 / rate
 
             }, label: {
                 Image(systemName: "repeat.circle.fill")

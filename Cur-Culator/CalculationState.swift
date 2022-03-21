@@ -13,12 +13,16 @@ struct CalculationState {
 	var decimal: Bool = false
 	var edit: Bool = true
 	var level = 1
+    var start: Bool = true
 	
 	var storedNumber: Double?
 	var storedAction: ActionView.Action?
 	
 	
-	
+    mutating func toogleStart() {
+        self.start.toggle()
+    }
+
 	mutating func appendNumber(_ number: Double) {
 		
 		if (currentNumber.truncatingRemainder(dividingBy: 1) == 0) && decimal == false {

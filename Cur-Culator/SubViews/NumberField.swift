@@ -13,6 +13,7 @@ struct NumberField: View {
     @Binding var currencySelection: String
     @Binding var code: String
     @Binding var converter: Bool
+    @Binding var rate: Double
     @State var width: CGFloat
     @State var height: CGFloat
     
@@ -29,7 +30,14 @@ struct NumberField: View {
             formatter.minimumFractionDigits = 0
             formatter.maximumFractionDigits = 5
         let currentNumber = state.currentNumber
-        let intNumber = Int(currentNumber)
+        var intNumber = 0
+        if !currentNumber.isNaN && !currentNumber.isInfinite {
+            intNumber = Int(currentNumber)
+        } else if currentNumber.isInfinite {
+            return String(currentNumber)
+        } else {
+            return "NaN"
+        }
         let result = currentNumber / Double(intNumber)
         let currentCount = String(result - 1.0).count
         return state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 || state.decimal && state.level != (currentCount - 2) ?
@@ -43,11 +51,6 @@ struct NumberField: View {
 
     var exchangeNumber: String {
 
-        guard self.fetchData.values.count > 0 else {
-            return "123456789"
-        }
-        let search = self.fetchData.currencyCode.firstIndex(of: currencySelection)
-        let rate = self.fetchData.values[search ?? 0]
         let doubleAmount = Double(state.currentNumber)
         let total = rate * doubleAmount
         return String(format: (total.truncatingRemainder(dividingBy: 1) == 0 ? "%g" : "%.3f"), arguments: [total])
@@ -65,7 +68,7 @@ struct NumberField: View {
                     .font(.system(size: height * 0.33))
                     .offset(x: converter ? 0 : -1000, y: 0)
                     .animation(.easeInOut)
-                    .frame(width: converter ? nil : 0, height: converter ? nil : 0)
+                    .frame(width: converter ? nil : 0, height: converter ? nil : 0, alignment: .bottom)
 
                 Text(code)
                     .foregroundColor(.gray)
@@ -95,7 +98,7 @@ struct NumberField: View {
                     .font(.system(size: height * 0.33))
                     .offset(x: converter ? 0 : -1000, y: 0)
                     .animation(.easeInOut)
-                    .frame(width: converter ? nil : 0, height: converter ? nil : 0)
+                    .frame(width: converter ? nil : 0, height: converter ? nil : 0, alignment: .bottom)
 
                 Text(currencySelection)
                     .foregroundColor(.gray)
