@@ -21,10 +21,10 @@ import SwiftUI
 
     func getDate() -> String {
         let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        return "\(hour)" + ":" + "\(minutes)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let result = dateFormatter.string(from: date)
+        return result
         }
 	
 	func fetch() {

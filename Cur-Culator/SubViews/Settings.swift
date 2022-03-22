@@ -13,8 +13,11 @@ struct Settings: View {
     @AppStorage("convert") private var currencySelection = "USD"
     @AppStorage("colorActionInactive") var colorAction: Color = .green
     @AppStorage("colorNumber") var colorNumber: Color = .blue
-	@State private var showingPopover = false
-	@State var alert = false
+    @AppStorage("adFree") private var adFree = false
+
+    @Binding  var showingPopover: Bool
+    @Binding var showingFullAd: Bool
+    @State var alert = false
     @State var submit = false
     @State var retry = false
 
@@ -51,12 +54,16 @@ struct Settings: View {
 
                     
             })
-
-
 		.popover(isPresented: $showingPopover) {
 
+
 			NavigationView{
+
+
 				Form {
+                    if !adFree {
+                        BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
+                    }
                     Section(header: Text("Currencies")) {
 
                         Picker(selection: $base, label: Text("Base currency")) {
@@ -72,8 +79,8 @@ struct Settings: View {
                     }
                     Section(header: Text("Appearance")) {
 
-                        ColorPicker("Number Button Color: ", selection: $colorNumber, supportsOpacity: true)
-                        ColorPicker("Action Button Color: ", selection: $colorAction, supportsOpacity: true)
+                        ColorPicker("Number Button Color: ", selection: $colorNumber, supportsOpacity: false)
+                        ColorPicker("Action Button Color: ", selection: $colorAction, supportsOpacity: false)
                     }
 
                     Button(action: {
@@ -83,9 +90,14 @@ struct Settings: View {
                             code = self.base
                             currencySelection = self.target
                             fetch.fetch()
+                            if !adFree {
+                                self.showingPopover.toggle()
+                            }
                         } else {
                             self.retry.toggle()
                         }
+
+
 
                     }, label: {
                         Text("Save")
@@ -109,6 +121,7 @@ struct Settings: View {
                                 }
                                 }))
                     })
+
 
                     Section {
                         Button (action: {
@@ -152,6 +165,13 @@ struct Settings: View {
 				.padding(.top, 20)
 				
 			}
+            .onDisappear {
+                if self.submit {
+                    self.showingFullAd.toggle()
+                }
+            }
+            
+
 			
 		}
 

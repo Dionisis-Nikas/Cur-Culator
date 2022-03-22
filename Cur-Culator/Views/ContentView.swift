@@ -11,11 +11,14 @@ struct ContentView: View {
 
     @State var state = CalculationState()
     @State var converter = false
+    @State private var showingFullAd: Bool = false
+    @State private var showingPopover = false
+
     @ObservedObject var fetchData = FetchData()
     @ObservedObject var readData = ReadData()
     @State var baseFlag: String? = nil
     @State var targetFlag: String? = nil
-    @AppStorage("adFree") private var adFree = true
+
     @AppStorage("code") private var code = "EUR"
     @AppStorage("convert") private var currencySelection = "USD"
     @AppStorage("rate") private var rate = 0.0
@@ -37,16 +40,14 @@ struct ContentView: View {
                 VStack{
 
                     VStack{
-//                        if !adFree {
-//                            BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
-//                                .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height * 0.07 )
-//                        }
+                        
+                        
                         HStack(alignment: .center, spacing: geometry.size.width * 0.1){
 
                             ExchangeChart(converter: $converter, code: $code, currencySelection: $currencySelection, rate: self.$rate)
 
                             ConverterButton(converter: $converter)
-                            Settings(datas: readData, fetch: fetchData, width: geometry.size.width * 0.1,height: geometry.size.width * 0.1)
+                            Settings(showingPopover: self.$showingPopover, showingFullAd: self.$showingFullAd, datas: readData, fetch: fetchData, width: geometry.size.width * 0.1,height: geometry.size.width * 0.1)
                             
 
                         }
@@ -64,6 +65,7 @@ struct ContentView: View {
                         }
 
                         .frame(width: geometry.size.width * 0.95, height: geometry.size.height * 0.190)
+                        .padding([.bottom], 14)
 
 
 
@@ -71,16 +73,12 @@ struct ContentView: View {
                         VStack(alignment: .center) {
                             Text("Currency rates last updated at: " + self.time)
                                 .font(.system(size: 14))
-                            ButtonField(state: $state,width: geometry.size.width * 0.2, height: geometry.size.width * 0.2, zeroWidth: (geometry.size.width * 0.42) + 15)
-                            if !adFree {
-                                BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
-                                
-                                    .frame(maxWidth: geometry.size.width, maxHeight: geometry.size.height * 0.07 )
 
-                            }
+                            ButtonField(state: $state,width: geometry.size.width * 0.2, height: geometry.size.width * 0.2, zeroWidth: (geometry.size.width * 0.42) + 15)
+                            
                         }
 
-                        .padding([.bottom], adFree ? 20 : geometry.size.height * 0.07)
+                        .padding([.bottom], geometry.size.height * 0.07)
                         .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
 
 
@@ -88,12 +86,16 @@ struct ContentView: View {
 
                 }
 
+
                 SplashScreenView(fetchData: fetchData)
             } // end of ZStack
 
+            .presentInterstitialAd(isPresented: self.$showingFullAd,showingPopover: self.$showingPopover, adUnitId: "ca-app-pub-3940256099942544/4411468910")
         } // end of Geometry
     } // end of Body
-    
-} // end of Class
+
+
+}
+// end of Class
 
 

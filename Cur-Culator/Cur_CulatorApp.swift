@@ -12,6 +12,7 @@ struct Cur_CulatorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+
         }
     }
 }
