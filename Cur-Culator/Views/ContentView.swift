@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var converter = false
     @State private var showingFullAd: Bool = false
     @State private var showingPopover = false
-
+    @ObservedObject var connectionStatus = ConnectionStatus()
     @ObservedObject var fetchData = FetchData()
     @ObservedObject var readData = ReadData()
     @State var baseFlag: String? = nil
@@ -46,8 +46,8 @@ struct ContentView: View {
 
                             ExchangeChart(converter: $converter, code: $code, currencySelection: $currencySelection, rate: self.$rate)
 
-                            ConverterButton(converter: $converter)
-                            Settings(showingPopover: self.$showingPopover, showingFullAd: self.$showingFullAd, datas: readData, fetch: fetchData, width: geometry.size.width * 0.1,height: geometry.size.width * 0.1)
+                            ConverterButton(converter: $converter, connection: connectionStatus)
+                            Settings(showingPopover: self.$showingPopover, showingFullAd: self.$showingFullAd, connection: connectionStatus, datas: readData, fetch: fetchData, width: geometry.size.width * 0.1,height: geometry.size.width * 0.1)
                             
 
                         }
@@ -91,6 +91,7 @@ struct ContentView: View {
             } // end of ZStack
 
             .presentInterstitialAd(isPresented: self.$showingFullAd,showingPopover: self.$showingPopover, adUnitId: "ca-app-pub-3940256099942544/4411468910")
+            
         } // end of Geometry
     } // end of Body
 

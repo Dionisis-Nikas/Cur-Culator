@@ -20,7 +20,9 @@ struct Settings: View {
     @State var alert = false
     @State var submit = false
     @State var retry = false
+    @State var showConnectionAlert = false
 
+    @State var connection: ConnectionStatus
 	@State var datas: ReadData
 	@State var fetch: FetchData
 
@@ -124,23 +126,29 @@ struct Settings: View {
                         .padding([.top], !adFree ? height * 1.5 : 10)
 
                     VStack {
-                        if !adFree {
+                        if !adFree && self.connection.checkConnection() {
                             BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
                                 .frame(maxWidth: .infinity,  maxHeight: 64, alignment: .top)
                         }
                             Spacer()
                         Button(action: {
+
                             self.alert.toggle()
-                            if self.code != self.base || self.currencySelection != self.target {
-                                self.submit.toggle()
-                                code = self.base
-                                currencySelection = self.target
-                                fetch.fetch()
-                                if !adFree {
-                                    self.showingPopover.toggle()
+                            if connection.checkConnection() {
+
+                                if self.code != self.base || self.currencySelection != self.target {
+                                    self.submit.toggle()
+                                    code = self.base
+                                    currencySelection = self.target
+                                    fetch.fetch()
+                                    if !adFree {
+                                        self.showingPopover.toggle()
+                                    }
+                                } else {
+                                    self.retry.toggle()
                                 }
                             } else {
-                                self.retry.toggle()
+                                self.showConnectionAlert.toggle()
                             }
 
 
@@ -157,6 +165,9 @@ struct Settings: View {
                         })
 
                                 .alert(isPresented: $alert, content: {
+
+                                    !self.showConnectionAlert ?
+
                                     Alert(title: Text(retry ? "No changes" : "Saved"), message: Text(retry ? "No changes detected! Make some changes before you save your selection again." : "Updated Base Currency to  " + code + "  and Target Currency to " + currencySelection),dismissButton: Alert.Button.default(
                                         Text("OK"), action: {
                                             if self.retry {
@@ -165,6 +176,14 @@ struct Settings: View {
                                                 self.submit.toggle()
                                             }
                                             }))
+
+                                    :
+
+                                    Alert(title: Text("Internet connection required"), message: Text("No internet connection detected please check your internet settings and try again."),dismissButton: Alert.Button.default(
+                                        Text("OK"), action: {
+                                            self.showConnectionAlert.toggle()
+                                        }))
+
                                 })
                     }
                 }
