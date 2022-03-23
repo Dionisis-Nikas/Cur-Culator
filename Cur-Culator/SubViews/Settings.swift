@@ -59,110 +59,115 @@ struct Settings: View {
 
 			NavigationView{
 
+                ZStack(alignment: .bottom) {
+                    Form {
 
-				Form {
-                    if !adFree {
-                        BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
-                    }
-                    Section(header: Text("Currencies")) {
+                        Section(header: Text("Currencies")) {
 
-                        Picker(selection: $base, label: Text("Base currency")) {
+                            Picker(selection: $base, label: Text("Base currency")) {
 
 
-                            Filter(codes: datas.codes, names: datas.names )
-                        }
-                        Picker(selection: $target, label: Text("Target currency")) {
-
-
-                            Filter(codes: datas.codes, names: datas.names )
-                        }
-                    }
-                    Section(header: Text("Appearance")) {
-
-                        ColorPicker("Number Button Color: ", selection: $colorNumber, supportsOpacity: false)
-                        ColorPicker("Action Button Color: ", selection: $colorAction, supportsOpacity: false)
-                    }
-
-                    Button(action: {
-                        self.alert.toggle()
-                        if self.code != self.base || self.currencySelection != self.target {
-                            self.submit.toggle()
-                            code = self.base
-                            currencySelection = self.target
-                            fetch.fetch()
-                            if !adFree {
-                                self.showingPopover.toggle()
+                                Filter(codes: datas.codes, names: datas.names )
                             }
-                        } else {
-                            self.retry.toggle()
+                            Picker(selection: $target, label: Text("Target currency")) {
+
+
+                                Filter(codes: datas.codes, names: datas.names )
+                            }
+                        }
+                        Section(header: Text("Appearance")) {
+
+                            ColorPicker("Number Button Color: ", selection: $colorNumber, supportsOpacity: false)
+                            ColorPicker("Action Button Color: ", selection: $colorAction, supportsOpacity: false)
                         }
 
-
-
-                    }, label: {
-                        Text("Save")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-
-
-                            .foregroundColor(Color.white)
-                    })
-                        .listRowBackground(Color.blue.opacity(self.submit ? 0.5 : 1.0))
-
-
-
-                    .alert(isPresented: $alert, content: {
-                        Alert(title: Text(retry ? "No changes" : "Saved"), message: Text(retry ? "Make some changes before you save your selection again." : "Updated base currency to  " + code + "  and target currency to " + currencySelection),dismissButton: Alert.Button.default(
-                            Text("OK"), action: {
-                                if self.retry {
-                                    self.retry.toggle()
-                                } else {
-                                    self.submit.toggle()
+                        Section {
+                            Button (action: {
+                                if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                                    SKStoreReviewController.requestReview(in: scene)
                                 }
-                                }))
-                    })
+                            },
+                                    label: {
+                                Text("Give a review")
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                            })
 
+                        }
 
-                    Section {
-                        Button (action: {
-                            if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-                                SKStoreReviewController.requestReview(in: scene)
-                            }
-                        },
-                                label: {
-                            Text("Give a review")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                        })
+                        Section {
+                            Button (action: {
 
+                            },
+                                    label: {
+                                Text("Remove ads for 0.99" + localeCurrency)
+                                    .font(.headline)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                                    .foregroundColor(Color.white)
+
+                            })
+                            .listRowBackground(Color.blue)
+                        }
                     }
+                        .navigationBarTitle("Settings")
+                        .navigationBarItems(leading:
+                                Button(action: {
+                                    self.showingPopover.toggle()
+                                }) {
+                                Image(systemName: "chevron.backward.circle").imageScale(.large)
+                                Text("Back")
+                            }
+                            .imageScale(.large)
+                        )
+                        .padding([.bottom], height * 1.5)
+                        .padding([.top], !adFree ? height * 1.5 : 10)
 
-                    Section {
-                        Button (action: {
+                    VStack {
+                        if !adFree {
+                            BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
+                                .frame(maxWidth: .infinity,  maxHeight: 64, alignment: .top)
+                        }
+                            Spacer()
+                        Button(action: {
+                            self.alert.toggle()
+                            if self.code != self.base || self.currencySelection != self.target {
+                                self.submit.toggle()
+                                code = self.base
+                                currencySelection = self.target
+                                fetch.fetch()
+                                if !adFree {
+                                    self.showingPopover.toggle()
+                                }
+                            } else {
+                                self.retry.toggle()
+                            }
 
-                        },
-                                label: {
-                            Text("Remove ads for 0.99" + localeCurrency)
+
+
+                        }, label: {
+                            Text("Save")
                                 .font(.headline)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                                .frame(maxWidth: .infinity, maxHeight: height * 1.5, alignment: .center)
+
+
                                 .foregroundColor(Color.white)
+                                .background(Color.blue.opacity(self.submit ? 0.5 : 1.0))
 
                         })
-                        .listRowBackground(Color.blue)
+
+                                .alert(isPresented: $alert, content: {
+                                    Alert(title: Text(retry ? "No changes" : "Saved"), message: Text(retry ? "No changes detected! Make some changes before you save your selection again." : "Updated Base Currency to  " + code + "  and Target Currency to " + currencySelection),dismissButton: Alert.Button.default(
+                                        Text("OK"), action: {
+                                            if self.retry {
+                                                self.retry.toggle()
+                                            } else {
+                                                self.submit.toggle()
+                                            }
+                                            }))
+                                })
                     }
                 }
-				.navigationBarTitle("Settings")
-                .navigationBarItems(leading:
-                        Button(action: {
-                            self.showingPopover.toggle()
-                        }) {
-                        Image(systemName: "chevron.backward.circle").imageScale(.large)
-                        Text("Back")
-                    }
-                    .imageScale(.large)
-                )
-				.padding(.top, 20)
 				
 			}
             .onDisappear {
