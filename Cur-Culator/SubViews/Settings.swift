@@ -16,7 +16,6 @@ struct Settings: View {
     @AppStorage("adFree") private var adFree = false
 
     @Binding  var showingPopover: Bool
-    @Binding var showingFullAd: Bool
     @State var alert = false
     @State var submit = false
     @State var retry = false
@@ -66,16 +65,14 @@ struct Settings: View {
 
                         Section(header: Text("Currencies")) {
 
-                            Picker(selection: $base, label: Text("Base currency")) {
+                            Picker(selection: $base, label: Text("Base currency"), content: ({
+                                Filter(codes: datas.codes, names: datas.names)
+                            }))
 
-
+                            Picker(selection: $target, label: Text("Target currency"), content: ({
                                 Filter(codes: datas.codes, names: datas.names )
-                            }
-                            Picker(selection: $target, label: Text("Target currency")) {
+                            }))
 
-
-                                Filter(codes: datas.codes, names: datas.names )
-                            }
                         }
                         Section(header: Text("Appearance")) {
 
@@ -187,16 +184,7 @@ struct Settings: View {
                                 })
                     }
                 }
-				
 			}
-            .onDisappear {
-                if self.submit {
-                    self.showingFullAd.toggle()
-                }
-            }
-            
-
-			
 		}
 
 		

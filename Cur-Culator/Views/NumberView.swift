@@ -10,13 +10,14 @@ import SwiftUI
 
 
 struct NumberView: View {
-	let number: Double
+
     @AppStorage("colorNumber") var colorNumber: Color = .blue
+    let number: Double
     var isDarkColor: Bool {
         return UIColor(colorNumber).isDarkColor
     }
 	@State var isActive: Bool = false
-	@Binding var state: CalculationState
+    @ObservedObject var state: CalculationState
 	
 	var numberString: String {
 		if number == .pi {
@@ -31,13 +32,17 @@ struct NumberView: View {
 	
 	var body: some View {
             Button(action: {
+
                 if self.state.start {
                     self.state.toogleStart()
-                    
                 }
+
                 self.state.appendNumber(self.number)
+
+                // Haptic effect
                 let impactMed = UIImpactFeedbackGenerator(style: .medium)
                 impactMed.impactOccurred()
+
             }, label: {
                 Text(numberString)
                     .font(.largeTitle)
@@ -46,7 +51,6 @@ struct NumberView: View {
                     .frame(width: self.number == 0 ? zeroWidth : width , height: width)
                     .background(colorNumber)
                     .cornerRadius(20)
-                    //.shadow(color: Color.blue, radius: 10, x: 5, y: 5)
                     .animation(.easeIn(duration: 0.1))
             })
             .padding(1)

@@ -10,7 +10,7 @@ import SystemConfiguration
 
 class ConnectionStatus: ObservableObject {
     @Published private(set) var reachable: Bool = false
-    private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.designcode.io")
+    private let reachability = SCNetworkReachabilityCreateWithName(nil, "www.google.com")
 
     init() {
         self.reachable = checkConnection()

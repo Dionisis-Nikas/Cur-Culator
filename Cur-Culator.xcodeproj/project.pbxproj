@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		36F988578AA39B72130CFEFA /* Pods_Cur_Culator_Cur_CulatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22A76FC93155AC9B3AF707 /* Pods_Cur_Culator_Cur_CulatorUITests.framework */; };
 		60F85FFCF554E2D5D582607E /* Pods_Cur_CulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D287C551EB962888503A172 /* Pods_Cur_CulatorTests.framework */; };
-		8F76097427EA78B70011DB45 /* InterstitialAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F76097327EA78B70011DB45 /* InterstitialAd.swift */; };
 		8F925D3D27EBC18300956DD5 /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F925D3C27EBC18300956DD5 /* ConnectionStatus.swift */; };
 		8FD28A0727DFC42100D73830 /* ColorSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD28A0627DFC42100D73830 /* ColorSaver.swift */; };
 		8FFEE61A27D96EA20035D253 /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE61927D96EA20035D253 /* BannerAd.swift */; };
@@ -26,8 +25,6 @@
 		9508A087270CCC6D00A5E8ED /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A086270CCC6D00A5E8ED /* Filter.swift */; };
 		9508A089270CDDB000A5E8ED /* CalculationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A088270CDDB000A5E8ED /* CalculationState.swift */; };
 		9508A08B270D790000A5E8ED /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A08A270D790000A5E8ED /* Flag.swift */; };
-		9508A090270D889700A5E8ED /* UrlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A08E270D889700A5E8ED /* UrlImageView.swift */; };
-		9508A091270D889700A5E8ED /* UrlImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9508A08F270D889700A5E8ED /* UrlImageModel.swift */; };
 		9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519342027062B42007D516A /* Cur_CulatorApp.swift */; };
 		9519342327062B42007D516A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9519342227062B42007D516A /* ContentView.swift */; };
 		9519342527062B44007D516A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9519342427062B44007D516A /* Assets.xcassets */; };
@@ -68,7 +65,6 @@
 		2D22A76FC93155AC9B3AF707 /* Pods_Cur_Culator_Cur_CulatorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cur_Culator_Cur_CulatorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3872D1D5EEE60AD664E60AE0 /* Pods-Cur-Culator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-Culator.debug.xcconfig"; path = "Target Support Files/Pods-Cur-Culator/Pods-Cur-Culator.debug.xcconfig"; sourceTree = "<group>"; };
 		8BDC87DBC96FB91C73923C28 /* Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig"; path = "Target Support Files/Pods-Cur-Culator-Cur-CulatorUITests/Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig"; sourceTree = "<group>"; };
-		8F76097327EA78B70011DB45 /* InterstitialAd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialAd.swift; sourceTree = "<group>"; };
 		8F925D3C27EBC18300956DD5 /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
 		8FD28A0627DFC42100D73830 /* ColorSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSaver.swift; sourceTree = "<group>"; };
 		8FFEE61927D96EA20035D253 /* BannerAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
@@ -86,8 +82,6 @@
 		9508A086270CCC6D00A5E8ED /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		9508A088270CDDB000A5E8ED /* CalculationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationState.swift; sourceTree = "<group>"; };
 		9508A08A270D790000A5E8ED /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
-		9508A08E270D889700A5E8ED /* UrlImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlImageView.swift; sourceTree = "<group>"; };
-		9508A08F270D889700A5E8ED /* UrlImageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlImageModel.swift; sourceTree = "<group>"; };
 		9519341D27062B42007D516A /* Cur-Culator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cur-Culator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9519342027062B42007D516A /* Cur_CulatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cur_CulatorApp.swift; sourceTree = "<group>"; };
 		9519342227062B42007D516A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -166,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				8FFEE61927D96EA20035D253 /* BannerAd.swift */,
-				8F76097327EA78B70011DB45 /* InterstitialAd.swift */,
 			);
 			path = Banners;
 			sourceTree = "<group>";
@@ -200,15 +193,6 @@
 				0D287C551EB962888503A172 /* Pods_Cur_CulatorTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		950842C2270D8EA5008EC27B /* URLImage */ = {
-			isa = PBXGroup;
-			children = (
-				9508A08F270D889700A5E8ED /* UrlImageModel.swift */,
-				9508A08E270D889700A5E8ED /* UrlImageView.swift */,
-			);
-			path = URLImage;
 			sourceTree = "<group>";
 		};
 		950842C3270D8ED0008EC27B /* Views */ = {
@@ -253,7 +237,6 @@
 				8FFEE63A27DCDF520035D253 /* SubViews */,
 				8FFEE61827D96EA20035D253 /* Banners */,
 				950842C3270D8ED0008EC27B /* Views */,
-				950842C2270D8EA5008EC27B /* URLImage */,
 				9537FF232708A3A800FDC2EB /* Currency */,
 				9519342027062B42007D516A /* Cur_CulatorApp.swift */,
 				9508A088270CDDB000A5E8ED /* CalculationState.swift */,
@@ -391,7 +374,7 @@
 				};
 			};
 			buildConfigurationList = 9519341827062B42007D516A /* Build configuration list for PBXProject "Cur-Culator" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -564,11 +547,8 @@
 				8FFEE61E27DA650A0035D253 /* SplashScreenView.swift in Sources */,
 				95ADF7CB270B5FA900C6F769 /* Settings.swift in Sources */,
 				8FFEE64027DCDFA60035D253 /* NumberField.swift in Sources */,
-				8F76097427EA78B70011DB45 /* InterstitialAd.swift in Sources */,
 				9537FF272708A44D00FDC2EB /* FetchData.swift in Sources */,
 				9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */,
-				9508A090270D889700A5E8ED /* UrlImageView.swift in Sources */,
-				9508A091270D889700A5E8ED /* UrlImageModel.swift in Sources */,
 				8F925D3D27EBC18300956DD5 /* ConnectionStatus.swift in Sources */,
 				9537FF1627074A7800FDC2EB /* NumberView.swift in Sources */,
 				8FFEE64227DCDFBE0035D253 /* ButtonField.swift in Sources */,
@@ -659,13 +639,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -714,12 +695,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -731,18 +713,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 202210190;
 				DEVELOPMENT_ASSET_PATHS = "\"Cur-Culator/Preview Content\"";
 				DEVELOPMENT_TEAM = F4UL9JQ6S5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Cur-Culator/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Cur-Culator";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Dennis-Nikas.Cur-Culator";
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "DionisisNikas.Cur-Culator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -755,18 +742,23 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 202210190;
 				DEVELOPMENT_ASSET_PATHS = "\"Cur-Culator/Preview Content\"";
 				DEVELOPMENT_TEAM = F4UL9JQ6S5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Cur-Culator/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Cur-Culator";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Dennis-Nikas.Cur-Culator";
+				MARKETING_VERSION = 0.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "DionisisNikas.Cur-Culator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

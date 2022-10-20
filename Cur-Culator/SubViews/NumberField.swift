@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NumberField: View {
-    @Binding var state: CalculationState
+    @ObservedObject var state: CalculationState
     @State var fetchData: FetchData
     @Binding var currencySelection: String
     @Binding var code: String
@@ -25,30 +25,6 @@ struct NumberField: View {
         return getFlag(currency: code)
     }
 
-    var displayedString: String {
-        let formatter = NumberFormatter()
-            formatter.minimumFractionDigits = 0
-            formatter.maximumFractionDigits = 5
-        let currentNumber = state.currentNumber
-        var intNumber = 0
-        if !currentNumber.isNaN && !currentNumber.isInfinite {
-            intNumber = Int(currentNumber)
-        } else if currentNumber.isInfinite {
-            return String(currentNumber)
-        } else {
-            return "NaN"
-        }
-        let result = currentNumber / Double(intNumber)
-        let currentCount = String(result - 1.0).count
-        return state.currentNumber.truncatingRemainder(dividingBy: 1) == 0 || state.decimal && state.level != (currentCount - 2) ?
-
-        String(format: (state.decimal && state.edit ? "%." + String(state.level - 1) + "f" : "%.0f"), arguments: [state.currentNumber])
-
-        :
-
-        formatter.string(from: NSNumber(value: state.currentNumber)) ?? "NaN"
-    }
-
     var exchangeNumber: String {
 
         let doubleAmount = Double(state.currentNumber)
@@ -60,9 +36,9 @@ struct NumberField: View {
     
     var body: some View {
             VStack(alignment: .center, spacing: 5){
-                Text(displayedString)
+                Text(state.displayString)
                     .font(.system(size:(converter ? height * 0.33 : height * 0.7)))
-                    .animation(.easeInOut)
+                    .animation(.easeInOut, value: converter)
 
                 Text(baseFlag)
                     .font(.system(size: height * 0.33))
@@ -79,7 +55,7 @@ struct NumberField: View {
             }
             .frame(width: converter ? nil : width, alignment: .trailing)
 
-            .animation(.easeIn)
+
             .minimumScaleFactor(0.1)
 
             Text("=")

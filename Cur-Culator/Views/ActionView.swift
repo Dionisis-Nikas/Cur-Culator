@@ -10,9 +10,15 @@ import SwiftUI
 struct ActionView:View {
     
     @AppStorage("colorActionInactive") var colorAction: Color = .green
+    let action: Action
+    @ObservedObject var state: CalculationState
+    @State var width: CGFloat
+    @State var height: CGFloat
+
     var isDarkColor: Bool {
         return UIColor(colorAction).isDarkColor
     }
+
     var invertedColor: UIColor {
         return UIColor(colorAction).inverted
     }
@@ -56,11 +62,6 @@ struct ActionView:View {
 			}
 		}
 	}
-	
-	let action: Action
-	@Binding var state: CalculationState
-    @State var width: CGFloat
-    @State var height: CGFloat
 
 	
 	var body: some View {
@@ -150,9 +151,6 @@ struct ActionView:View {
                         state.storedNumber = state.currentNumber
                         state.start = true
                     }
-
-
-
 				}
 				else{
 					state.storedAction = action

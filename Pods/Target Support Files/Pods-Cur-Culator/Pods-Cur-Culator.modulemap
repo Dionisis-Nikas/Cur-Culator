@@ -1,0 +1,6 @@
+framework module Pods_Cur_Culator {
+  umbrella header "Pods-Cur-Culator-umbrella.h"
+
+  export *
+  module * { export * }
+}

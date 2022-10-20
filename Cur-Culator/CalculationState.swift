@@ -8,22 +8,22 @@
 import SwiftUI
 
 
-struct CalculationState {
-	var currentNumber: Double = 0
-	var decimal: Bool = false
-	var edit: Bool = true
-	var level = 1
-    var start: Bool = true
+class CalculationState: ObservableObject {
+	@Published var currentNumber: Double = 0
+    @Published var decimal: Bool = false
+    @Published var edit: Bool = true
+    @Published var level = 1
+    @Published var start: Bool = true
+	@Published var displayString = "0"
+    @Published var storedNumber: Double?
+    @Published var storedAction: ActionView.Action?
 	
-	var storedNumber: Double?
-	var storedAction: ActionView.Action?
 	
-	
-    mutating func toogleStart() {
+    func toogleStart() {
         self.start.toggle()
     }
 
-	mutating func appendNumber(_ number: Double) {
+    func appendNumber(_ number: Double) {
 		
 		if (currentNumber.truncatingRemainder(dividingBy: 1) == 0) && decimal == false {
 
@@ -43,37 +43,55 @@ struct CalculationState {
                 edit = true
             }
 
-		}
-		
-		else{
-            if edit {
-                var stringNumber = String(currentNumber)
-                let formatter = NumberFormatter()
-                    formatter.minimumFractionDigits = 0
-                    formatter.maximumFractionDigits = 5
-                formatter.decimalSeparator = "."
-                if stringNumber.count <= 11 && level <= 5 {
-                    if currentNumber >= 0 {
-                        currentNumber = currentNumber  + (number / ((pow(10, Double(level)))))
-                    }
-                    else{
-                        currentNumber = currentNumber  - (number / ((pow(10, Double(level)))))
-                    }
-
-                    stringNumber = formatter.string(from: NSNumber(value: currentNumber)) ?? "NaN"
-                    currentNumber = Double(stringNumber) ?? .nan
-                    level += 1
+		} else {
+        if edit {
+            var stringNumber = String(currentNumber)
+            let formatter = NumberFormatter()
+                formatter.minimumFractionDigits = 0
+                formatter.maximumFractionDigits = 5
+            formatter.decimalSeparator = "."
+            if stringNumber.count <= 11 && level <= 5 {
+                if currentNumber >= 0 {
+                    currentNumber = currentNumber  + (number / ((pow(10, Double(level)))))
                 }
-            }
-            else{
-                currentNumber = number
-                edit = true
-            }
+                else{
+                    currentNumber = currentNumber  - (number / ((pow(10, Double(level)))))
+                }
 
-		}
-			
-			
-		
+                stringNumber = formatter.string(from: NSNumber(value: currentNumber)) ?? "NaN"
+                currentNumber = Double(stringNumber) ?? .nan
+                level += 1
+            }
+        } else{
+            currentNumber = number
+            edit = true
+            }
+        }
+        self.setDisplayString()
 	}
+
+    func setDisplayString() {
+        let formatter = NumberFormatter()
+            formatter.minimumFractionDigits = 0
+            formatter.maximumFractionDigits = 5
+        let currentNumber = self.currentNumber
+        var intNumber = 0
+        if !currentNumber.isNaN && !currentNumber.isInfinite {
+            intNumber = Int(currentNumber)
+        } else if currentNumber.isInfinite {
+            displayString = String(currentNumber)
+        } else {
+            displayString = "NaN"
+        }
+        let result = currentNumber / Double(intNumber)
+        let currentCount = String(result - 1.0).count
+        displayString = self.currentNumber.truncatingRemainder(dividingBy: 1) == 0 || self.decimal && self.level != (currentCount - 2) ?
+
+        String(format: (self.decimal && self.edit ? "%." + String(self.level - 1) + "f" : "%.0f"), arguments: [self.currentNumber])
+
+        :
+
+        formatter.string(from: NSNumber(value: self.currentNumber)) ?? "NaN"
+    }
 }
 
