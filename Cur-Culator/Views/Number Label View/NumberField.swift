@@ -31,7 +31,6 @@ struct NumberField: View {
         let total = rate * doubleAmount
         return String(format: (total.truncatingRemainder(dividingBy: 1) == 0 ? "%g" : "%.3f"), arguments: [total])
 
-
     }
     
     var body: some View {

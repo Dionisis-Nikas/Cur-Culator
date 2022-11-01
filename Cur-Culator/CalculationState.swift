@@ -15,7 +15,7 @@ class CalculationState: ObservableObject {
     @Published var level = 1
     @Published var start: Bool = true
 	@Published var displayString = "0"
-    @Published var storedNumber: Double?
+    @Published var storedNumber: Double? = 0.0
     @Published var storedAction: ActionView.Action?
 	
 	

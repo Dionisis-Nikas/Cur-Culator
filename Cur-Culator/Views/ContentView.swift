@@ -79,7 +79,7 @@ struct ContentView: View {
 
                     }
 
-                    .padding([.bottom], geometry.size.height * 0.07)
+                    .padding([.bottom], geometry.size.height * 0.1)
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
 
 

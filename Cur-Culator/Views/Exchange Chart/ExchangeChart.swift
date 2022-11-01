@@ -48,9 +48,6 @@ struct ExchangeChart: View {
                         .imageScale(.large)
 
             })
-
-
-
         }
     }
 }

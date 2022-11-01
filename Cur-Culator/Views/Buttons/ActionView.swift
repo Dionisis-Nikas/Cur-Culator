@@ -72,7 +72,7 @@ struct ActionView:View {
                     .foregroundColor(isDarkColor ? .white : .black)
                     .background(state.storedAction == action ? Color(invertedColor) : colorAction)
                     .cornerRadius(20)
-                    .shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
+                    .shadow(radius: 8)
             })
             .padding(1)
 		
@@ -88,10 +88,12 @@ struct ActionView:View {
 				state.decimal = false
 				state.level = 1
 				state.edit = true
+                state.setDisplayString()
 				break
 				
 			case .sign:
 				state.currentNumber = state.currentNumber * (-1)
+                state.setDisplayString()
 				break
 				
 			case .percent:
@@ -101,6 +103,7 @@ struct ActionView:View {
 				state.edit = false
 				state.storedNumber = nil
 				state.storedAction = nil
+                state.setDisplayString()
 				break
 				
 			case .equal:
@@ -117,15 +120,16 @@ struct ActionView:View {
 				guard let result = storedAction.calculate(storedNumber, state.currentNumber) else {
 					return
 				}
-				state.storedNumber = nil
-				state.storedAction = nil
-				state.decimal = false
-				state.level = 1
-				state.edit = true
-				state.currentNumber = result
+
+                state.storedNumber = nil
+                state.storedAction = nil
+                state.decimal = false
+                state.level = 1
+                state.edit = true
+                state.currentNumber = result
                 state.start = true
-				
-				break
+                state.setDisplayString()
+                break
 				
 			default:
 				state.decimal = false
@@ -160,6 +164,7 @@ struct ActionView:View {
 					state.edit = true
 				}
 				state.level = 1
+                state.setDisplayString()
 				break
 		
 		}
