@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		36F988578AA39B72130CFEFA /* Pods_Cur_Culator_Cur_CulatorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D22A76FC93155AC9B3AF707 /* Pods_Cur_Culator_Cur_CulatorUITests.framework */; };
 		60F85FFCF554E2D5D582607E /* Pods_Cur_CulatorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D287C551EB962888503A172 /* Pods_Cur_CulatorTests.framework */; };
+		8F7DA5B6292034440044F775 /* PopUpXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7DA5B5292034440044F775 /* PopUpXButton.swift */; };
+		8F7DA5B8292034CB0044F775 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7DA5B7292034CB0044F775 /* SaveButton.swift */; };
 		8F925D3D27EBC18300956DD5 /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F925D3C27EBC18300956DD5 /* ConnectionStatus.swift */; };
 		8FD28A0727DFC42100D73830 /* ColorSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD28A0627DFC42100D73830 /* ColorSaver.swift */; };
 		8FD2EC2129016BC7001BA89D /* SettingsPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2EC2029016BC7001BA89D /* SettingsPopover.swift */; };
@@ -40,7 +42,7 @@
 		9537FF1E27076D8F00FDC2EB /* CommaButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537FF1D27076D8F00FDC2EB /* CommaButtonView.swift */; };
 		9537FF222708A36400FDC2EB /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537FF212708A36400FDC2EB /* Currency.swift */; };
 		9537FF272708A44D00FDC2EB /* FetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537FF262708A44D00FDC2EB /* FetchData.swift */; };
-		95ADF7CB270B5FA900C6F769 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADF7CA270B5FA900C6F769 /* Settings.swift */; };
+		95ADF7CB270B5FA900C6F769 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADF7CA270B5FA900C6F769 /* SettingsButton.swift */; };
 		95ADF7CF270B7A8E00C6F769 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 95ADF7CE270B7A8E00C6F769 /* data.json */; };
 		95ADF7D1270B7B1700C6F769 /* CurrencyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADF7D0270B7B1700C6F769 /* CurrencyJSON.swift */; };
 		B38C3D1E2366B88AAF454BBF /* Pods_Cur_Culator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2C7F552E18023CEB971988D /* Pods_Cur_Culator.framework */; };
@@ -69,6 +71,8 @@
 		2D22A76FC93155AC9B3AF707 /* Pods_Cur_Culator_Cur_CulatorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cur_Culator_Cur_CulatorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3872D1D5EEE60AD664E60AE0 /* Pods-Cur-Culator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-Culator.debug.xcconfig"; path = "Target Support Files/Pods-Cur-Culator/Pods-Cur-Culator.debug.xcconfig"; sourceTree = "<group>"; };
 		8BDC87DBC96FB91C73923C28 /* Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig"; path = "Target Support Files/Pods-Cur-Culator-Cur-CulatorUITests/Pods-Cur-Culator-Cur-CulatorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8F7DA5B5292034440044F775 /* PopUpXButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpXButton.swift; sourceTree = "<group>"; };
+		8F7DA5B7292034CB0044F775 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		8F925D3C27EBC18300956DD5 /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
 		8FD28A0627DFC42100D73830 /* ColorSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSaver.swift; sourceTree = "<group>"; };
 		8FD2EC2029016BC7001BA89D /* SettingsPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopover.swift; sourceTree = "<group>"; };
@@ -107,7 +111,7 @@
 		9537FF1D27076D8F00FDC2EB /* CommaButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommaButtonView.swift; sourceTree = "<group>"; };
 		9537FF212708A36400FDC2EB /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		9537FF262708A44D00FDC2EB /* FetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchData.swift; sourceTree = "<group>"; };
-		95ADF7CA270B5FA900C6F769 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		95ADF7CA270B5FA900C6F769 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		95ADF7CE270B7A8E00C6F769 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		95ADF7D0270B7B1700C6F769 /* CurrencyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyJSON.swift; sourceTree = "<group>"; };
 		B2C7F552E18023CEB971988D /* Pods_Cur_Culator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cur_Culator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,15 +160,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		8F925D3B27EBC16900956DD5 /* Connection Status */ = {
+		8F7DA5B4292033E00044F775 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				8FFEE63B27DCDF810035D253 /* ConverterButton.swift */,
+				95ADF7CA270B5FA900C6F769 /* SettingsButton.swift */,
+				8F7DA5B5292034440044F775 /* PopUpXButton.swift */,
+				8F7DA5B7292034CB0044F775 /* SaveButton.swift */,
+				8FD2EC2A29017523001BA89D /* ReviewButton.swift */,
+				8FD2EC2C2901757E001BA89D /* RemoveAdsButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		8F925D3B27EBC16900956DD5 /* Managers & Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				8F925D3C27EBC18300956DD5 /* ConnectionStatus.swift */,
+				9508A088270CDDB000A5E8ED /* CalculationState.swift */,
+				8FD28A0627DFC42100D73830 /* ColorSaver.swift */,
+				9508A082270CC65300A5E8ED /* ButtonStyle.swift */,
 			);
-			path = "Connection Status";
+			path = "Managers & Extensions";
 			sourceTree = "<group>";
 		};
-		8FD2EC23290170C3001BA89D /* Buttons */ = {
+		8FD2EC23290170C3001BA89D /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
 				8FFEE64127DCDFBE0035D253 /* ButtonField.swift */,
@@ -172,17 +192,16 @@
 				9537FF1527074A7800FDC2EB /* NumberView.swift */,
 				9537FF1D27076D8F00FDC2EB /* CommaButtonView.swift */,
 			);
-			path = Buttons;
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		8FD2EC24290170E0001BA89D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				95ADF7CA270B5FA900C6F769 /* Settings.swift */,
 				8FD2EC2029016BC7001BA89D /* SettingsPopover.swift */,
 				8FD2EC28290171D9001BA89D /* CodePicker.swift */,
-				8FD2EC2A29017523001BA89D /* ReviewButton.swift */,
-				8FD2EC2C2901757E001BA89D /* RemoveAdsButton.swift */,
+				9508A084270CC8D700A5E8ED /* SearchBar.swift */,
+				9508A086270CCC6D00A5E8ED /* Filter.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -193,14 +212,6 @@
 				8FFEE63D27DCDF940035D253 /* ExchangeChart.swift */,
 			);
 			path = "Exchange Chart";
-			sourceTree = "<group>";
-		};
-		8FD2EC262901716A001BA89D /* Converter */ = {
-			isa = PBXGroup;
-			children = (
-				8FFEE63B27DCDF810035D253 /* ConverterButton.swift */,
-			);
-			path = Converter;
 			sourceTree = "<group>";
 		};
 		8FD2EC2729017184001BA89D /* Number Label View */ = {
@@ -242,10 +253,9 @@
 			isa = PBXGroup;
 			children = (
 				8FD2EC2729017184001BA89D /* Number Label View */,
-				8FD2EC262901716A001BA89D /* Converter */,
 				8FD2EC2529017129001BA89D /* Exchange Chart */,
 				8FD2EC24290170E0001BA89D /* Settings */,
-				8FD2EC23290170C3001BA89D /* Buttons */,
+				8FD2EC23290170C3001BA89D /* Calculator */,
 				9519342227062B42007D516A /* ContentView.swift */,
 				8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */,
 				8FFEE63027DB45BD0035D253 /* Launch Screen.storyboard */,
@@ -278,16 +288,12 @@
 		9519341F27062B42007D516A /* Cur-Culator */ = {
 			isa = PBXGroup;
 			children = (
-				8F925D3B27EBC16900956DD5 /* Connection Status */,
-				8FFEE61827D96EA20035D253 /* Banners */,
 				950842C3270D8ED0008EC27B /* Views */,
+				8F7DA5B4292033E00044F775 /* Buttons */,
+				8F925D3B27EBC16900956DD5 /* Managers & Extensions */,
+				8FFEE61827D96EA20035D253 /* Banners */,
 				9537FF232708A3A800FDC2EB /* Currency */,
 				9519342027062B42007D516A /* Cur_CulatorApp.swift */,
-				9508A088270CDDB000A5E8ED /* CalculationState.swift */,
-				8FD28A0627DFC42100D73830 /* ColorSaver.swift */,
-				9508A086270CCC6D00A5E8ED /* Filter.swift */,
-				9508A084270CC8D700A5E8ED /* SearchBar.swift */,
-				9508A082270CC65300A5E8ED /* ButtonStyle.swift */,
 				95ADF7CE270B7A8E00C6F769 /* data.json */,
 				8FFEE62127DAC8220035D253 /* Extra Assets */,
 				9519342427062B44007D516A /* Assets.xcassets */,
@@ -589,13 +595,15 @@
 				9508A089270CDDB000A5E8ED /* CalculationState.swift in Sources */,
 				8FFEE61A27D96EA20035D253 /* BannerAd.swift in Sources */,
 				8FFEE61E27DA650A0035D253 /* SplashScreenView.swift in Sources */,
-				95ADF7CB270B5FA900C6F769 /* Settings.swift in Sources */,
+				8F7DA5B6292034440044F775 /* PopUpXButton.swift in Sources */,
+				95ADF7CB270B5FA900C6F769 /* SettingsButton.swift in Sources */,
 				8FFEE64027DCDFA60035D253 /* NumberField.swift in Sources */,
 				9537FF272708A44D00FDC2EB /* FetchData.swift in Sources */,
 				9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */,
 				8F925D3D27EBC18300956DD5 /* ConnectionStatus.swift in Sources */,
 				8FD2EC2B29017523001BA89D /* ReviewButton.swift in Sources */,
 				8FD2EC2D2901757E001BA89D /* RemoveAdsButton.swift in Sources */,
+				8F7DA5B8292034CB0044F775 /* SaveButton.swift in Sources */,
 				9537FF1627074A7800FDC2EB /* NumberView.swift in Sources */,
 				8FD2EC29290171D9001BA89D /* CodePicker.swift in Sources */,
 				8FFEE64227DCDFBE0035D253 /* ButtonField.swift in Sources */,

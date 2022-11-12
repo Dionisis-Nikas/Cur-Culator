@@ -40,15 +40,10 @@ struct SettingsPopover: View {
                 Form {
 
                     Section(header: Text("Currencies")) {
-                        VStack {
-                            NavigationLink("Base Currency", destination: CodePicker(selection: $base, title: "Base currency", connection: connection, data: data, fetch: fetch))
-
-
-                            CodePicker(selection: $target, title: "Target currency", connection: connection, data: data, fetch: fetch)
-                                .pickerStyle(.automatic)
-                        }
-
+                        CodePicker(selection: $base, title: "Base currency", connection: connection, data: data, fetch: fetch)
+                        CodePicker(selection: $target, title: "Target currency", connection: connection, data: data, fetch: fetch)
                     }
+
                     Section(header: Text("Appearance")) {
 
                         ColorPicker("Number Button Color: ", selection: $colorNumber, supportsOpacity: false)
@@ -63,23 +58,15 @@ struct SettingsPopover: View {
                         RemoveAdsButton()
                     }
                 }
-                .navigationTitle("Seetings")
+                .navigationTitle("Settings")
                 .navigationBarItems(
                     trailing:
-                            Button(action: {
-                                self.showingPopover.toggle()
-                            }) {
-                            Image(systemName: "x.circle.fill")
-                                .resizable()
-                                .font(Font.system(size: 24, weight: .bold))
-                                .foregroundColor(Color.gray)
-                                .padding(0)
-                            })
+                        PopUpXButton(showingPopover: self.$showingPopover))
 
                 VStack(spacing: 0) {
 
                     Spacer()
-                    Button(action: {
+                    SaveButton(action: {
 
                         self.alert.toggle()
                         if connection.checkConnection() {
@@ -101,20 +88,7 @@ struct SettingsPopover: View {
 
 
 
-                    }, label: {
-                        Text("Save")
-                            .font(.headline)
-                            .frame(maxWidth: .infinity, maxHeight: height * 1.5, alignment: .center)
-                            .foregroundColor(Color.white)
-                            .padding(.horizontal, 16)
-                            .cornerRadius(16)
-                            .background(Color.blue
-                                            .opacity(self.submit ? 0.5 : 1.0)
-                                            .cornerRadius(16)
-                                            .padding(.horizontal, 16))
-
-                    })
-
+                    }, hasSubmitted: self.$submit)
                     .alert(isPresented: $alert, content: {
 
                         !self.showConnectionAlert ?
@@ -136,11 +110,9 @@ struct SettingsPopover: View {
                             }))
 
                     })
-                    if !adFree && self.connection.checkConnection() {
-                        BannerAd(unitID: "ca-app-pub-3940256099942544/2934735716")
-                            .frame(maxWidth: .infinity,  maxHeight: 64)
-                    }
                 }
+
+
             }
         }
     }

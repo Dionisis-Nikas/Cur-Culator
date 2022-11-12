@@ -15,10 +15,16 @@ struct CodePicker: View {
     @ObservedObject var fetch: FetchData
 
     var body: some View {
-        Picker(selection: $selection, label: Text(title), content: ({
-            Filter(codes: data.codes, names: data.names)
-        }))
-        //.pickerStyle(.navigationLink)
+        if #available(iOS 16.0, *) {
+            Picker(selection: $selection, label: Text(title), content: ({
+                Filter(codes: data.codes, names: data.names)
+            }))
+            .pickerStyle(.navigationLink)
+        } else {
+            Picker(selection: $selection, label: Text(title), content: ({
+                Filter(codes: data.codes, names: data.names)
+            }))
+        }
     }
 }
 

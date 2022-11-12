@@ -8,7 +8,7 @@
 import SwiftUI
 import StoreKit
 
-struct Settings: View {
+struct SettingsButton: View {
     @AppStorage("code") private var code = "USD"
     @AppStorage("convert") private var currencySelection = "USD"
     @AppStorage("colorActionInactive") var colorAction: Color = .green

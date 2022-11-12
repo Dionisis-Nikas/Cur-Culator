@@ -49,7 +49,7 @@ struct ContentView: View {
 
                         ExchangeChart(converter: $converter, code: $code, currencySelection: $currencySelection, rate: $rate)
                         ConverterButton(converter: $converter, connection: connectionStatus)
-                        Settings(showingPopover: $showingPopover, connection: connectionStatus, datas: readData, fetch: fetchData, width: geometry.size.width * 0.1, height: geometry.size.width * 0.1)
+                        SettingsButton(showingPopover: $showingPopover, connection: connectionStatus, datas: readData, fetch: fetchData, width: geometry.size.width * 0.1, height: geometry.size.width * 0.1)
 
                     }
                     .padding([.top,.leading,.trailing], geometry.size.width * 0.01)
