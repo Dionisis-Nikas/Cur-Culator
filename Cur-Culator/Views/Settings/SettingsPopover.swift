@@ -85,10 +85,10 @@ struct SettingsPopover: View {
                         } else {
                             self.showConnectionAlert.toggle()
                         }
-
-
-
                     }, hasSubmitted: self.$submit)
+
+                    .background(Color.secondary.opacity(0.2).edgesIgnoringSafeArea(.bottom))
+
                     .alert(isPresented: $alert, content: {
 
                         !self.showConnectionAlert ?

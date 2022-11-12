@@ -17,6 +17,7 @@ struct SaveButton: View {
             Text("Save")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .center)
+                .frame(height: 48)
                 .foregroundColor(Color.white)
                 .padding(.horizontal, 16)
                 .cornerRadius(16)
@@ -26,8 +27,9 @@ struct SaveButton: View {
                                 .padding(.horizontal, 16))
 
         })
+
         .padding(.vertical, 16)
-        .background(Color.red)
+
     }
 }
 

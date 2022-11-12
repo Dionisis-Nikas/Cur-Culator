@@ -45,32 +45,34 @@ struct ContentView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack{
-                    HStack(alignment: .top, spacing: geometry.size.width * 0.1){
+                    HStack(alignment: .center, spacing: geometry.size.width * 0.1){
 
-                        ExchangeChart(converter: $converter, code: $code, currencySelection: $currencySelection, rate: $rate)
+                        ExchangeChart(code: $code, currencySelection: $currencySelection, rate: $rate)
                         ConverterButton(converter: $converter, connection: connectionStatus)
                         SettingsButton(showingPopover: $showingPopover, connection: connectionStatus, datas: readData, fetch: fetchData, width: geometry.size.width * 0.1, height: geometry.size.width * 0.1)
 
                     }
-                    .padding([.top,.leading,.trailing], geometry.size.width * 0.01)
+                    .padding(geometry.size.width * 0.01)
                     .frame(width: geometry.size.width, height: geometry.size.height * 0.1)
+                    .background(Color.secondary.opacity(0.2).cornerRadius(8))
 
 
 
                     // Number row
-                    HStack(alignment: .top, spacing: 10){
+                    HStack(alignment: .center, spacing: 10){
 
                         NumberField(state: state, fetchData: fetchData, currencySelection: $currencySelection, code: $code, converter: $converter, rate: self.$rate, width: geometry.size.width * 0.95, height: geometry.size.height * 0.2)
                             .offset(x: converter ? 0 : 10)
 
                     }
 
-                    .frame(width: geometry.size.width * 0.95, height: geometry.size.height * 0.190)
+                    .frame(width: geometry.size.width * 0.95, height: geometry.size.height * 0.25)
                     .padding([.bottom], 14)
 
 
 
                     // Button row
+                    
                     VStack(alignment: .center) {
                         Text("Currency rates last updated at: " + self.time)
                             .font(.system(size: 14))
@@ -79,11 +81,11 @@ struct ContentView: View {
 
                     }
 
-                    .padding([.bottom], geometry.size.height * 0.1)
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.7)
-
+                    .padding([.bottom], 0)
+                    .frame(width: geometry.size.width, height: geometry.size.height * 0.625)
 
                 }
+
 
                 SplashScreenView(fetchData: fetchData)
             } // end of ZStack
