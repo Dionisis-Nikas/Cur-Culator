@@ -11,15 +11,15 @@ import StoreKit
 struct SettingsPopover: View {
 
     @AppStorage("code") private var code = "USD"
-    @AppStorage("convert") private var currencySelection = "USD"
+    @AppStorage("convert") private var currencySelection = "EUR"
     @AppStorage("colorActionInactive") var colorAction: Color = .green
     @AppStorage("colorNumber") var colorNumber: Color = .blue
     @AppStorage("adFree") private var adFree = false
 
     @State var alert = false
-    @State var submit = false
-    @State var retry = false
-    @State var showConnectionAlert = false
+    @State var isLoading = false
+    @State var ovverideAlert = false
+    @State var alertType: AlertType? = nil
 
     @ObservedObject var connection: ConnectionStatus
     @ObservedObject var data: ReadData
@@ -31,87 +31,114 @@ struct SettingsPopover: View {
     @Binding var width: CGFloat
     @Binding var height: CGFloat
 
+    @State var tempBase: String?
+    @State var tempTarget: String?
+
     @State private var bgColor = Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
+
+    func saveData() {
+        self.alert = false
+        self.isLoading = true
+        if connection.checkConnection() {
+            fetch.fetch(withBase: self.base, withTarget: self.target, completion: {
+                self.isLoading = false
+                code = self.base
+                currencySelection = self.target
+                tempBase = self.base
+                tempTarget = self.target
+            }, errorHandler: {
+                self.isLoading = false
+                self.alertType = .errorBackend(action: {
+                    if let tempBase = tempBase, let tempTarget = tempTarget {
+                        self.base = tempBase
+                        self.target = tempTarget
+                    }
+                })
+                self.alert = true
+            })
+        } else {
+            DispatchQueue.main.async {
+                self.isLoading = false
+                if ovverideAlert {
+                    self.ovverideAlert = false
+                    return
+                }
+
+                self.alertType = .noInternet(action: {
+                    if let tempBase = tempBase, let tempTarget = tempTarget {
+                        self.base = tempBase
+                        self.target = tempTarget
+                        self.ovverideAlert = true
+                    }
+                })
+                self.alert = true
+            }
+
+        }
+
+    }
 
     var body: some View {
         NavigationView{
+            GeometryReader { geometry in
+                ZStack {
 
-            ZStack(alignment: .bottom) {
-                Form {
+                    VStack(spacing:0) {
 
-                    Section(header: Text("Currencies")) {
-                        CodePicker(selection: $base, title: "Base currency", connection: connection, data: data, fetch: fetch)
-                        CodePicker(selection: $target, title: "Target currency", connection: connection, data: data, fetch: fetch)
-                    }
+                        Form {
 
-                    Section(header: Text("Appearance")) {
-
-                        ColorPicker("Number Button Color: ", selection: $colorNumber, supportsOpacity: false)
-                        ColorPicker("Action Button Color: ", selection: $colorAction, supportsOpacity: false)
-
-                    }
-                    Section {
-                        ReviewButton()
-                    }
-
-                    Section {
-                        DonateButton()
-                    }
-                }
-                .navigationTitle("Settings")
-                .navigationBarItems(
-                    trailing:
-                        PopUpXButton(showingPopover: self.$showingPopover))
-
-                VStack(spacing: 0) {
-
-                    Spacer()
-                    SaveButton(action: {
-
-                        self.alert = true
-                        if connection.checkConnection() {
-
-                            if self.code != self.base || self.currencySelection != self.target {
-                                self.submit = true
-                                code = self.base
-                                currencySelection = self.target
-                                fetch.fetch()
-
-                            } else {
-                                self.retry = true
+                            Section(header: Text("Currencies")) {
+                                CodePicker(selection: $base, filterOut: $target, title: "Base currency", data: data)
+                                    .onChange(of: base, perform: { _ in
+                                        saveData()
+                                    })
+                                CodePicker(selection: $target, filterOut: $base, title: "Target currency", data: data)
+                                    .onChange(of: target, perform: { _ in
+                                        saveData()
+                                    })
                             }
-                        } else {
-                            self.showConnectionAlert = true
+
+                            Section(header: Text("Appearance")) {
+
+                                ColorPicker("Number Button Color: ", selection: $colorNumber, supportsOpacity: false)
+                                ColorPicker("Action Button Color: ", selection: $colorAction, supportsOpacity: false)
+
+                            }
+                            Section {
+                                ReviewButton()
+                            }
+
+                            Section {
+                                DonateButton()
+                            }
                         }
-                    }, hasSubmitted: self.$submit)
+                        .navigationTitle("Settings")
+                        .navigationBarItems(
+                            trailing:
+                                PopUpXButton(showingPopover: self.$showingPopover))
 
-                    .background(Color.secondary.opacity(0.2).edgesIgnoringSafeArea(.bottom))
+                        .alert(isPresented: $alert, content: {
 
-                    .alert(isPresented: $alert, content: {
+                            
+                            self.alertType!.getView()
+                        })
 
-                        !self.showConnectionAlert ?
-
-                        Alert(title: Text(retry ? "No changes" : "Saved"), message: Text(retry ? "No changes detected! Make some changes before you save your selection again." : "Updated Base Currency to  " + code + "  and Target Currency to " + currencySelection),dismissButton: Alert.Button.default(
-                            Text("OK"), action: {
-                                if self.retry {
-                                    self.retry = false
-                                } else {
-                                    self.submit = false
-                                }
-                            }))
-
-                        :
-
-                        Alert(title: Text("Internet connection required"), message: Text("No internet connection detected please check your internet settings and try again."),dismissButton: Alert.Button.default(
-                            Text("OK"), action: {
-                                self.showConnectionAlert.toggle()
-                            }))
-
-                    })
+                    }
+                    .blur(radius: self.isLoading ? 3 : 0)
+                    .disabled(self.isLoading)
+                    ProgressView("Loading...")
+                        .frame(width: geometry.size.width / 2,
+                               height: geometry.size.height / 5)
+                        .background(Color.secondary.colorInvert())
+                        .foregroundColor(Color.primary)
+                        .cornerRadius(20)
+                        .opacity(self.isLoading ? 1 : 0)
                 }
-
-
             }
+        }
+        .onAppear {
+            self.tempBase = self.code
+            self.tempTarget = self.currencySelection
         }
     }
 }

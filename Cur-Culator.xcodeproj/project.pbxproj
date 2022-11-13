@@ -12,6 +12,8 @@
 		8F7DA5B6292034440044F775 /* PopUpXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7DA5B5292034440044F775 /* PopUpXButton.swift */; };
 		8F7DA5B8292034CB0044F775 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7DA5B7292034CB0044F775 /* SaveButton.swift */; };
 		8F925D3D27EBC18300956DD5 /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F925D3C27EBC18300956DD5 /* ConnectionStatus.swift */; };
+		8FA6C7002921058F0056DEAC /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA6C6FF2921058F0056DEAC /* SwiftUIExtensions.swift */; };
+		8FA6C70329211F140056DEAC /* AlertsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA6C70229211F140056DEAC /* AlertsViews.swift */; };
 		8FD28A0727DFC42100D73830 /* ColorSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD28A0627DFC42100D73830 /* ColorSaver.swift */; };
 		8FD2EC2129016BC7001BA89D /* SettingsPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2EC2029016BC7001BA89D /* SettingsPopover.swift */; };
 		8FD2EC29290171D9001BA89D /* CodePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2EC28290171D9001BA89D /* CodePicker.swift */; };
@@ -74,6 +76,8 @@
 		8F7DA5B5292034440044F775 /* PopUpXButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpXButton.swift; sourceTree = "<group>"; };
 		8F7DA5B7292034CB0044F775 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		8F925D3C27EBC18300956DD5 /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
+		8FA6C6FF2921058F0056DEAC /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
+		8FA6C70229211F140056DEAC /* AlertsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViews.swift; sourceTree = "<group>"; };
 		8FD28A0627DFC42100D73830 /* ColorSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSaver.swift; sourceTree = "<group>"; };
 		8FD2EC2029016BC7001BA89D /* SettingsPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopover.swift; sourceTree = "<group>"; };
 		8FD2EC28290171D9001BA89D /* CodePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePicker.swift; sourceTree = "<group>"; };
@@ -180,8 +184,17 @@
 				9508A088270CDDB000A5E8ED /* CalculationState.swift */,
 				8FD28A0627DFC42100D73830 /* ColorSaver.swift */,
 				9508A082270CC65300A5E8ED /* ButtonStyle.swift */,
+				8FA6C6FF2921058F0056DEAC /* SwiftUIExtensions.swift */,
 			);
 			path = "Managers & Extensions";
+			sourceTree = "<group>";
+		};
+		8FA6C70129211EFF0056DEAC /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				8FA6C70229211F140056DEAC /* AlertsViews.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		8FD2EC23290170C3001BA89D /* Calculator */ = {
@@ -288,6 +301,7 @@
 		9519341F27062B42007D516A /* Cur-Culator */ = {
 			isa = PBXGroup;
 			children = (
+				8FA6C70129211EFF0056DEAC /* Alerts */,
 				950842C3270D8ED0008EC27B /* Views */,
 				8F7DA5B4292033E00044F775 /* Buttons */,
 				8F925D3B27EBC16900956DD5 /* Managers & Extensions */,
@@ -591,6 +605,7 @@
 				8FD28A0727DFC42100D73830 /* ColorSaver.swift in Sources */,
 				9537FF1E27076D8F00FDC2EB /* CommaButtonView.swift in Sources */,
 				9519342127062B42007D516A /* Cur_CulatorApp.swift in Sources */,
+				8FA6C7002921058F0056DEAC /* SwiftUIExtensions.swift in Sources */,
 				9537FF222708A36400FDC2EB /* Currency.swift in Sources */,
 				9508A089270CDDB000A5E8ED /* CalculationState.swift in Sources */,
 				8FFEE61A27D96EA20035D253 /* BannerAd.swift in Sources */,
@@ -601,6 +616,7 @@
 				9537FF272708A44D00FDC2EB /* FetchData.swift in Sources */,
 				9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */,
 				8F925D3D27EBC18300956DD5 /* ConnectionStatus.swift in Sources */,
+				8FA6C70329211F140056DEAC /* AlertsViews.swift in Sources */,
 				8FD2EC2B29017523001BA89D /* ReviewButton.swift in Sources */,
 				8FD2EC2D2901757E001BA89D /* DonateButton.swift in Sources */,
 				8F7DA5B8292034CB0044F775 /* SaveButton.swift in Sources */,

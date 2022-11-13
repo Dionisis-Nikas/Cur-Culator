@@ -8,33 +8,42 @@
 import SwiftUI
 
 struct Filter: View {
-	
-	@State var codes: [String]
-	@State var names: [String]
-	@State private var pickerSelection: String = ""
-	@State private var searchTerm: String = ""
-	@AppStorage("code") private var code = "USD"
-	
-	var filteredCurrencies: [String] {
-		codes.filter {
-			searchTerm.isEmpty ? true : $0.lowercased().contains(searchTerm.lowercased())
-		}
-	}
-	
-	var body: some View {
 
-		SearchBar(text: $searchTerm)
-		ForEach(filteredCurrencies, id: \.self) { user in
-			
-				HStack(alignment: .center, spacing: 10){
-					
-					Text(getFlag(currency:user) + " " + user)
-						.font(.title)
-						.fontWeight(.heavy)
-                        
-						
-				}
-				.padding(10)
-			}
-		}
+    @State var codes: [String]
+    @State private var searchTerm: String = ""
+    @Binding var filterOut: String
+
+    var filteredCurrencies: [String] {
+        codes.filter {
+            searchTerm.isEmpty ? true : $0.lowercased().contains(searchTerm.lowercased())
+        }
+    }
+
+    var body: some View {
+
+        SearchBar(text: $searchTerm)
+        HStack(alignment: .center, spacing: 10){
+
+            Text(getFlag(currency:filterOut) + " " + filterOut)
+                .font(.title)
+                .fontWeight(.heavy)
+                .foregroundColor(Color.gray.opacity(0.6))
+
+        }
+        .padding(10)
+
+        List(filteredCurrencies, id: \.self) { currencyItem in
+            if currencyItem != filterOut {
+                HStack(alignment: .center, spacing: 10){
+
+                    Text(getFlag(currency:currencyItem) + " " + currencyItem)
+                        .font(.title)
+                        .fontWeight(.heavy)
+                }
+                .padding(10)
+            }
+            
+        }
+
+    }
 }

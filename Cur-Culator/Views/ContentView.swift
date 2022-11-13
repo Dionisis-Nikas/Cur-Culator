@@ -57,8 +57,7 @@ struct ContentView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding(12)
-
-                        .background(Color.secondary.opacity(0.25).cornerRadius(8).padding(.horizontal, 4))
+                        .background(Color.secondary.opacity(0.33).cornerRadius(8).padding(.horizontal, 4).shadow(color: .clear, radius: 8, x: 0, y: 4))
 
 
 

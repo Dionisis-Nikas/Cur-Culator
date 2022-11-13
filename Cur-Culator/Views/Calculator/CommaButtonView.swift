@@ -35,6 +35,7 @@ struct CommaButtonView: View {
                     .cornerRadius(16)
                     .animation(.easeIn(duration: 0.1))
             })
+            .shadow(radius: 8)
             .padding(1)
         
 	}

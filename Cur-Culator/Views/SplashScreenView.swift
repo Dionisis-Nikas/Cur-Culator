@@ -10,9 +10,12 @@ import SSSwiftUIGIFView
 
 struct SplashScreenView: View {
     @Environment(\.colorScheme) var colorScheme
+    @AppStorage("code") var code = "EUR"
+    @AppStorage("convert") var currencySelection = "USD"
     var fetchData: FetchData
 
     @State var animationFinished: Bool = false
+    @State var alertShow: Bool = false
 
     var body: some View {
         if !animationFinished {
@@ -39,14 +42,25 @@ struct SplashScreenView: View {
 
             }
             .background(colorScheme == .dark ? Color.black : Color.white)
-            .onAppear {
-                fetchData.fetch()
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-
+            .onAppear {DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+                fetchData.fetch(withBase: code, withTarget: currencySelection, completion: {
                     animationFinished = true
+                }, errorHandler: {
+                    alertShow = true
                 })
+            })
+
+
             }
+            .alert(isPresented: $alertShow, content: {
+
+                Alert(title: Text("Something went wrong"), message: Text("Something went wrong and currency rates are not updated. Please try again later."),dismissButton: Alert.Button.default(
+                    Text("OK"), action: {
+                        alertShow = false
+                        animationFinished = true
+                    }))
+
+            })
 
         }
     }
