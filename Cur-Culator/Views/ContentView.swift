@@ -42,54 +42,58 @@ struct ContentView: View {
     
 
     var body: some View {
-        GeometryReader { geometry in
             ZStack {
-                VStack{
-                    HStack(alignment: .center, spacing: geometry.size.width * 0.1){
+                GeometryReader { geometry in
+                    VStack(spacing: 0){
+                        HStack(alignment: .center){
 
-                        ExchangeChart(code: $code, currencySelection: $currencySelection, rate: $rate)
-                        ConverterButton(converter: $converter, connection: connectionStatus)
-                        SettingsButton(showingPopover: $showingPopover, connection: connectionStatus, datas: readData, fetch: fetchData, width: geometry.size.width * 0.1, height: geometry.size.width * 0.1)
+                            ExchangeChart(code: $code, currencySelection: $currencySelection, rate: $rate)
+                            Spacer()
+                            ConverterButton(converter: $converter, connection: connectionStatus)
+                            Spacer()
+                            SettingsButton(showingPopover: $showingPopover, connection: connectionStatus, datas: readData, fetch: fetchData, width: geometry.size.width * 0.15, height: geometry.size.width * 0.15)
+
+
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(12)
+
+                        .background(Color.secondary.opacity(0.25).cornerRadius(8).padding(.horizontal, 4))
+
+
+
+                        // Number row
+                        Spacer()
+                        HStack(alignment: .center, spacing: 10){
+                            NumberField(state: state, fetchData: fetchData, currencySelection: $currencySelection, code: $code, converter: $converter, rate: self.$rate, width: geometry.size.width * 0.95, height: geometry.size.height * 0.25)
+                                .offset(x: converter ? 0 : 10)
+                                
+                        }
+
+                        Spacer()
+
+                        // Button row
+
+                        VStack(alignment: .center) {
+                            Text("Currency rates last updated at: " + self.time)
+                                .font(.system(size: 14))
+
+                            ButtonField(state: state,width: geometry.size.width * 0.2, height: geometry.size.width * 0.2, zeroWidth: geometry.size.width * 0.45)
+
+                        }
+
+                        .padding([.bottom], 8)
+                        .frame(maxWidth: .infinity)
 
                     }
-                    .padding(geometry.size.width * 0.01)
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.1)
-                    .background(Color.secondary.opacity(0.2).cornerRadius(8))
 
 
-
-                    // Number row
-                    HStack(alignment: .center, spacing: 10){
-
-                        NumberField(state: state, fetchData: fetchData, currencySelection: $currencySelection, code: $code, converter: $converter, rate: self.$rate, width: geometry.size.width * 0.95, height: geometry.size.height * 0.2)
-                            .offset(x: converter ? 0 : 10)
-
-                    }
-
-                    .frame(width: geometry.size.width * 0.95, height: geometry.size.height * 0.25)
-                    .padding([.bottom], 14)
-
-
-
-                    // Button row
-                    
-                    VStack(alignment: .center) {
-                        Text("Currency rates last updated at: " + self.time)
-                            .font(.system(size: 14))
-
-                        ButtonField(state: state,width: geometry.size.width * 0.2, height: geometry.size.width * 0.2, zeroWidth: (geometry.size.width * 0.42) + 15)
-
-                    }
-
-                    .padding([.bottom], 0)
-                    .frame(width: geometry.size.width, height: geometry.size.height * 0.625)
-
+                    SplashScreenView(fetchData: fetchData)
                 }
-
-
-                SplashScreenView(fetchData: fetchData)
             } // end of ZStack
-        } // end of Geometry
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+
     } // end of Body
 
 

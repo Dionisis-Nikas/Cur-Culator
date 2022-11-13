@@ -36,13 +36,14 @@ struct SettingsButton: View {
             Image(systemName: "gear")
                 .font(Font.title.weight(.bold))
                 .foregroundColor(.black)
-                .frame(width: width * 1.5, height: height * 1.5)
+                .frame(width: width, height: height)
                 .shadow(color: Color.green.opacity(0.3), radius: 10, x: 0, y: 10)
                 .background(Color.gray.shadow(radius: 24))
                 .cornerRadius(30)
 
 
         })
+        
         .popover(isPresented: $showingPopover) {
 
             SettingsPopover(connection: connection, data: datas, fetch: fetch, showingPopover: $showingPopover, base: $base, target: $target, width: $width, height: $height)

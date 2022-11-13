@@ -71,7 +71,7 @@ struct ActionView:View {
                     .frame(width: width, height: height)
                     .foregroundColor(isDarkColor ? .white : .black)
                     .background(state.storedAction == action ? Color(invertedColor) : colorAction)
-                    .cornerRadius(20)
+                    .cornerRadius(16)
                     .shadow(radius: 8)
             })
             .padding(1)

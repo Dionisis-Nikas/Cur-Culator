@@ -11,9 +11,7 @@ struct SaveButton: View {
     @State var action : () -> Void
     @Binding var hasSubmitted: Bool
     var body: some View {
-        Button(action: {
-            action()
-        }, label: {
+        Button(action: action, label: {
             Text("Save")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .center)

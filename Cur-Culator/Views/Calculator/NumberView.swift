@@ -50,7 +50,7 @@ struct NumberView: View {
                     .foregroundColor(isDarkColor ? .white : .black)
                     .frame(width: self.number == 0 ? zeroWidth : width , height: width)
                     .background(colorNumber)
-                    .cornerRadius(20)
+                    .cornerRadius(16)
                     .animation(.easeIn(duration: 0.1))
             })
             .shadow(radius: 8)

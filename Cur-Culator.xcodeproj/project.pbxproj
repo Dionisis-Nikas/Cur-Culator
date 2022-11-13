@@ -16,7 +16,7 @@
 		8FD2EC2129016BC7001BA89D /* SettingsPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2EC2029016BC7001BA89D /* SettingsPopover.swift */; };
 		8FD2EC29290171D9001BA89D /* CodePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2EC28290171D9001BA89D /* CodePicker.swift */; };
 		8FD2EC2B29017523001BA89D /* ReviewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2EC2A29017523001BA89D /* ReviewButton.swift */; };
-		8FD2EC2D2901757E001BA89D /* RemoveAdsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2EC2C2901757E001BA89D /* RemoveAdsButton.swift */; };
+		8FD2EC2D2901757E001BA89D /* DonateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2EC2C2901757E001BA89D /* DonateButton.swift */; };
 		8FFEE61A27D96EA20035D253 /* BannerAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE61927D96EA20035D253 /* BannerAd.swift */; };
 		8FFEE61E27DA650A0035D253 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */; };
 		8FFEE62327DAD6D20035D253 /* splashGIF.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8FFEE62227DAD6D20035D253 /* splashGIF.gif */; };
@@ -78,7 +78,7 @@
 		8FD2EC2029016BC7001BA89D /* SettingsPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPopover.swift; sourceTree = "<group>"; };
 		8FD2EC28290171D9001BA89D /* CodePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePicker.swift; sourceTree = "<group>"; };
 		8FD2EC2A29017523001BA89D /* ReviewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewButton.swift; sourceTree = "<group>"; };
-		8FD2EC2C2901757E001BA89D /* RemoveAdsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveAdsButton.swift; sourceTree = "<group>"; };
+		8FD2EC2C2901757E001BA89D /* DonateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateButton.swift; sourceTree = "<group>"; };
 		8FFEE61927D96EA20035D253 /* BannerAd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerAd.swift; sourceTree = "<group>"; };
 		8FFEE61D27DA650A0035D253 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		8FFEE62227DAD6D20035D253 /* splashGIF.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splashGIF.gif; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				8F7DA5B5292034440044F775 /* PopUpXButton.swift */,
 				8F7DA5B7292034CB0044F775 /* SaveButton.swift */,
 				8FD2EC2A29017523001BA89D /* ReviewButton.swift */,
-				8FD2EC2C2901757E001BA89D /* RemoveAdsButton.swift */,
+				8FD2EC2C2901757E001BA89D /* DonateButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -602,7 +602,7 @@
 				9508A085270CC8D700A5E8ED /* SearchBar.swift in Sources */,
 				8F925D3D27EBC18300956DD5 /* ConnectionStatus.swift in Sources */,
 				8FD2EC2B29017523001BA89D /* ReviewButton.swift in Sources */,
-				8FD2EC2D2901757E001BA89D /* RemoveAdsButton.swift in Sources */,
+				8FD2EC2D2901757E001BA89D /* DonateButton.swift in Sources */,
 				8F7DA5B8292034CB0044F775 /* SaveButton.swift in Sources */,
 				9537FF1627074A7800FDC2EB /* NumberView.swift in Sources */,
 				8FD2EC29290171D9001BA89D /* CodePicker.swift in Sources */,

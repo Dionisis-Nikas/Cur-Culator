@@ -55,7 +55,7 @@ struct NumberField: View {
             .frame(width: converter ? nil : width, alignment: .trailing)
 
 
-            .minimumScaleFactor(0.1)
+            .minimumScaleFactor(0.33)
 
             Text("=")
                 .foregroundColor(.green.opacity(0.5))
@@ -79,7 +79,7 @@ struct NumberField: View {
                     .foregroundColor(.gray)
             }.opacity(converter ? 1 : 0)
             .offset(x: converter ? 0 : -1000, y: 0)
-            .minimumScaleFactor(0.1)
+            .minimumScaleFactor(0.33)
             .animation(.easeInOut)
             .frame(width: converter ? nil : 0, height: converter ? nil : 0)
 

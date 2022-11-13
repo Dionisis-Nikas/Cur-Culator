@@ -32,7 +32,7 @@ struct CommaButtonView: View {
                     .foregroundColor(isDarkColor ? .white : .black)
                     .frame(width: width, height: height)
                     .background(self.state.decimal ? Color(UIColor(colorNumber).inverted) : colorNumber)
-                    .cornerRadius(20)
+                    .cornerRadius(16)
                     .animation(.easeIn(duration: 0.1))
             })
             .padding(1)

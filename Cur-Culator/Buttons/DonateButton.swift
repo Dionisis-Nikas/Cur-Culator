@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RemoveAdsButton: View {
+struct DonateButton: View {
 
     private var localeCurrency: String {
         let currencySymbol = Locale.current.currencySymbol
@@ -21,7 +21,7 @@ struct RemoveAdsButton: View {
         Button (action: {
 
         },label: {
-            Text("Remove ads for 0.99" + localeCurrency)
+            Text("Donate with 0.99" + localeCurrency)
                 .font(.headline)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 .foregroundColor(Color.white)
@@ -33,6 +33,6 @@ struct RemoveAdsButton: View {
 
 struct RemoveAdsButton_Previews: PreviewProvider {
     static var previews: some View {
-        RemoveAdsButton()
+        DonateButton()
     }
 }

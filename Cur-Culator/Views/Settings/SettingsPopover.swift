@@ -55,7 +55,7 @@ struct SettingsPopover: View {
                     }
 
                     Section {
-                        RemoveAdsButton()
+                        DonateButton()
                     }
                 }
                 .navigationTitle("Settings")
