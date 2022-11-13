@@ -68,22 +68,20 @@ struct SettingsPopover: View {
                     Spacer()
                     SaveButton(action: {
 
-                        self.alert.toggle()
+                        self.alert = true
                         if connection.checkConnection() {
 
                             if self.code != self.base || self.currencySelection != self.target {
-                                self.submit.toggle()
+                                self.submit = true
                                 code = self.base
                                 currencySelection = self.target
                                 fetch.fetch()
-                                if !adFree {
-                                    self.showingPopover.toggle()
-                                }
+
                             } else {
-                                self.retry.toggle()
+                                self.retry = true
                             }
                         } else {
-                            self.showConnectionAlert.toggle()
+                            self.showConnectionAlert = true
                         }
                     }, hasSubmitted: self.$submit)
 
@@ -96,9 +94,9 @@ struct SettingsPopover: View {
                         Alert(title: Text(retry ? "No changes" : "Saved"), message: Text(retry ? "No changes detected! Make some changes before you save your selection again." : "Updated Base Currency to  " + code + "  and Target Currency to " + currencySelection),dismissButton: Alert.Button.default(
                             Text("OK"), action: {
                                 if self.retry {
-                                    self.retry.toggle()
+                                    self.retry = false
                                 } else {
-                                    self.submit.toggle()
+                                    self.submit = false
                                 }
                             }))
 
