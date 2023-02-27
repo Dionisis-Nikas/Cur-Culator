@@ -9,7 +9,6 @@ import SwiftUI
 
 enum AlertType {
 
-    
     case errorBackend(action: () -> Void?)
 
     case noInternet(action: () -> Void?)
